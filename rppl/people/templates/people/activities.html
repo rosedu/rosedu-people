@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load people %}
+
+{% block content %}
+<h2>Activities</h2>
+{% for a in object_list %}
+<div class="activity">
+    {{ a }}
+    <a href="{% url activity-detail a.id %}">Details</a>
+</div>
+{% endfor %}
+
+{% endblock %}

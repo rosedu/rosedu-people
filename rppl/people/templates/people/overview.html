@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load people %}
+
+{% block content %}
+<h2>People</h2>
+        {% for p in persons %}
+        <div class="person">
+            <a href="{% url profile p.pk %}"><img class="avatar avatar-min" src="{% gravatar p %}" /></a>
+            {{ p.name }}
+        </div>
+        {% endfor %}
+
+<div class="spacer clear">
+    <!-- empty content -->
+</div>
+<a href="{% url activity-list %}">Activities</a>
+{% endblock %}

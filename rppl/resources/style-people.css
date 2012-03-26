@@ -1,0 +1,13 @@
+img.avatar {
+    float: left;
+    margin: 0 4px;
+}
+img.avatar-min {
+    max-width: 50px;
+}
+img.avatar-right {
+    float: right;
+}
+div.person {
+    display: inline-block; width: 200px;
+}

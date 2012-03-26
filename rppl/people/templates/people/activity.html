@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load people %}
+
+{% block content %}
+<h2>{{ activity }}</h2>
+
+<p>
+<strong>Editions:</strong> {% for e in activity.edition_set.all %}<a href="{% url edition-detail e.id %}">{{ e.title }}</a>{% endfor %}
+</p>
+
+<p>
+{{ activity.description }}
+</p>
+        
+<a href="{% url activity-list %}">&laquo; back to activities</a>
+{% endblock %}

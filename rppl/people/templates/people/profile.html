@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load people %}
+
+{% block content %}
+<img class="avatar avatar-right" src="{% gravatar person %}" />
+<h2>{{ person.name }}</h2>
+
+{% if person.managed.count %}
+<p>
+<strong>Manager:</strong>
+        {% for e in person.managed.all %}
+            {{ e }}
+        {% endfor %}
+</p>
+{% endif %}
+{% if person.helped.count %}
+<p>
+<strong>Helper:</strong>
+        {% for e in person.helped.all %}
+            {{ e }}
+        {% endfor %}
+</p>
+{% endif %}
+
+<a href="{% url overview %}">&laquo; back to persons</a>
+{% endblock %}

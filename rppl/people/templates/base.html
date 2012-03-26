@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="Description" content="ROSEdu este o organizație bazată pe o comunitate de oameni pasionați de programare și software liber, în mediul educațional." />
+	<title>ROSEdu - Romanian Open Source Education</title>
+	<link rel="shortcut icon" href="{{site.basepath}}resources/images/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="{{site.basepath}}resources/style.css" />
+	<link rel="stylesheet" type="text/css" href="{{site.basepath}}resources/style-people.css" />
+	<script type="text/javascript" src="{{site.basepath}}resources/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="{{site.basepath}}resources/js/application.js"></script>
+	<script type="text/javascript" src="{{site.basepath}}resources/js/cufon-yui.js"></script>
+	<script type="text/javascript" src="{{site.basepath}}resources/js/Cambria_400.font.js"></script>
+	<script type="text/javascript">
+	  Cufon.replace('h1, h2, h3');
+	  Cufon.replace('#header-menu', {hover:true});
+	</script>
+	{% if page.extra_head %}
+	<link rel="stylesheet" type="text/css" href="{{site.basepath}}resources/js/slidedeck-1.1.7-lite/slidedeck.skin.css" />
+	<!--[if IE]>
+	 <link rel="stylesheet" type="text/css" href="{{site.basepath}}resources/js/slidedeck-1.1.7-lite/slidedeck.skin.ie.css" />
+	<![endif]-->
+	<style type="text/css">
+	#slidedeck-frame {
+		height:300px;
+		margin:0 0 20px 0;
+		width:910px;
+	}
+	</style>
+	<script type="text/javascript" src="{{site.basepath}}resources/js/slidedeck-1.1.7-lite/slidedeck.jquery.lite.pack.js"></script>
+	{% endif %}
+  </head>
+  <body>
+	<div id="wrapper">
+	  <div id="header">
+		<a href="{{site.basepath}}ro" id="logo-header"></a>
+
+		<div id="header-right">
+		<div id="flags-container">
+                    <a href="{{site.baseptah}}ro" id="ro-flag" class="flag ro-flag-full">
+				<h2>H</h2>
+			</a>
+                        <a href="{{site.basepath}}" id="en-flag" class="flag en-flag-grayed-out">
+				<h2>H</h2>
+			</a>
+		</div>
+
+        <form action="http://www.google.com/search" class="navigation-search" method="get" name="form1">
+            <a href="#" onclick="javascript:form1.submit()" id="search-icon"></a>
+            <input id="search" class="search-query" name="q" placeholder="Caută..." type="text">
+            <input name="sitesearch" type="hidden" value="rosedu.org">
+        </form>
+
+		<!-- <a href="javascript:void(0);" id="auth-button">Autentificare</a> -->
+
+		<div id="header-menu">
+		  meniu[] = { <a href="{{site.basepath}}ro">acasă</a>,
+          <a href="{{site.basepath}}ro/activities">activități</a>,
+          <a href="{{site.basepath}}ro/news">știri</a>,
+          <a href="{{site.basepath}}ro/aboutus">despre</a>,
+          <a href="{{site.basepath}}ro/contact">contact</a> };
+		</div><!-- #header-menu -->
+
+		<div class="clear">
+		  <!-- -->
+		</div><!-- .clear -->
+		</div>
+	  </div><!-- #header -->
+
+      {% block content %}
+      {% endblock %}
+
+	  <div class="separator clear">
+		<!-- -->
+	  </div><!-- .separator .clear -->
+
+	  <div id="footer">
+		<a href="#" id="logo-footer"></a>
+
+		<div id="footer-menu">
+		  Copyright &copy; 2007 - 2012 <a href="#">ROSEdu</a>
+		  <br />
+		  <a href="{{site.basepath}}ro">Acasă</a> |
+          <a href="{{site.basepath}}ro/activities">Activități</a> |
+          <a href="{{site.basepath}}ro/news">Știri</a> |
+          <a href="{{site.basepath}}ro/aboutus">Despre</a> |
+          <a href="{{site.basepath}}ro/contact">Contact</a>
+		</div><!-- #footer-menu -->
+
+		<div class="clear">
+		  <!-- -->
+		</div><!-- .clear -->
+	  </div><!-- #footer -->
+	</div><!-- #wrapper -->
+
+	<script type="text/javascript">
+	  Cufon.now();
+	</script>
+  </body>
+</html>
