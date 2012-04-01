@@ -5,13 +5,17 @@
 <h2>People</h2>
         {% for p in persons %}
         <div class="person">
-            <a href="{% url profile p.pk %}"><img class="avatar avatar-min" src="{% gravatar p %}" /></a>
-            {{ p.name }}
+            <a href="{% url profile p.pk %}">
+                <div class="avatar-container">
+                    <img class="avatar avatar-min" src="{% gravatar p %}" />
+                </div>
+            </a>
+            <h4>{{ p.name }}</h4>
         </div>
         {% endfor %}
 
 <div class="spacer clear">
     <!-- empty content -->
 </div>
-<a href="{% url activity-list %}">Activities</a>
+<a href="{% url activity-list %}">Go to: Activities</a>
 {% endblock %}

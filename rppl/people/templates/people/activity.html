@@ -4,9 +4,17 @@
 {% block content %}
 <h2>{{ activity }}</h2>
 
+{% if activity.editions %}
 <p>
-<strong>Editions:</strong> {% for e in activity.edition_set.all %}<a href="{% url edition-detail e.id %}">{{ e.title }}</a>{% endfor %}
+<strong>Editions:</strong> {% for e in activity.editions %}<a href="{% url edition-detail e.id %}">{{ e.title }}</a> {% endfor %}
 </p>
+{% endif %}
+
+{% if activity.version_set.count %}
+<p>
+<strong>Versions:</strong> {% for e in activity.version_set.all %}<a href="{% url version-detail e.id %}">{{ e }}</a> {% endfor %}
+</p>
+{% endif %}
 
 <p>
 {{ activity.description }}

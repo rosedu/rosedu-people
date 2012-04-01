@@ -1,13 +1,26 @@
-img.avatar {
+div.avatar-container {
+    background: #888;
     float: left;
+    padding: 1px;
     margin: 0 4px;
+}
+div.avatar-container-right {
+    float: right;
+}
+img.avatar {
+    margin: 0;
 }
 img.avatar-min {
     max-width: 50px;
 }
-img.avatar-right {
-    float: right;
-}
 div.person {
-    display: inline-block; width: 200px;
+    display: block; width: 200px;
+    margin: 10px;
+    float: left;
+}
+
+div.activity {
+    width: 300px;
+    float: left;
+    margin: 10px;
 }

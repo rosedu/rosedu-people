@@ -2,14 +2,25 @@
 {% load people %}
 
 {% block content %}
-<img class="avatar avatar-right" src="{% gravatar person %}" />
+<div class="avatar-container avatar-container-right">
+    <img class="avatar avatar-right" src="{% gravatar person %}" />
+</div>
+
 <h2>{{ person.name }}</h2>
 
 {% if person.managed.count %}
 <p>
 <strong>Manager:</strong>
         {% for e in person.managed.all %}
-            {{ e }}
+           <a href="{% url edition-detail e.id %}">{{ e }}</a>
+        {% endfor %}
+</p>
+{% endif %}
+{% if person.projectmanaged.count %}
+<p>
+<strong>Manager:</strong>
+        {% for e in person.projectmanaged.all %}
+            <a href="{% url version-detail e.id %}">{{ e }}</a>
         {% endfor %}
 </p>
 {% endif %}
@@ -17,7 +28,15 @@
 <p>
 <strong>Helper:</strong>
         {% for e in person.helped.all %}
-            {{ e }}
+            <a href="{% url edition-detail e.id %}">{{ e }}</a>
+        {% endfor %}
+</p>
+{% endif %}
+{% if person.developed.count %}
+<p>
+<strong>Developer:</strong>
+        {% for e in person.developed.all %}
+    <a href="{% url version-detail e.id %}">{{ e }}</a>
         {% endfor %}
 </p>
 {% endif %}
