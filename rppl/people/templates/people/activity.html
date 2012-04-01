@@ -2,11 +2,30 @@
 {% load people %}
 
 {% block content %}
+<div class="right-sidebar">
+    {% if activity.editions %}
+    <h3>Managers through time</h3>
+        <ul>
+        {% for m in activity.editions %}
+            {% if m.managers.count %}
+            <li>{{ m.date_start|date:"Y" }}
+                <ul>
+                {% for mm in m.managers.all %}
+                    <li><a href="{% url profile mm.id %}">{{ mm }}</a></li>
+                {% endfor %}
+                </ul>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
 <h2>{{ activity }}</h2>
 
 {% if activity.editions %}
 <p>
-<strong>Editions:</strong> {% for e in activity.editions %}<a href="{% url edition-detail e.id %}">{{ e.title }}</a> {% endfor %}
+<strong>Editions:</strong> {% for e in activity.editions %}<a href="{% url edition-detail e.id %}">{{ e.title }}</a>, {% endfor %}
 </p>
 {% endif %}
 

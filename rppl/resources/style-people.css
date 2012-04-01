@@ -24,3 +24,9 @@ div.activity {
     float: left;
     margin: 10px;
 }
+div.right-sidebar ul li {
+    margin: 4px;
+}
+div.right-sidebar ul li a {
+    font-weight: normal;
+}

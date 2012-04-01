@@ -121,6 +121,28 @@
   }
  },
  {
+  "pk": 12,
+  "model": "people.person",
+  "fields": {
+   "username": "victorc",
+   "first_name": "Victor",
+   "last_name": "C\u0103rbune",
+   "nickname": "victor",
+   "email": "victor@rosedu.org"
+  }
+ },
+ {
+  "pk": 13,
+  "model": "people.person",
+  "fields": {
+   "username": "gringo",
+   "first_name": "Lucian",
+   "last_name": "Grijincu",
+   "nickname": "gringo",
+   "email": "lucian.grijincu@gmail.com"
+  }
+ },
+ {
   "pk": 1,
   "model": "people.activity",
   "fields": {
@@ -264,7 +286,10 @@
   "pk": 2,
   "model": "people.edition",
   "fields": {
-   "managers": [],
+   "managers": [
+    1,
+    13
+   ],
    "description": "",
    "title": "CDL v1",
    "date_end": "2009-05-16",
@@ -278,7 +303,10 @@
   "pk": 3,
   "model": "people.edition",
   "fields": {
-   "managers": [],
+   "managers": [
+    3,
+    12
+   ],
    "description": "",
    "title": "CDL v2",
    "date_end": "2010-05-15",
@@ -292,7 +320,10 @@
   "pk": 4,
   "model": "people.edition",
   "fields": {
-   "managers": [],
+   "managers": [
+    3,
+    12
+   ],
    "description": "",
    "title": "CDL v3",
    "date_end": "2011-04-10",
@@ -306,7 +337,10 @@
   "pk": 5,
   "model": "people.edition",
   "fields": {
-   "managers": [],
+   "managers": [
+    2,
+    5
+   ],
    "description": "",
    "title": "CDL v4",
    "date_end": "2011-12-17",
@@ -320,7 +354,9 @@
   "pk": 6,
   "model": "people.edition",
   "fields": {
-   "managers": [],
+   "managers": [
+    1
+   ],
    "description": "",
    "title": "UIF",
    "date_end": "2008-05-11",

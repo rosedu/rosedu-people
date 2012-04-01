@@ -40,6 +40,11 @@
         {% endfor %}
 </p>
 {% endif %}
+        
+<p><strong>Contact:</strong>
+{% if person.nickname %}<code>{{person.nickname}}</code> on IRC,{% endif %}
+{% if person.email %}<code>{{person.email}}</code>{% endif %}
+</p>
 
 <a href="{% url overview %}">&laquo; back to persons</a>
 {% endblock %}
