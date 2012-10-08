@@ -9,6 +9,9 @@ class Person(models.Model):
     nickname = models.CharField(max_length=64, default='', blank=True, help_text='IRC nickname')
     email = models.CharField(max_length=100)
 
+    class Meta:
+        unique_together = ('first_name', 'last_name')
+
     @property
     def name(self):
         return self.first_name + ' ' + self.last_name
