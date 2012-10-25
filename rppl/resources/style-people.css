@@ -1,8 +1,6 @@
 div.avatar-container {
     background: #888;
     float: left;
-    padding: 1px;
-    margin: 0 4px;
 }
 div.avatar-container-right {
     float: right;
@@ -11,12 +9,16 @@ img.avatar {
     margin: 0;
 }
 img.avatar-min {
-    max-width: 50px;
+    max-width: 60px;
 }
+
 div.person {
-    display: block; width: 200px;
-    margin: 10px;
+    display: block;
     float: left;
+}
+
+div.person-name {
+    visibility: hidden
 }
 
 div.activity {
