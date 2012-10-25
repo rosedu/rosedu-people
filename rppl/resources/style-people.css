@@ -2,23 +2,25 @@ div.avatar-container {
     background: #888;
     float: left;
 }
+
+div.avatar-container-big {
+    background: #888;
+    position: absolute;
+    visibility: hidden;
+}
 div.avatar-container-right {
     float: right;
 }
-img.avatar {
-    margin: 0;
-}
 img.avatar-min {
     max-width: 60px;
+}
+img.avatar-big {
+    width: 120px;
 }
 
 div.person {
     display: block;
     float: left;
-}
-
-div.person-name {
-    visibility: hidden
 }
 
 div.activity {

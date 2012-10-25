@@ -3,15 +3,23 @@
 
 {% block content %}
 <h2>People</h2>
-        {% for p in persons %}
-        <div class="person" person-name="{{ p.name }}">
-            <a href="{% url profile p.pk %}">
-                <div class="avatar-container">
-                    <img class="avatar avatar-min" src="{% gravatar p %}" />
-                </div>
-            </a>
+{% for p in persons %}
+<div class="person">
+    <a href="{% url profile p.pk %}">
+        <div class="avatar-container">
+            <img class="avatar avatar-min" src="{% gravatar p %}" />
         </div>
-        {% endfor %}
+    </a>
+
+    <a href="{% url profile p.pk %}">
+        <div class="avatar-container-big">
+            <img class="avatar avatar-big" src="{% gravatar p %}" />
+            <div class="name">{{ p.name }}</div>
+        </div>
+    </a>
+</div>
+{% endfor %}
+<script src='resources/js/people-grid.js'></script>
 
 <div class="spacer clear">
     <!-- empty content -->
