@@ -7,26 +7,30 @@ div.avatar-container-big {
     background: #888;
     position: absolute;
     visibility: hidden;
+    width: 60px;
+    height: 60px;
 }
 div.avatar-container-right {
     float: right;
 }
 img.avatar-min {
-    max-width: 60px;
+    max-width: 80px;
 }
 img.avatar-big {
-    width: 120px;
+    width: 180px;
 }
 
 div.person {
     display: block;
     float: left;
 }
-
 div.activity {
     width: 300px;
     float: left;
     margin: 10px;
+}
+h3.name {
+    background: #eee;
 }
 div.right-sidebar ul li {
     margin: 4px;
