@@ -1,476 +1,214 @@
 [
- {
-  "pk": 1,
-  "model": "people.person",
-  "fields": {
-   "username": "alexef",
-   "first_name": "Alex",
-   "last_name": "Eftimie",
-   "nickname": "alex3f",
-   "email": "alex@rosedu.org"
-  }
- },
- {
-  "pk": 2,
-  "model": "people.person",
-  "fields": {
-   "username": "mihneadb",
-   "first_name": "Mihnea",
-   "last_name": "Dobrescu-Balaur",
-   "nickname": "mihneadb",
-   "email": "mihneadb@gmail.com"
-  }
- },
- {
-  "pk": 3,
-  "model": "people.person",
-  "fields": {
-   "username": "laura",
-   "first_name": "Laura",
-   "last_name": "Vasilescu",
-   "nickname": "laura",
-   "email": "vasilescu.laura@gmail.com"
-  }
- },
- {
-  "pk": 4,
-  "model": "people.person",
-  "fields": {
-   "username": "sergiu",
-   "first_name": "Sergiu",
-   "last_name": "Iordache",
-   "nickname": "Sergiu",
-   "email": "me@serg.ro"
-  }
- },
- {
-  "pk": 5,
-  "model": "people.person",
-  "fields": {
-   "username": "andreip",
-   "first_name": "Andrei",
-   "last_name": "Petre",
-   "nickname": "andreip",
-   "email": "p31andrei@gmail.com"
-  }
- },
- {
-  "pk": 6,
-  "model": "people.person",
-  "fields": {
-   "username": "razvan",
-   "first_name": "R\u0103zvan",
-   "last_name": "Deaconescu",
-   "nickname": "razvand",
-   "email": "razvand@rosedu.org"
-  }
- },
- {
-  "pk": 7,
-  "model": "people.person",
-  "fields": {
-   "username": "andradaq",
-   "first_name": "Andrada",
-   "last_name": "Georgescu",
-   "nickname": "andradaq",
-   "email": "andradaq@gmail.com"
-  }
- },
- {
-  "pk": 8,
-  "model": "people.person",
-  "fields": {
-   "username": "alexj",
-   "first_name": "Alex",
-   "last_name": "Juncu",
-   "nickname": "AlexJ",
-   "email": "alexandrujuncu@gmail.com"
-  }
- },
- {
-  "pk": 9,
-  "model": "people.person",
-  "fields": {
-   "username": "mmaruseachph2",
-   "first_name": "Mihai",
-   "last_name": "Maruseac",
-   "nickname": "mmaruseachph2",
-   "email": "mihai.maruseac@gmail.com"
-  }
- },
- {
-  "pk": 10,
-  "model": "people.person",
-  "fields": {
-   "username": "valentina",
-   "first_name": "Valentina",
-   "last_name": "Manea",
-   "nickname": "tinamanea",
-   "email": "valentina@rosedu.org"
-  }
- },
- {
-  "pk": 11,
-  "model": "people.person",
-  "fields": {
-   "username": "alexmorega",
-   "first_name": "Alex",
-   "last_name": "Morega",
-   "nickname": "alexmorega",
-   "email": "alex@grep.ro"
-  }
- },
- {
-  "pk": 12,
-  "model": "people.person",
-  "fields": {
-   "username": "victorc",
-   "first_name": "Victor",
-   "last_name": "C\u0103rbune",
-   "nickname": "victor",
-   "email": "victor@rosedu.org"
-  }
- },
- {
-  "pk": 13,
-  "model": "people.person",
-  "fields": {
-   "username": "gringo",
-   "first_name": "Lucian",
-   "last_name": "Grijincu",
-   "nickname": "gringo",
-   "email": "lucian.grijincu@gmail.com"
-  }
- },
- {
-  "pk": 1,
-  "model": "people.activity",
-  "fields": {
-   "status": 0,
-   "logo": "/home/alex/Proiecte/rosedu-people/rppl/resources/upload/activity_logo_cdl.png",
-   "description": "CDL te \u00eenva\u021b\u0103 ce \u00eenseamn\u0103 free software, comunitate open source, ce unelte s\u0103 folose\u0219ti \u0219i cum pentru a deveni un contribuitor.",
-   "name": "CDL",
-   "slug": ""
-  }
- },
- {
-  "pk": 2,
-  "model": "people.activity",
-  "fields": {
-   "status": 1,
-   "logo": "",
-   "description": "O activitate specific\u0103 grupurilor de utilizatori Linux, evenimentul de instalare atrage \u00een fiecare an din ce \u00een ce mai mul\u021bi studen\u021bi.",
-   "name": "Linux Install Fest",
-   "slug": ""
-  }
- },
- {
-  "pk": 3,
-  "model": "people.activity",
-  "fields": {
-   "status": 0,
-   "logo": "",
-   "description": "World of USO este un joc simplu realizat pentru studen\u021bii cursului de Utilizarea Sistemelor de Operare din Facultatea de Automatica si Calculatoare. Jocul este menit s\u0103 ajute studen\u021bii \u00een a acumula cuno\u0219tin\u021be intr-un mod pl\u0103cut \u0219i interesant.",
-   "name": "World of USO",
-   "slug": ""
-  }
- },
- {
-  "pk": 4,
-  "model": "people.activity",
-  "fields": {
-   "status": 0,
-   "logo": "",
-   "description": "ROSEdu Tech Talks sunt o serie de prezent\u0103ri de 45 de minute.",
-   "name": "Tech Talks",
-   "slug": ""
-  }
- },
- {
-  "pk": 5,
-  "model": "people.activity",
-  "fields": {
-   "status": 0,
-   "logo": "",
-   "description": "Hack Day sunt \u00eent\u00e2lniri recurente \u00een care program\u0103m.",
-   "name": "Hackday",
-   "slug": ""
-  }
- },
- {
-  "pk": 1,
-  "model": "people.event",
-  "fields": {
-   "location": "ACS - UPB"
-  }
- },
- {
-  "pk": 2,
-  "model": "people.event",
-  "fields": {
-   "location": "ACS - UPB"
-  }
- },
- {
-  "pk": 3,
-  "model": "people.project",
-  "fields": {
-   "repo": "http://github.com/rosedu/wouso"
-  }
- },
- {
-  "pk": 1,
-  "model": "people.version",
-  "fields": {
-   "project": 3,
-   "repo": "http://github.com/rosedu/wouso",
-   "version": "WoUSO v5 - Django",
-   "managers": [
-    1
-   ],
-   "developers": [
-    2
-   ]
-  }
- },
- {
-  "pk": 2,
-  "model": "people.version",
-  "fields": {
-   "project": 3,
-   "repo": "",
-   "version": "WoUSO v1",
-   "managers": [
-    4
-   ],
-   "developers": [
-    1
-   ]
-  }
- },
- {
-  "pk": 3,
-  "model": "people.version",
-  "fields": {
-   "project": 3,
-   "repo": "",
-   "version": "WoUSO Content",
-   "managers": [],
-   "developers": [
-    3,
-    6,
-    7,
-    8,
-    9
-   ]
-  }
- },
- {
-  "pk": 1,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    2,
-    5
-   ],
-   "description": "",
-   "title": "CDL v5",
-   "date_end": null,
-   "date_start": "2012-02-25",
-   "helpers": [],
-   "logo": "",
-   "event": 1
-  }
- },
- {
-  "pk": 2,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    1,
-    13
-   ],
-   "description": "",
-   "title": "CDL v1",
-   "date_end": "2009-05-16",
-   "date_start": "2009-03-07",
-   "helpers": [],
-   "logo": "",
-   "event": 1
-  }
- },
- {
-  "pk": 3,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    3,
-    12
-   ],
-   "description": "",
-   "title": "CDL v2",
-   "date_end": "2010-05-15",
-   "date_start": "2010-02-27",
-   "helpers": [],
-   "logo": "",
-   "event": 1
-  }
- },
- {
-  "pk": 4,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    3,
-    12
-   ],
-   "description": "",
-   "title": "CDL v3",
-   "date_end": "2011-04-10",
-   "date_start": "2011-02-19",
-   "helpers": [],
-   "logo": "",
-   "event": 1
-  }
- },
- {
-  "pk": 5,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    2,
-    5
-   ],
-   "description": "",
-   "title": "CDL v4",
-   "date_end": "2011-12-17",
-   "date_start": "2011-10-15",
-   "helpers": [],
-   "logo": "",
-   "event": 1
-  }
- },
- {
-  "pk": 6,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    1
-   ],
-   "description": "",
-   "title": "UIF",
-   "date_end": "2008-05-11",
-   "date_start": "2008-05-11",
-   "helpers": [],
-   "logo": "",
-   "event": 2
-  }
- },
- {
-  "pk": 7,
-  "model": "people.edition",
-  "fields": {
-   "managers": [],
-   "description": "",
-   "title": "UIF v2",
-   "date_end": "2008-10-11",
-   "date_start": "2008-10-11",
-   "helpers": [],
-   "logo": "",
-   "event": 2
-  }
- },
- {
-  "pk": 8,
-  "model": "people.edition",
-  "fields": {
-   "managers": [],
-   "description": "",
-   "title": "UIF v3",
-   "date_end": "2009-10-18",
-   "date_start": "2009-10-18",
-   "helpers": [],
-   "logo": "",
-   "event": 2
-  }
- },
- {
-  "pk": 9,
-  "model": "people.edition",
-  "fields": {
-   "managers": [],
-   "description": "",
-   "title": "LIF v4",
-   "date_end": "2010-10-09",
-   "date_start": "2010-10-09",
-   "helpers": [],
-   "logo": "",
-   "event": 2
-  }
- },
- {
-  "pk": 10,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    3
-   ],
-   "description": "",
-   "title": "LIF v5",
-   "date_end": "2011-10-09",
-   "date_start": "2011-10-09",
-   "helpers": [],
-   "logo": "",
-   "event": 2
-  }
- },
- {
-  "pk": 11,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    10
-   ],
-   "description": "",
-   "title": "Tech Talks 2012",
-   "date_end": null,
-   "date_start": "2012-03-29",
-   "helpers": [],
-   "logo": "",
-   "event": 4
-  }
- },
- {
-  "pk": 12,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    8,
-    9
-   ],
-   "description": "",
-   "title": "Tech Talks 2010-2011",
-   "date_end": null,
-   "date_start": "2010-01-01",
-   "helpers": [],
-   "logo": "",
-   "event": 4
-  }
- },
- {
-  "pk": 13,
-  "model": "people.edition",
-  "fields": {
-   "managers": [
-    11
-   ],
-   "description": "",
-   "title": "HackDay",
-   "date_end": null,
-   "date_start": "2011-09-24",
-   "helpers": [],
-   "logo": "",
-   "event": 5
-  }
- }
+{
+    "pk": 1,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Alex",
+        "last_name": "Eftimie",
+        "email": "alex@rosedu.org"
+    }
+},
+{
+    "pk": 2,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Mihnea",
+        "last_name": "Dobrescu-Balaur",
+        "email": "mihneadb@gmail.com"
+    }
+},
+{
+    "pk": 3,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Laura",
+        "last_name": "Vasilescu",
+        "email": "vasilescu.laura@gmail.com"
+    }
+},
+{
+    "pk": 4,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Sergiu",
+        "last_name": "Iordache",
+        "email": "me@serg.ro"
+    }
+},
+{
+    "pk": 5,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Andrei",
+        "last_name": "Petre",
+        "email": "p31andrei@gmail.com"
+    }
+},
+{
+    "pk": 6,
+    "model": "people.person",
+    "fields": {
+        "first_name": "R\u0103zvan",
+        "last_name": "Deaconescu",
+        "email": "razvand@rosedu.org"
+    }
+},
+{
+    "pk": 7,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Andrada",
+        "last_name": "Georgescu",
+        "email": "andradaq@gmail.com"
+    }
+},
+{
+    "pk": 8,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Alex",
+        "last_name": "Juncu",
+        "email": "alexandrujuncu@gmail.com"
+    }
+},
+{
+    "pk": 9,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Mihai",
+        "last_name": "Maruseac",
+        "email": "mihai.maruseac@gmail.com"
+    }
+},
+{
+    "pk": 10,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Valentina",
+        "last_name": "Manea",
+        "email": "valentina@rosedu.org"
+    }
+},
+{
+    "pk": 11,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Alex",
+        "last_name": "Morega",
+        "email": "alex@grep.ro"
+    }
+},
+{
+    "pk": 12,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Victor",
+        "last_name": "C\u0103rbune",
+        "email": "victor@rosedu.org"
+    }
+},
+{
+    "pk": 13,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Lucian",
+        "last_name": "Grijincu",
+        "email": "lucian.grijincu@gmail.com"
+    }
+},
+{
+    "pk": 14,
+    "model": "people.person",
+    "fields": {
+        "first_name": "Mihai",
+        "last_name": "Bivol",
+        "email": "mm.bivol@gmail.com"
+    }
+},
+{
+    "pk": 1,
+    "model": "people.project",
+    "fields": {
+        "description": "CDL te \u00eenva\u021b\u0103 ce \u00eenseamn\u0103 free software, comunitate open source, ce unelte s\u0103 folose\u0219ti \u0219i cum pentru a deveni un contribuitor.",
+        "name": "CDL"
+    }
+},
+{
+    "pk": 2,
+    "model": "people.project",
+    "fields": {
+        "description": "O activitate specific\u0103 grupurilor de utilizatori Linux, evenimentul de instalare atrage \u00een fiecare an din ce \u00een ce mai mul\u021bi studen\u021bi.",
+        "name": "Linux Install Fest"
+    }
+},
+{
+    "pk": 3,
+    "model": "people.project",
+    "fields": {
+        "logo": "",
+        "description": "World of USO este un joc simplu realizat pentru studen\u021bii cursului de Utilizarea Sistemelor de Operare din Facultatea de Automatica si Calculatoare. Jocul este menit s\u0103 ajute studen\u021bii \u00een a acumula cuno\u0219tin\u021be intr-un mod pl\u0103cut \u0219i interesant.",
+        "name": "World of USO"
+    }
+},
+{
+    "pk": 4,
+    "model": "people.project",
+    "fields": {
+        "logo": "",
+        "description": "ROSEdu Tech Talks sunt o serie de prezent\u0103ri de 45 de minute.",
+        "name": "Tech Talks"
+    }
+},
+{
+    "pk": 5,
+    "model": "people.project",
+    "fields": {
+        "logo": "",
+        "description": "Hack Day sunt \u00eent\u00e2lniri recurente \u00een care program\u0103m.",
+        "name": "Hackday"
+    }
+},
+{
+    "pk": 1,
+    "model": "people.edition",
+    "fields": {
+        "project": 1,
+        "name": "2012 - primavara"
+    }
+},
+{
+    "pk": 2,
+    "model": "people.edition",
+    "fields": {
+        "project": 1,
+        "name": "2012 - toamna"
+    }
+},
+{
+    "pk": 1,
+    "model": "people.role",
+    "fields": {
+        "edition": 1,
+        "name": "mentor",
+        "persons": [1, 2, 3]
+    }
+},
+{
+    "pk": 2,
+    "model": "people.role",
+    "fields": {
+        "edition": 1,
+        "name": "student",
+        "persons": [3, 4, 5]
+    }
+},
+{
+    "pk": 3,
+    "model": "people.role",
+    "fields": {
+        "edition": 1,
+        "name": "organizer",
+        "persons": [13]
+    }
+}
 ]
