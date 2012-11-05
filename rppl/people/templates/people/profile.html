@@ -8,41 +8,14 @@
 
 <h2>{{ person.name }}</h2>
 
-{% if person.managed.count %}
 <p>
-<strong>Manager:</strong>
-        {% for e in person.managed.all %}
-           <a href="{% url edition-detail e.id %}">{{ e }}</a>
+<strong>Roles:</strong>
+        {% for r in person.roles.all %}
+        {{ r }} at {{ r.edition.project }} - {{ r.edition }}
         {% endfor %}
 </p>
-{% endif %}
-{% if person.projectmanaged.count %}
-<p>
-<strong>Manager:</strong>
-        {% for e in person.projectmanaged.all %}
-            <a href="{% url version-detail e.id %}">{{ e }}</a>
-        {% endfor %}
-</p>
-{% endif %}
-{% if person.helped.count %}
-<p>
-<strong>Helper:</strong>
-        {% for e in person.helped.all %}
-            <a href="{% url edition-detail e.id %}">{{ e }}</a>
-        {% endfor %}
-</p>
-{% endif %}
-{% if person.developed.count %}
-<p>
-<strong>Developer:</strong>
-        {% for e in person.developed.all %}
-    <a href="{% url version-detail e.id %}">{{ e }}</a>
-        {% endfor %}
-</p>
-{% endif %}
-        
+
 <p><strong>Contact:</strong>
-{% if person.nickname %}<code>{{person.nickname}}</code> on IRC,{% endif %}
 {% if person.email %}<code>{{person.email}}</code>{% endif %}
 </p>
 

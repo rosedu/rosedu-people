@@ -37,15 +37,24 @@ class Project(models.Model):
 
     logo = models.ImageField(blank=True, null=True, upload_to=settings.MEDIA_ROOT)
 
+    def __unicode__(self):
+        return self.name
+
 class Edition(models.Model):
     """ Project edition """
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, related_name="editions")
     picture = models.ImageField(blank=True, null=True, upload_to=settings.MEDIA_ROOT)
     name = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return self.name
 
 class Role(models.Model):
     """ A role that can be given to many persons in an editition """
     name = models.CharField(max_length=100)
 
-    edition = models.ForeignKey(Edition)
-    persons = models.ManyToManyField(Person)
+    edition = models.ForeignKey(Edition, related_name="roles")
+    persons = models.ManyToManyField(Person, related_name="roles")
+
+    def __unicode__(self):
+        return self.name
