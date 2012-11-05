@@ -11,7 +11,9 @@
 <p>
 <strong>Roles:</strong>
         {% for r in person.roles.all %}
-        {{ r }} at {{ r.edition.project }} - {{ r.edition }}
+        <div>
+            {{ r }} at {{ r.edition.project }} - {{ r.edition }}
+        </div>
         {% endfor %}
 </p>
 
