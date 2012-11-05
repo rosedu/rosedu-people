@@ -3,41 +3,40 @@
 
 {% block content %}
 <div class="right-sidebar">
-    {% if activity.editions %}
-    <h3>Managers through time</h3>
+    {% if project.editions %}
+    <h3>Roles through time</h3>
         <ul>
-        {% for m in activity.editions %}
-            {% if m.managers.count %}
-            <li>{{ m.date_start|date:"Y" }}
+        {% for e in project.editions.all %}
+            <li>
                 <ul>
-                {% for mm in m.managers.all %}
-                    <li><a href="{% url profile mm.id %}">{{ mm }}</a></li>
+                {% for r in e.roles.all %}
+                    {% for p in r.persons.all %}
+                        <li> {{ r }} - <a href="{% url profile p.id %}">{{ p }}</a></li>
+                    {% endfor %}
                 {% endfor %}
                 </ul>
             </li>
-            {% endif %}
         {% endfor %}
         </ul>
     {% endif %}
 </div>
 
-<h2>{{ activity }}</h2>
+<h2>{{ project }}</h2>
 
-{% if activity.editions %}
+{% if project.editions %}
 <p>
-<strong>Editions:</strong> {% for e in activity.editions %}<a href="{% url edition-detail e.id %}">{{ e.title }}</a>, {% endfor %}
+<strong>Editions:</strong>
+{% for e in project.editions.all %}
+    <div>
+        {{ e }}
+    </div>
+{% endfor %}
 </p>
 {% endif %}
 
-{% if activity.version_set.count %}
 <p>
-<strong>Versions:</strong> {% for e in activity.version_set.all %}<a href="{% url version-detail e.id %}">{{ e }}</a> {% endfor %}
-</p>
-{% endif %}
-
-<p>
-{{ activity.description }}
+{{ project.description }}
 </p>
         
-<a href="{% url activity-list %}">&laquo; back to activities</a>
+<a href="{% url project-list %}">&laquo; back to projects</a>
 {% endblock %}
