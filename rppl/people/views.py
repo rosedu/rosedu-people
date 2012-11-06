@@ -6,7 +6,7 @@ class Overview(TemplateView):
     template_name = 'people/overview.html'
 
     def get_context_data(self, **kwargs):
-        return {'persons': Person.objects.all().order_by('last_name')}
+        return {'persons': Person.objects.all().order_by('?')}
 
 class Profile(DetailView):
     template_name = 'people/profile.html'
