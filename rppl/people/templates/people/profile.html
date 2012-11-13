@@ -10,9 +10,9 @@
 
 <p>
 <strong>Roles:</strong>
-        {% for r in person.roles.all %}
+        {% for pr in person.person_roles.all %}
         <div>
-            {{ r }} at {{ r.edition.project }} - {{ r.edition }}
+            {{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}
         </div>
         {% endfor %}
 </p>

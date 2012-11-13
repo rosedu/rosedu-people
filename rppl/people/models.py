@@ -7,7 +7,7 @@ class Person(models.Model):
 
     email = models.CharField(max_length=100)
 
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=100)
 
     class Meta:
         unique_together = ('first_name', 'last_name')
@@ -22,12 +22,12 @@ class Person(models.Model):
 class Link(models.Model):
     """ Link for person's external accounts """
     url = models.CharField(max_length=100)
-    person = models.ForeignKey(Person)
+    person = models.ForeignKey(Person, blank=True, null=True)
 
 class Organization(models.Model):
     """ External affiliations for users """
     url = models.CharField(max_length=100)
-    persons = models.ManyToManyField(Person)
+    persons = models.ManyToManyField(Person, blank=True, null=True, related_name="organisations")
 
 class Project(models.Model):
     """ Project in community """
@@ -46,6 +46,8 @@ class Edition(models.Model):
     picture = models.ImageField(blank=True, null=True, upload_to=settings.MEDIA_ROOT)
     name = models.CharField(max_length=100)
 
+    persons = models.ManyToManyField(Person, through='PersonRole')
+
     def __unicode__(self):
         return self.name
 
@@ -53,8 +55,11 @@ class Role(models.Model):
     """ A role that can be given to many persons in an editition """
     name = models.CharField(max_length=100)
 
-    edition = models.ForeignKey(Edition, related_name="roles")
-    persons = models.ManyToManyField(Person, related_name="roles")
-
     def __unicode__(self):
         return self.name
+
+class PersonRole(models.Model):
+    person = models.ForeignKey(Person, related_name="person_roles")
+    edition = models.ForeignKey(Edition, related_name="person_roles")
+    role = models.ForeignKey(Role)
+

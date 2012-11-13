@@ -188,27 +188,66 @@
     "pk": 1,
     "model": "people.role",
     "fields": {
-        "edition": 1,
-        "name": "mentor",
-        "persons": [1, 2, 3]
+        "name": "mentor"
     }
 },
 {
     "pk": 2,
     "model": "people.role",
     "fields": {
-        "edition": 1,
-        "name": "student",
-        "persons": [3, 4, 5]
+        "name": "student"
     }
 },
 {
     "pk": 3,
     "model": "people.role",
     "fields": {
+        "name": "organizer"
+    }
+},
+{
+    "pk": 1,
+    "model": "people.personrole",
+    "fields": {
+        "person": 1,
+        "edition": 2,
+        "role": 2
+    }
+},
+{
+    "pk": 2,
+    "model": "people.personrole",
+    "fields": {
+        "person": 1,
         "edition": 1,
-        "name": "organizer",
-        "persons": [13]
+        "role": 2
+    }
+},
+{
+    "pk": 3,
+    "model": "people.personrole",
+    "fields": {
+        "person": 5,
+        "edition": 1,
+        "role": 3
+    }
+},
+{
+    "pk": 4,
+    "model": "people.personrole",
+    "fields": {
+        "person": 10,
+        "edition": 1,
+        "role": 2
+    }
+},
+{
+    "pk": 5,
+    "model": "people.personrole",
+    "fields": {
+        "person": 3,
+        "edition": 2,
+        "role": 2
     }
 }
 ]

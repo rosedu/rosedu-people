@@ -1,42 +1,29 @@
 {% extends 'base.html' %}
-{% load people %}
 
 {% block content %}
-<div class="right-sidebar">
-    {% if project.editions %}
-    <h3>Roles through time</h3>
-        <ul>
-        {% for e in project.editions.all %}
-            <li>
-                <ul>
-                {% for r in e.roles.all %}
-                    {% for p in r.persons.all %}
-                        <li> {{ r }} - <a href="{% url profile p.id %}">{{ p }}</a></li>
-                    {% endfor %}
-                {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-</div>
 
 <h2>{{ project }}</h2>
-
-{% if project.editions %}
-<p>
-<strong>Editions:</strong>
-{% for e in project.editions.all %}
-    <div>
-        {{ e }}
-    </div>
-{% endfor %}
-</p>
-{% endif %}
 
 <p>
 {{ project.description }}
 </p>
-        
+
+<div>
+    {% if project.editions %}
+    <h3>Roles through time</h3>
+    <ul>
+        {% for e in project.editions.all %}
+        <li> {{ e }} </li>
+        <ul>
+            {% for pr in e.person_roles.all %}
+            <li> {{ pr.role }} - <a href="{% url profile pr.person.id %}">{{ pr.person }}</a> </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+
 <a href="{% url project-list %}">&laquo; back to projects</a>
 {% endblock %}
