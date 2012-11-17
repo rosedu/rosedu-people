@@ -53,7 +53,9 @@ class Project(models.Model):
         return self.name
 
     def logo_url(self):
-        return "/resources/upload/" + os.path.basename(self.logo.url)
+	if self.logo:
+	    return "/resources/upload/" + os.path.basename(self.logo.url)
+	return ''
 
 
 class Edition(models.Model):
