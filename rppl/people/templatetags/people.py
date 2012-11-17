@@ -2,7 +2,7 @@ import hashlib
 from django import template
 register = template.Library()
 
-from linkicon import LinkIcon
+from rppl.people.linkicon import LinkIcon
 
 @register.simple_tag
 def gravatar(author):
