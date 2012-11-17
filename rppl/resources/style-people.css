@@ -9,6 +9,19 @@
     -o-transition: all .2s ease-in-out;
     -ms-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
+div.avatar-container-big {
+    background: #888;
+    position: absolute;
+    visibility: hidden;
+    width: 60px;
+    height: 60px;
+}
+div.avatar-container-left {
+    float: left;
+    padding: 10px;
+    background-color:transparent;
+}
+img.avatar-min {
     max-width: 80px;
     border:2px solid transparent;
 }
