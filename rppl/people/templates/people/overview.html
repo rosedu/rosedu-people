@@ -2,7 +2,7 @@
 {% load people %}
 
 {% block content %}
-<h2>People</h2>
+<h1>People</h1>
 {% for p in persons %}
 <div class="person">
     <a href="{% url profile p.pk %}">
@@ -18,5 +18,15 @@
 <div class="spacer clear">
     <!-- empty content -->
 </div>
+
+<h3>Activity</h3>
+{% for a in activities %}
+<div class="activity">
+	<ul>
+		<li>{{ a.timestamp }}</li>
+	</ul>
+</div>
+
+
 <a href="{% url project-list %}">Go to: Projects</a>
 {% endblock %}
