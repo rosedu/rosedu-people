@@ -1,12 +1,14 @@
 from django.views.generic import TemplateView, DetailView, ListView
 
-from models import Person, Project, Edition, Role
+from models import Person, Project, Edition, Role, PersonRole
 
 class Overview(TemplateView):
     template_name = 'people/overview.html'
 
     def get_context_data(self, **kwargs):
-        return {'persons': Person.objects.all().order_by('?')}
+        return {'persons': Person.objects.all().order_by('?'),
+                'activities': PersonRole.objects.all().order_by('-timestamp')[:10]
+        }
 
 class Profile(DetailView):
     template_name = 'people/profile.html'
