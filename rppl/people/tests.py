@@ -12,3 +12,7 @@ class ModelsTest(TestCase):
         edition.add_person(p, 'participant')
 
         self.assertTrue(p.projects)
+
+    def test_truthiness(self):
+        self.assertTrue(True)
+
