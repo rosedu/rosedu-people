@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView, DetailView, ListView
+from random import shuffle
 
 from models import Person, Project, Edition, Role, PersonRole
 
@@ -6,7 +7,11 @@ class Overview(TemplateView):
     template_name = 'people/overview.html'
 
     def get_context_data(self, **kwargs):
-        return {'persons': Person.objects.all().order_by('?'),
+        persons = list(Person.objects.all())
+        nr_blanks = 12 - (len(persons) % 12)
+        persons += [None] * nr_blanks
+        shuffle(persons)
+        return {'persons': persons,
                 'activities': PersonRole.objects.all().order_by('-timestamp')[:10]
         }
 
