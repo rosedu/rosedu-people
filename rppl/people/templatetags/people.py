@@ -6,4 +6,4 @@ register = template.Library()
 def gravatar(author):
     md5 = hashlib.md5(author.email).hexdigest()
 
-    return 'http://www.gravatar.com/avatar/%s' % md5
+    return 'http://www.gravatar.com/avatar/%s?s=180' % md5
