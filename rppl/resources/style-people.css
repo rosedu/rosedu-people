@@ -86,9 +86,6 @@
 .clear {
     clear: both;
 }
-.person:hover .name {
-    display:block;
-}
 
 .name-container {
     position:relative;
