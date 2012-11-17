@@ -1,5 +1,5 @@
 from django.test import TestCase
-from models import Person, Project, Edition
+from models import Person, Project, Edition, Role
 
 
 class ModelsTest(TestCase):
@@ -13,6 +13,12 @@ class ModelsTest(TestCase):
 
         self.assertTrue(p.projects)
 
-    def test_truthiness(self):
-        self.assertTrue(True)
+        # Test that a new role is being created on the fly when appropriate
+        role_count_before = Role.objects.count()
+
+        edition.add_person(p, 'xyz_nonsense')
+
+        role_count_after = Role.objects.count()
+
+        self.assertTrue(role_count_after == role_count_before + 1)
 
