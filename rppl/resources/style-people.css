@@ -60,6 +60,33 @@
     }
 }
 
+.avatar {
+    padding: 10px;
+}
+
+.align-left {
+    float: left;
+}
+
+.icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-facebook {
+    background:url('/resources/images/button-facebook.png') top left no-repeat;
+    background-size:30px 30px;
+}
+
+.icon-googleplus {
+    background:url('/resources/images/button-gplus.png') top left no-repeat;
+    background-size:30px 30px;
+}
+.clear {
+    clear: both;
+}
+
 .name-container {
     position:relative;
 }
@@ -156,6 +183,4 @@ ul.activity {
         font-size:16px;
         margin:.5em 0;
     }
-
-
 
