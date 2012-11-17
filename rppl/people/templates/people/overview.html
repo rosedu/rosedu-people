@@ -7,20 +7,14 @@
 <div class="person">
     <a href="{% url profile p.pk %}">
         <div class="avatar-container">
-            <img class="avatar avatar-min" src="{% gravatar p %}" />
+            <img src="{% gravatar p %}" />
         </div>
     </a>
-
-    <a href="{% url profile p.pk %}">
-        <div class="avatar-container-big">
-            <img class="avatar avatar-big" src="{% gravatar p %}" />
-            <h3 class="name">{{ p.name }}</h3>
-        </div>
-    </a>
+    <div class="name-container">
+        <h3 class="name">{{ p.name }}</h3>
+    </div>
 </div>
 {% endfor %}
-<script src='resources/js/people-grid.js'></script>
-
 <div class="spacer clear">
     <!-- empty content -->
 </div>

@@ -1,37 +1,49 @@
-div.avatar-container {
-    background: #888;
-    float: left;
-}
-
-div.avatar-container-big {
-    background: #888;
-    position: absolute;
-    visibility: hidden;
-    width: 60px;
-    height: 60px;
-}
-div.avatar-container-right {
-    float: right;
-}
-img.avatar-min {
-    max-width: 80px;
-}
-img.avatar-big {
-    width: 180px;
-}
-
-div.person {
+.person {
     display: block;
     float: left;
 }
-div.activity {
-    width: 300px;
-    float: left;
-    margin: 10px;
+
+.avatar-container img {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    max-width: 80px;
+    border:2px solid transparent;
 }
-h3.name {
-    background: #eee;
+
+.avatar-container img:hover {
+    -webkit-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    transform:scale(1.5);
+    border:2px solid #fff;
+    box-shadow:0 0 5px #888, 0 0 1px #888;
 }
+
+.person:hover .name {
+    display:block;
+}
+
+.name-container {
+    position:relative;
+}
+
+.name {
+    position:absolute;
+    left:-21px;
+    bottom:-48px;
+    display:none;
+    background: #fff;
+    width:126px;
+    font-size:18px;
+    text-align:center;
+    border-radius:0 0 5px 5px;
+    padding-bottom:3px;
+}
+
 div.right-sidebar ul li {
     margin: 4px;
 }
