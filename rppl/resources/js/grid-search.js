@@ -25,11 +25,13 @@ var highlightName = function () {
 			p.classList.remove('search-highlight');
 			p.classList.remove('search-hidden');
 
-			var name = p.dataset.name.split(' ');
-			if(name[0][0] === letter || name[1][0] === letter) {
-				p.classList.add('search-highlight');
-			} else {
-				p.classList.add('search-hidden');
+			if(p.dataset.name) {
+				var name = p.dataset.name.split(' ');
+				if(name[0][0] === letter || name[1][0] === letter) {
+					p.classList.add('search-highlight');
+				} else {
+					p.classList.add('search-hidden');
+				}
 			}
 		});
 };
