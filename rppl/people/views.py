@@ -1,4 +1,6 @@
+from django import forms
 from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic.edit import UpdateView
 
 from models import Person, Project, Edition, Role
 
@@ -23,7 +25,13 @@ class ProjectDetail(DetailView):
     context_object_name = 'project'
 
 
-class ProfileSetup(DetailView):
+
+
+
+class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
     model = Person
+#    form_class =
+
     context_object_name = 'person'
+
