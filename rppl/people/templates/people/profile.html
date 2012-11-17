@@ -2,11 +2,31 @@
 {% load people %}
 
 {% block content %}
-<div class="avatar-container avatar-container-right">
-    <img class="avatar avatar-right" src="{% gravatar person %}" />
+<div class="avatar-container avatar-container-left">
+    <img class="avatar" src="{% gravatar person %}" />
 </div>
 
 <h2>{{ person.name }}</h2>
+<div class="email">{{ person.email }}</div>
+<div class="description">{{ person.description }}</div>
+
+<div class="links">
+	{% for ln in person.link_set.all %}
+	<a href="{{ ln.url }}"><img src="{{ site.basepath }}resources/images/button-facebook.png" style="width: 30px; height: 30px;" /></a>
+	{% endfor %}
+</div>
+
+<h2>Activity</h2>
+
+<p>
+{% for pr in person.person_roles.all %}
+<div class="activity_logo">
+	<a href="{{ pr.edition.project.url }}">
+	<img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
+	</a>
+</div>
+{% endfor %}
+</p>
 
 <p>
 <strong>Roles:</strong>

@@ -1,3 +1,4 @@
+import os.path
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -50,6 +51,9 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def logo_url(self):
+        return "/resources/upload/" + os.path.basename(self.logo.url)
 
 
 class Edition(models.Model):
