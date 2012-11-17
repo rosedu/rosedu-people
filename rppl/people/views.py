@@ -22,3 +22,8 @@ class ProjectDetail(DetailView):
     model = Project
     context_object_name = 'project'
 
+
+class ProfileSetup(DetailView):
+    template_name = 'people/profile_set.html'
+    model = Person
+    context_object_name = 'person'

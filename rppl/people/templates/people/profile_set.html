@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load people %}
+
+
+{% block content %}
+<div class="avatar-container avatar-container-right">
+    <img class="avatar avatar-right" src="{% gravatar person %}" />
+</div>
+<h2>{{ person.name }}</h2>
+
+{% endblock %}
