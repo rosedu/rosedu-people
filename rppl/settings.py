@@ -104,6 +104,19 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    #'rppl.ldap_connection.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# LDAP Settings
+# 
+LDAP_URL = 'ldaps://swarm.cs.pub.ro:636'
+LDAP_BINDNAME = 'cn=admin,dc=swarm,dc=cs,dc=pub,dc=ro'
+LDAP_BINDPASS = ''
+LDAP_BASECN = 'dc=swarm,dc=cs,dc=pub,dc=ro'
+LDAP_FILTER = '(uid=%s)'
+
 ROOT_URLCONF = 'rppl.urls'
 
 TEMPLATE_DIRS = (
