@@ -22,3 +22,19 @@ class ModelsTest(TestCase):
 
         self.assertTrue(role_count_after == role_count_before + 1)
 
+        # Test that a combination person-role can only exist once in PersonRole
+        other_person = Person.objects.create(first_name='ABC', last_name='XYZ')
+
+        person_role_count_before = Role.objects.count()
+
+        edition.add_person(other_person, 'participant')
+
+        person_role_count_after_adding_one_person = Role.objects.count()
+
+        edition.add_person(other_person, 'participant')
+
+        person_role_count_after_adding_two_people = Role.objects.count()
+
+        self.assertTrue(person_role_count_after_adding_one_person == person_role_count_before + 1)
+        self.assertTrue(person_role_count_after_adding_two_people == person_role_count_before + 1)
+
