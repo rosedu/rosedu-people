@@ -1,7 +1,3 @@
-.container {
-
-}
-
 .person {
     display: block;
     float: left;
@@ -48,7 +44,20 @@
 }
 
 .person:not(.search-hidden):hover .name {
-    display:block;
+    -webkit-animation: showName .3s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes showName {
+    50% {
+        opacity:0;
+    }
+    75% {
+        opacity:1;
+    }
+    100% {
+        opacity:1;
+    }
 }
 
 .name-container {
@@ -58,15 +67,19 @@
 .name {
     position:absolute;
     left:-20px;
-    bottom:-52px;
-    display:none;
+    top:16px;
+    opacity:0;
     background: #fff;
     width:120px;
-    font-size:18px;
+    font-size:16px;
     text-align:center;
     border-radius:0 0 5px 5px;
     padding-bottom:3px;
 }
+
+    .name:hover {
+        display:none;
+    }
 
 .people-search {
     margin:1em 0;
@@ -87,11 +100,16 @@
     -o-user-select:none;
     -ms-user-select:none;
     user-select:none;
+    border:1px solid transparent;
+    border-bottom:2px solid #bbb;
 }
 
     .people-search li.btn-active {
         background:#fff;
         font-weight: bold;
+        border-bottom:0;
+        box-shadow:inset 0 0 5px #aaa;
+        border:1px solid #ccc;
     }
 
     .people-search li:hover {
@@ -119,4 +137,25 @@ div.right-sidebar ul li a {
     opacity:.4;
     z-index: -1;
 }
+
+ul.activity {
+    padding:0;
+    margin:0;
+    list-style:none;
+    border-bottom:1px solid #ccc;
+}
+
+    ul.activity li {
+        margin:1em 0;
+    }
+
+    ul .date {
+        font-weight:bold;
+        border-bottom:1px solid #ccc;
+        padding:.5em 0;
+        font-size:16px;
+        margin:.5em 0;
+    }
+
+
 
