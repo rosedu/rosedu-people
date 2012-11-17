@@ -2,17 +2,18 @@
 {% load people %}
 
 {% block content %}
-<div class="avatar-container avatar-container-left">
+<div class="align-left">
     <img class="avatar" src="{% gravatar person %}" />
 </div>
 
-<h2>{{ person.name }}</h2>
+<h1>{{ person.name }}</h1>
 <div class="email">{{ person.email }}</div>
 <div class="description">{{ person.description }}</div>
 
 <div class="links">
 	{% for ln in person.link_set.all %}
-	<a href="{{ ln.url }}"><img src="{{ site.basepath }}resources/images/button-facebook.png" style="width: 30px; height: 30px;" /></a>
+		<div class="align-left">{% icon ln.url %}</div>
+	<!--a href="#"><img src="{{ site.basepath }}resources/images/button-facebook.png" style="width: 30px; height: 30px;" /></a-->
 	{% endfor %}
 </div>
 
