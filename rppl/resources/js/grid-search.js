@@ -6,16 +6,32 @@ var pplSearch = document.querySelector('.people-search');
 var docfrag = document.createDocumentFragment();
 
 var highlightName = function () {
+	var toggle = document.querySelector('.btn-active');
 	var letter = this.innerHTML.toUpperCase();
-	// var lis = document.querySelectorAll('.name-container cufontext');
+	var persons = document.querySelectorAll('.person');
 
-	for (var i = 0; i < lis.length; i+=2) {
-		var name = lis[i].innerHTML + lis[i+1].innerHTML;
+	this.classList.toggle('btn-active');
 
-		if(lis[i].innerHTML[0] === letter || lis[i+1].innerHTML[0] === letter) {
-			// console.log(lis[i].parentNode.parentNode.parentNode.parentNode);
-		}
-	}
+	if(toggle && toggle !== this)
+		toggle.classList.remove('btn-active');
+	if(toggle === this) {
+		var hidden = document.querySelectorAll('.search-hidden');
+		
+		[].forEach.call(hidden, function(el) {
+			el.classList.remove('search-hidden');
+		});
+	} else
+		[].forEach.call(persons, function(p){
+			p.classList.remove('search-highlight');
+			p.classList.remove('search-hidden');
+
+			var name = p.dataset.name.split(' ');
+			if(name[0][0] === letter || name[1][0] === letter) {
+				p.classList.add('search-highlight');
+			} else {
+				p.classList.add('search-hidden');
+			}
+		});
 };
  
 alphabet.forEach(function(e) {

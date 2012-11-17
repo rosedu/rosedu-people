@@ -5,18 +5,20 @@
 <h2>People</h2>
 <ul class="people-search">
 </ul>
-{% for p in persons %}
-<div class="person" data-name="{{p.name}}">
-    <a href="{% url profile p.pk %}">
-        <div class="avatar-container">
-            <img src="{% gravatar p %}" />
+<div class="container">
+    {% for p in persons %}
+    <div class="person" data-name="{{p.name}}">
+        <a href="{% url profile p.pk %}">
+            <div class="avatar-container">
+                <img src="{% gravatar p %}" />
+            </div>
+        </a>
+        <div class="name-container">
+            <h3 class="name">{{ p.name }}</h3>
         </div>
-    </a>
-    <div class="name-container">
-        <h3 class="name">{{ p.name }}</h3>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 <div class="spacer clear">
     <!-- empty content -->
 </div>
