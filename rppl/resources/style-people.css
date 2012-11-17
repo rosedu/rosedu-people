@@ -31,6 +31,8 @@
     transition: all .2s ease-in-out;
     width:-webkit-calc(100% - 4px);
     border:2px solid transparent;
+    width:76px;
+    heigth:78px;
 }
 
 .person:not(.search-hidden) img:hover {
@@ -46,6 +48,12 @@
 .person:not(.search-hidden):hover .name {
     -webkit-animation: showName .3s;
     -webkit-animation-fill-mode: forwards;
+    -moz-animation: showName .3s;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation: showName .3s;
+    -ms-animation-fill-mode: forwards;
+    animation: showName .3s;
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes showName {
@@ -85,6 +93,41 @@
 }
 .clear {
     clear: both;
+}
+@-moz-keyframes showName {
+    50% {
+        opacity:0;
+    }
+    75% {
+        opacity:1;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@-ms-keyframes showName {
+    50% {
+        opacity:0;
+    }
+    75% {
+        opacity:1;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@keyframes showName {
+    50% {
+        opacity:0;
+    }
+    75% {
+        opacity:1;
+    }
+    100% {
+        opacity:1;
+    }
 }
 
 .name-container {
