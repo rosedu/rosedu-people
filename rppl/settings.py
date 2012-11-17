@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'rppl.people',
+    'rppl.people.linkicon',
 )
 
 # A sample logging configuration. The only tangible logging
