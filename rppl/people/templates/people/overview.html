@@ -5,8 +5,9 @@
 <h2>People</h2>
 <ul class="people-search">
 </ul>
-<div class="container">
+<div class="container" >
     {% for p in persons %}
+	{% if p %}
     <div class="person" data-name="{{p.name}}">
         <a href="{% url profile p.pk %}">
             <div class="avatar-container">
@@ -17,6 +18,11 @@
             <h3 class="name">{{ p.name }}</h3>
         </div>
     </div>
+	{% else %}
+	<div class="person blank person-{% cycle "red" "green" "blue" %}">
+		<div class="avatar-container"></div>
+	</div>
+	{% endif %}
     {% endfor %}
 </div>
 <div class="spacer clear">
