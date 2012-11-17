@@ -30,19 +30,14 @@
 </div>
 
 <h3>Activity</h3>
+<ul class='activity'>
 {% for a in activities %}
-<ul class="activity">
 	{% ifchanged a.timestamp.data.month  %}
-	<li>{{ a.timestamp|date:"F 'y" }}</li>
-	{% else %}
-	<li></li>
+	   <li class='date'>{{ a.timestamp|date:"F 'y" }}</li>
 	{% endifchanged %}
-	<li><a href="{% url profile a.person.pk %}">{{ a.person.name }}</a></li>
-	<li>{{ a.role }}</li>
-	<li><a href="{% url project-detail a.edition.project.id %}">{{ a.edition.project }} {{ a.edition }}</a></li>
-</ul>
-<br/>
+	   <li><a href="{% url profile a.person.pk %}">{{ a.person.name }}</a> {{ a.role }} <a href="{% url project-detail a.edition.project.id %}">{{ a.edition.project }} {{ a.edition }}</a></li>
 {% endfor %}
+</ul>
 
 <a href="{% url project-list %}">Go to: Projects</a>
 <script type="text/javascript" src="{{site.basepath}}resources/js/grid-search.js"></script>
