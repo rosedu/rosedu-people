@@ -35,6 +35,8 @@ class Link(models.Model):
     url = models.CharField(max_length=100)
     person = models.ForeignKey(Person, blank=True, null=True)
 
+    def __unicode__(self):
+        return self.url
 
 class Organization(models.Model):
     """ External affiliations for users """

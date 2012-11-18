@@ -1,9 +1,10 @@
 from django import forms
-from django.shortcuts import redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
+from django.core.exceptions import ValidationError
 
 from models import Person, Project, Edition, Role, Link
+
 
 class Overview(TemplateView):
     template_name = 'people/overview.html'
@@ -29,24 +30,72 @@ class ProjectDetail(DetailView):
 
 class SForm(forms.ModelForm):
 
-    #link = forms.CharField(max_length=100)
-    #    for k,v in args[0].items():
-    #        if k.startswith('Q') and k not in self.fields.keys():
-    #            self.fields[k] = TestCharField(initial=v, required=True)
+    person = None
+    links = None
     class Meta:
         model = Person
         exclude = ('user',)
-    
+
+    def __init__(self, *args, **kwargs):
+        super(SForm, self).__init__(*args, **kwargs)
+        if kwargs != {}:
+            person = kwargs['instance']
+            self.person = Person.objects.get(first_name=person.first_name, last_name=person.last_name)
+            links = Link.objects.all().filter(person=self.person)
+            self.links = links
+            for i in range(6):
+                if len(links) > i:
+                    self.fields['link' + str(i + 1)] = forms.CharField(max_length=100, initial=links[i])
+                else:
+                    link = self.fields['link' + str(i + 1)] = forms.CharField(max_length=100, required=False)
+
+    def clean_link1(self):
+        self.links.delete()
+        if  self.cleaned_data.get('link1', None):
+            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link1', None))
+
+    def clean_link2(self):
+        if  self.cleaned_data.get('link2', None):
+            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link2', None))
+
+    def clean_link3(self):
+        if  self.cleaned_data.get('link3', None):
+            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link3', None))
+
+    def clean_link4(self):
+        if  self.cleaned_data.get('link4', None):
+            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link4', None))
+
+    def clean_link5(self):
+        if  self.cleaned_data.get('link5', None):
+            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link5', None))
+
+    def clean_link6(self):
+        if  self.cleaned_data.get('link6', None):
+            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link6', None))
+
+
+    def clean_description(self):
+        if len(self.cleaned_data['description'].split(' ')) > 200:
+            raise ValidationError("Prea multe cuvinte")
+
+        else:
+            return self.cleaned_data['description']
 
 class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
     model = Person
+    link = forms.CharField(max_length=100)
     form_class = SForm
 
     form = SForm()
+
     if form.is_valid():
+        print 'xx'
 
         form.save()
+
+
     context_object_name = 'person'
 
 
