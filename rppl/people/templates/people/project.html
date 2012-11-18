@@ -4,33 +4,33 @@
 
 {% block content %}
 
+<a href={{ project.url }}><h2>{{ project }}</h2></a>
 <div class="align-left">
     <a href={{ project.url }} >
         <img class="project-image" src="{{ project.logo_url }}"/>
     </a>
 </div>
 
-<a href={{ project.url }}><h1>{{ project }}</h1></a>
-<div class="description">{{ project.description }}</div>
+<div class="project-description">{{ project.description }}</div>
 
 <div class="clear">
     {% if project.editions %}
-    <h2>Roles through time</h2>
+    <h3>Editions</h3>
     {% for e in project.editions.all %}
     <div class="edition">
         <div> {{ e }} </div>
         <div class="edition-photo-container">
             <img class="edition-photo" src="http://www.photo-dictionary.com/photofiles/list/1570/8366dummy.jpg" />
         </div>
-        <div class="align-left">
-        {% for pr in e.person_roles.all %}
-        {% ifchanged pr.role %}
-        <div class="role">{{ pr.role }}</div>
-        {% endifchanged %}
-        <a href="{% url profile pr.person.id %}">
-            <img class="avatar-tiny" src="{% gravatar pr.person %}" title="{{ pr.person.name }}" />
-        </a>
-        {% endfor %}
+        <div class="edition-people">
+            {% for pr in e.person_roles.all %}
+            {% ifchanged pr.role %}
+            <div class="role">{{ pr.role }}</div>
+            {% endifchanged %}
+            <a href="{% url profile pr.person.id %}">
+                <img class="avatar-tiny" src="{% gravatar pr.person %}" title="{{ pr.person.name }}" />
+            </a>
+            {% endfor %}
         </div>
         {% endfor %}
     </div>
