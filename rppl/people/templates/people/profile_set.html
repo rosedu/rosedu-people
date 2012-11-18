@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load people %}
+
+
+{% block content %}
+    <h2>{{ person.name }}</h2>
+    <form   method="POST" action="" >
+        <table>
+            {{ form.as_table }}
+        </table>
+        </br>
+        {% csrf_token %}
+        <input type="submit" value="Save"/>
+    </form>
+{% endblock %}
