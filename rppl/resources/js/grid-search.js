@@ -1,6 +1,6 @@
 'use strict';
 
-var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',	'i', 'j', 'k','l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var alphabet = [];
 
 var pplSearch = document.querySelector('.people-search');
 var docfrag = document.createDocumentFragment();
@@ -35,7 +35,22 @@ var highlightName = function () {
 			}
 		});
 };
- 
+
+[].forEach.call( document.querySelectorAll('.person'),
+        function  fn(p){
+            if (p.dataset.name) {
+                var name = p.dataset.name.split(' ');
+                if (jQuery.inArray(name[0][0], alphabet) === -1) {
+                    alphabet.push(name[0][0]);
+                }
+                if (jQuery.inArray(name[1][0], alphabet) === -1) {
+                    alphabet.push(name[1][0]);
+                }
+            }
+        });
+
+alphabet.sort();
+
 alphabet.forEach(function(e) {
 	var li = document.createElement('li');
 	li.addEventListener('click', highlightName, false);
