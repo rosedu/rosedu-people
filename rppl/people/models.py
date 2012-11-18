@@ -13,6 +13,8 @@ class Person(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     description = models.TextField(max_length=2000, blank=True)
+    organisations = models.ManyToManyField('Organization',  blank=True, null=True, related_name="persons")
+
 
     @property
     def projects(self):
@@ -38,11 +40,15 @@ class Link(models.Model):
     url = models.CharField(max_length=100)
     person = models.ForeignKey(Person, blank=True, null=True)
 
+    def __unicode__(self):
+        return self.url
 
 class Organization(models.Model):
     """ External affiliations for users """
     url = models.CharField(max_length=100)
-    persons = models.ManyToManyField(Person, blank=True, null=True, related_name="organisations")
+
+    def __unicode__(self):
+        return self.url
 
 
 class Project(models.Model):
