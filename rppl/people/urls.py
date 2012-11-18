@@ -7,5 +7,5 @@ urlpatterns = patterns('',
     url(r'^profile/(?P<pk>\d+)/$', Profile.as_view(), name='profile'),
     url(r'^project/$', Projects.as_view(), name='project-list'),
     url(r'^project/(?P<pk>\d+)/$', ProjectDetail.as_view(), name='project-detail'),
-    url(r'^profile_set/(?P<pk>\d+)', ProfileSetup.as_view(), name='profile-setup'),
+    url(r'^profile_set/(?P<pk>\d+)', ProfileSetup.as_view(success_url="/profile_set/(?P<pk>\d+)"), name='profile-setup'),
 )

@@ -1,8 +1,9 @@
 from django import forms
+from django.shortcuts import redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 
-from models import Person, Project, Edition, Role
+from models import Person, Project, Edition, Role, Link
 
 class Overview(TemplateView):
     template_name = 'people/overview.html'
@@ -26,12 +27,26 @@ class ProjectDetail(DetailView):
 
 
 
+class SForm(forms.ModelForm):
 
+    #link = forms.CharField(max_length=100)
+    #    for k,v in args[0].items():
+    #        if k.startswith('Q') and k not in self.fields.keys():
+    #            self.fields[k] = TestCharField(initial=v, required=True)
+    class Meta:
+        model = Person
+        exclude = ('user',)
+    
 
 class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
     model = Person
-#    form_class =
+    form_class = SForm
 
+    form = SForm()
+    if form.is_valid():
+
+        form.save()
     context_object_name = 'person'
+
 

@@ -4,10 +4,12 @@
 
 {% block content %}
     <h2>{{ person.name }}</h2>
-
-    <table>
-        {{ form.as_table}}
-    </table>
-
-    <input type="submit" value="Save">
+    <form   method="POST" action="" >
+        <table>
+            {{ form.as_table }}
+        </table>
+        </br>
+        {% csrf_token %}
+        <input type="submit" value="Save"/>
+    </form>
 {% endblock %}
