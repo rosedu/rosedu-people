@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 from django.core.exceptions import ValidationError
 
-from models import Person, Project, Edition, Role, Link
+from models import Person, Project, Edition, Role, Link, PersonRole
 from random import shuffle
 
 
