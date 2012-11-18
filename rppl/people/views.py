@@ -98,8 +98,6 @@ class ProfileSetup(UpdateView):
     form = SForm()
 
     if form.is_valid():
-        print 'xx'
-
         form.save()
 
 

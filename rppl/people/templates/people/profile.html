@@ -8,6 +8,7 @@
 </div>
 
 <h1>{{ person.name }}</h1>
+<a class="edit" href="{% url profile-setup person.id %}">Edit</a>
 <div class="email">{{ person.email }}</div>
 <div class="description">{{ person.description }}</div>
 
