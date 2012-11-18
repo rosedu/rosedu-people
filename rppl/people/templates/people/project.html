@@ -19,7 +19,10 @@
         <li> {{ e }} </li>
         <ul>
             {% for pr in e.person_roles.all %}
-            <li> {{ pr.role }} - <a href="{% url profile pr.person.id %}">{{ pr.person }}</a> </li>
+            {% ifchanged pr.role %}
+            <li> {{ pr.role }} - </li>
+            {% endifchanged %}
+            <li> <a href="{% url profile pr.person.id %}"> {{ pr.person }}</a>, </li>
             {% endfor %}
         </ul>
         {% endfor %}

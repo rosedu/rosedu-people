@@ -78,6 +78,10 @@ class Edition(models.Model):
         else:
             PersonRole.objects.create(person=person, edition=self, role=role)
 
+    @property
+    def person_roles(self):
+        return PersonRole.objects.filter(edition=self).order_by('role')
+
     def __unicode__(self):
         return self.name
 
@@ -92,6 +96,6 @@ class Role(models.Model):
 
 class PersonRole(models.Model):
     person = models.ForeignKey(Person, related_name="person_roles")
-    edition = models.ForeignKey(Edition, related_name="person_roles")
+    edition = models.ForeignKey(Edition)
     role = models.ForeignKey(Role)
     timestamp = models.DateTimeField(default=datetime.now)
