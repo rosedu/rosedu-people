@@ -12,9 +12,9 @@
 <div class="description">{{ person.description }}</div>
 
 <div class="links">
-	{% for ln in person.link_set.all %}
-		<div class="align-left">{% icon ln.url %}</div>
-	{% endfor %}
+    {% for ln in person.link_set.all %}
+    <div class="align-left">{% icon ln.url %}</div>
+    {% endfor %}
 </div>
 
 <div class="clear"><h2>Activity</h2></div>
@@ -23,13 +23,13 @@
 {% for pr in person.person_roles.all %}
 {% ifchanged pr.edition.project %}
 <div class="activity_logo">
-	<a href="{{ pr.edition.project.url }}">
-	<img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
-	</a>
+    <a href="{% url project-detail pr.edition.project.id %}">
+        <img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
+    </a>
 </div>
 {% endifchanged %}
 <div class="activity_list">
-	{{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}
+    {{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}
 </div>
 {% endfor %}
 </p>
