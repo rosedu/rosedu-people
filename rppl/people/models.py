@@ -22,6 +22,10 @@ class Person(models.Model):
         return Project.objects.filter(editions__in=self.person_roles.values('edition')).distinct()
 
     @property
+    def person_roles(self):
+        return PersonRole.objects.filter(person=self).order_by('edition__project', 'edition')
+
+    @property
     def name(self):
         return self.first_name + ' ' + self.last_name
 
@@ -95,7 +99,7 @@ class Role(models.Model):
 
 
 class PersonRole(models.Model):
-    person = models.ForeignKey(Person, related_name="person_roles")
+    person = models.ForeignKey(Person)
     edition = models.ForeignKey(Edition)
     role = models.ForeignKey(Role)
     timestamp = models.DateTimeField(default=datetime.now)
