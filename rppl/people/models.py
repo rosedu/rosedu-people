@@ -1,3 +1,4 @@
+import os.path
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -21,6 +22,10 @@ class Person(models.Model):
         A list of projects this person participated to
         """
         return Project.objects.filter(editions__in=self.person_roles.values('edition')).distinct()
+
+    @property
+    def person_roles(self):
+        return PersonRole.objects.filter(person=self).order_by('edition__project', 'edition')
 
     @property
     def name(self):
@@ -57,10 +62,17 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+    def logo_url(self):
+        return "/resources/upload/" + os.path.basename(self.logo.url) if self.logo else ''
+
+    @property
+    def editions(self):
+        return Edition.objects.filter(project=self).order_by('-date_end')
+
 
 class Edition(models.Model):
     """ Project edition """
-    project = models.ForeignKey(Project, related_name="editions")
+    project = models.ForeignKey(Project)
     name = models.CharField(max_length=100)
     picture = models.ImageField(blank=True, null=True, upload_to=settings.MEDIA_ROOT)
 
@@ -80,6 +92,10 @@ class Edition(models.Model):
         else:
             PersonRole.objects.create(person=person, edition=self, role=role)
 
+    @property
+    def person_roles(self):
+        return PersonRole.objects.filter(edition=self).order_by('role')
+
     def __unicode__(self):
         return self.name
 
@@ -93,7 +109,7 @@ class Role(models.Model):
 
 
 class PersonRole(models.Model):
-    person = models.ForeignKey(Person, related_name="person_roles")
-    edition = models.ForeignKey(Edition, related_name="person_roles")
+    person = models.ForeignKey(Person)
+    edition = models.ForeignKey(Edition)
     role = models.ForeignKey(Role)
     timestamp = models.DateTimeField(default=datetime.now)

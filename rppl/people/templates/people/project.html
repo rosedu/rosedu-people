@@ -1,29 +1,44 @@
 {% extends 'base.html' %}
 
+{% load people %}
+
 {% block content %}
 
-<h2>{{ project }}</h2>
+<a href={{ project.url }}><h2>{{ project }}</h2></a>
+<div class="align-left">
+    <a href={{ project.url }} >
+        <img class="project-image" src="{{ project.logo_url }}"/>
+    </a>
+</div>
 
-<p>
-{{ project.description }}
-</p>
+<div class="project-description">{{ project.description }}</div>
 
-<div>
+<div class="clear">
     {% if project.editions %}
-    <h3>Roles through time</h3>
-    <ul>
-        {% for e in project.editions.all %}
-        <li> {{ e }} </li>
-        <ul>
+    <h3>Editions</h3>
+    {% for e in project.editions.all %}
+    <div class="edition">
+        <div> {{ e }} <div class='project-date'>{{ e.date_start }} - {{ e.date_end }} </div></div>
+        <div class="edition-photo-container">
+            <img class="edition-photo" src="http://www.photo-dictionary.com/photofiles/list/1570/8366dummy.jpg" />
+        </div>
+        <div class="edition-people">
             {% for pr in e.person_roles.all %}
-            <li> {{ pr.role }} - <a href="{% url profile pr.person.id %}">{{ pr.person }}</a> </li>
+            {% ifchanged pr.role %}
+            <div class="role">{{ pr.role }}</div>
+            {% endifchanged %}
+            <a href="{% url profile pr.person.id %}">
+                <img class="avatar-tiny" src="{% gravatar pr.person %}" title="{{ pr.person.name }}" />
+            </a>
             {% endfor %}
-        </ul>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
     {% endif %}
 </div>
 
+<div class="clear">
+    <a href="{% url project-list %}">&laquo; back to projects</a>
+</div>
 
-<a href="{% url project-list %}">&laquo; back to projects</a>
 {% endblock %}

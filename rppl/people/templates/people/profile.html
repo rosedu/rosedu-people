@@ -1,21 +1,40 @@
 {% extends 'base.html' %}
+<hr>
 {% load people %}
 
 {% block content %}
-<div class="avatar-container avatar-container-right">
-    <img class="avatar avatar-right" src="{% gravatar person %}" />
+<div class="align-left">
+    <img class="avatar" src="{% gravatar person %}" />
 </div>
 
-<h2>{{ person.name }}</h2>
+<h1>{{ person.name }}</h1>
+<div class="email">{{ person.email }}</div>
+<div class="description">{{ person.description }}</div>
+
+<div class="links">
+    {% for ln in person.link_set.all %}
+    <div class="align-left">{% icon ln.url %}</div>
+    {% endfor %}
+</div>
+
+<div class="clear"><h2>Activity</h2></div>
 
 <p>
-<strong>Roles:</strong>
-        {% for pr in person.person_roles.all %}
-        <div>
-            {{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}
-        </div>
-        {% endfor %}
+{% for pr in person.person_roles.all %}
+{% ifchanged pr.edition.project %}
+<div class="activity_logo">
+    <a href="{% url project-detail pr.edition.project.id %}">
+        <img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
+    </a>
+</div>
+{% endifchanged %}
+<div class="activity_list">
+    {{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}
+</div>
+{% endfor %}
 </p>
+
+<h2>Affiliation</h2>
 
 <p><strong>Contact:</strong>
 {% if person.email %}<code>{{person.email}}</code>{% endif %}
