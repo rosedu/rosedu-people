@@ -2,13 +2,16 @@
 
 {% block content %}
 
-<h2>{{ project }}</h2>
+<div class="align-left">
+    <a href={{ project.url }} >
+        <img class="project-image" src="{{ project.logo_url }}"/>
+    </a>
+</div>
 
-<p>
-{{ project.description }}
-</p>
+<a href={{ project.url }}><h1>{{ project }}</h1></a>
+<div class="description">{{ project.description }}</div>
 
-<div>
+<div class="clear">
     {% if project.editions %}
     <h3>Roles through time</h3>
     <ul>

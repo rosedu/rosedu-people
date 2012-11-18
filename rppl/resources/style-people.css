@@ -174,17 +174,17 @@
     border-bottom:2px solid #bbb;
 }
 
-    .people-search li.btn-active {
-        background:#fff;
-        font-weight: bold;
-        border-bottom:0;
-        box-shadow:inset 0 0 5px #aaa;
-        border:1px solid #ccc;
-    }
+.people-search li.btn-active {
+    background:#fff;
+    font-weight: bold;
+    border-bottom:0;
+    box-shadow:inset 0 0 5px #aaa;
+    border:1px solid #ccc;
+}
 
-    .people-search li:hover {
-        background:#fff;
-    }
+.people-search li:hover {
+    background:#fff;
+}
 
 div.right-sidebar ul li {
     margin: 4px;
@@ -210,14 +210,24 @@ ul.activity {
     border-bottom:1px solid #ccc;
 }
 
-    ul.activity li {
-        margin:1em 0;
-    }
+ul.activity li {
+    margin:1em 0;
+}
 
-    ul .date {
-        font-weight:bold;
-        border-bottom:1px solid #ccc;
-        padding:.5em 0;
-        font-size:16px;
-        margin:.5em 0;
-    }
+ul .date {
+    font-weight:bold;
+    border-bottom:1px solid #ccc;
+    padding:.5em 0;
+    font-size:16px;
+    margin:.5em 0;
+}
+
+.description {
+    width: 700px;
+    margin: 20px;
+}
+
+.project-image {
+    width: 300px;
+    margin: 20px;
+}
