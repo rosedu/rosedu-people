@@ -59,10 +59,14 @@ class Project(models.Model):
     def logo_url(self):
         return "/resources/upload/" + os.path.basename(self.logo.url) if self.logo else ''
 
+    @property
+    def editions(self):
+        return Edition.objects.filter(project=self).order_by('-date_end')
+
 
 class Edition(models.Model):
     """ Project edition """
-    project = models.ForeignKey(Project, related_name="editions")
+    project = models.ForeignKey(Project)
     name = models.CharField(max_length=100)
     picture = models.ImageField(blank=True, null=True, upload_to=settings.MEDIA_ROOT)
 

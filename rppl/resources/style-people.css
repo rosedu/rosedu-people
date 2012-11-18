@@ -231,6 +231,11 @@ ul .date {
     font-size:14px;
 }
 
+.project-date {
+    font-size: 14px;
+    font-weight: normal;
+}
+
 .project-image {
     height: 150px;
     max-width: 300px;
