@@ -231,3 +231,7 @@ ul .date {
     width: 300px;
     margin: 20px;
 }
+
+.avatar-tiny {
+    height: 25px;
+}

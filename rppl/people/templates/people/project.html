@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load people %}
+
 {% block content %}
 
 <div class="align-left">
@@ -22,7 +24,10 @@
             {% ifchanged pr.role %}
             <li> {{ pr.role }} - </li>
             {% endifchanged %}
-            <li> <a href="{% url profile pr.person.id %}"> {{ pr.person }}</a>, </li>
+            <li> <a href="{% url profile pr.person.id %}">
+                {{ pr.person }}
+                <img class="avatar-tiny" src="{% gravatar pr.person %}"/>
+            </a> </li>
             {% endfor %}
         </ul>
         {% endfor %}
