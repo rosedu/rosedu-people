@@ -25,17 +25,18 @@
 	{% endif %}
     {% endfor %}
 </div>
-<div class="spacer clear">
+
+<div class="clear spacer">
     <!-- empty content -->
 </div>
 
-<h3>Activity</h3>
+<h3>Recent Activity</h3>
 <ul class='activity'>
 {% for a in activities %}
 	{% ifchanged a.timestamp.data.month  %}
 	   <li class='date'>{{ a.timestamp|date:"F 'y" }}</li>
 	{% endifchanged %}
-	   <li><a href="{% url profile a.person.pk %}">{{ a.person.name }}</a> {{ a.role }} <a href="{% url project-detail a.edition.project.id %}">{{ a.edition.project }} {{ a.edition }}</a></li>
+    <li><a href="{% url profile a.person.pk %}">{{ a.person.name }}</a> {{ a.role }} at <a href="{% url project-detail a.edition.project.id %}">{{ a.edition.project }}</a> {{ a.edition }}</li>
 {% endfor %}
 </ul>
 
