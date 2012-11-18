@@ -229,9 +229,34 @@ ul .date {
 
 .project-image {
     width: 300px;
-    margin: 20px;
+    margin: 15px;
 }
 
 .avatar-tiny {
-    height: 25px;
+    height: 35px;
+    margin: 1px;
+}
+
+.edition {
+    list-style: none;
+    font-weight: bold;
+    font-size: 20px;
+    clear: both;
+}
+
+.edition-photo-container {
+    width: 300px;
+    float: left;
+    margin: 15px;
+}
+
+.edition-photo {
+    width: 100%;
+    height: 100%;
+}
+
+.role {
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 7px;
 }

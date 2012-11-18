@@ -15,26 +15,28 @@
 
 <div class="clear">
     {% if project.editions %}
-    <h3>Roles through time</h3>
-    <ul>
-        {% for e in project.editions.all %}
-        <li> {{ e }} </li>
-        <ul>
-            {% for pr in e.person_roles.all %}
-            {% ifchanged pr.role %}
-            <li> {{ pr.role }} - </li>
-            {% endifchanged %}
-            <li> <a href="{% url profile pr.person.id %}">
-                {{ pr.person }}
-                <img class="avatar-tiny" src="{% gravatar pr.person %}"/>
-            </a> </li>
-            {% endfor %}
-        </ul>
+    <h2>Roles through time</h2>
+    {% for e in project.editions.all %}
+    <div class="edition">
+        <div> {{ e }} </div>
+        <div class="edition-photo-container">
+            <img class="edition-photo" src="http://www.photo-dictionary.com/photofiles/list/1570/8366dummy.jpg" />
+        </div>
+        {% for pr in e.person_roles.all %}
+        {% ifchanged pr.role %}
+        <div class="role">{{ pr.role }}</div>
+        {% endifchanged %}
+        <a href="{% url profile pr.person.id %}">
+            <img class="avatar-tiny" src="{% gravatar pr.person %}" title="{{ pr.person.name }}" />
+        </a>
         {% endfor %}
-    </ul>
+        {% endfor %}
+    </div>
     {% endif %}
 </div>
 
+<div class="clear">
+    <a href="{% url project-list %}">&laquo; back to projects</a>
+</div>
 
-<a href="{% url project-list %}">&laquo; back to projects</a>
 {% endblock %}
