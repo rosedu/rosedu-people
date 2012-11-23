@@ -69,11 +69,24 @@
 }
 
 .avatar {
-    padding: 10px;
+    padding: 8px;
+    background-color: white;
+    margin-right: 10px;
+    margin-bottom: 20px;
 }
 
 .align-left {
     float: left;
+    margin-right: 10px;
+}
+
+.description {
+    font-style: italic;
+    width: 200px;
+    height: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 250px;
 }
 
 .icon {
@@ -94,6 +107,17 @@
 .clear {
     clear: both;
 }
+
+.activity_logo {
+	float: left;
+}
+
+.activity_list {
+	text-transform: capitalize;
+	float: left;
+	width: 500px;
+}
+
 @-moz-keyframes showName {
     50% {
         opacity:0;
