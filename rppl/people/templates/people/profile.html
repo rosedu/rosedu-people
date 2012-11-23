@@ -8,8 +8,8 @@
 </div>
 
 <h1>{{ person.name }}</h1>
-<a class="edit" href="{% url profile-setup person.id %}">Edit</a>
 <div class="email">{{ person.email }}</div>
+<a class="edit" href="{% url profile-setup person.id %}">Edit</a>
 <div class="description">{{ person.description }}</div>
 
 <div class="links">
@@ -18,24 +18,31 @@
     {% endfor %}
 </div>
 
+<br><br>
 <div class="clear"><h2>Activity</h2></div>
 
-<p>
 {% for pr in person.person_roles.all %}
-{% ifchanged pr.edition.project %}
-<div class="activity_logo">
-    <a href="{% url project-detail pr.edition.project.id %}">
-        <img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
-    </a>
-</div>
-{% endifchanged %}
+
+    {% ifchanged pr.edition.project %}
+    <div class="clear"></div>
+    
+    <div class="activity_logo">
+        <a href="{% url project-detail pr.edition.project.id %}">
+            <img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
+        </a>
+    </div>
+    
+    {% endifchanged %}
+    
 <div class="activity_list">
-    {{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}
+    <ul>
+        <li>{{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}</li>
+    </ul>
 </div>
 {% endfor %}
-</p>
 
-<h2>Affiliation</h2>
+<div class="clear"></div>
+<div class="clear"><h2>Affiliation</h2></div>
 
 <p><strong>Contact:</strong>
 {% if person.email %}<code>{{person.email}}</code>{% endif %}
