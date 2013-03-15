@@ -72,7 +72,30 @@ class SForm(forms.ModelForm):
                 if len(links) > i:
                     self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, initial = links[i], required = False)
                 else:
-                    link = self.fields['link%s' % (i + 1)] = forms.CharField(max_length=100, required = False)
+                    self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, required = False)
+
+
+            #Add forms for project roles
+            roles = [(r, r) for r in Role.objects.all()]
+
+            person_roles = self.person.person_roles
+            for project in Project.objects.all():
+                index = 0
+
+                #Get project roles for the current project
+                project_roles = filter(lambda role: role.edition.project == project, person_roles)
+
+                #Add inputs for all roles
+                for role in project_roles:
+                    edition_choices = [(e, e) for e in Edition.objects.filter(project=project)]
+                    self.fields['%sedition%d' % (project, index)] = forms.ChoiceField(choices = edition_choices,
+                                                                                      initial = role.edition,
+                                                                                      label = project)
+                    self.fields['%srole%d' % (project, index)] = forms.ChoiceField(choices = roles,
+                                                                                   initial = role.role,
+                                                                                   label = project)
+                    index += 1
+
 
     def clean(self):
         self.links.delete()
