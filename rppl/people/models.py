@@ -25,7 +25,7 @@ class Person(models.Model):
 
     @property
     def person_roles(self):
-        return PersonRole.objects.filter(person=self).order_by('edition__project', 'edition')
+        return PersonRole.objects.filter(person=self).order_by('edition')
 
     @property
     def name(self):

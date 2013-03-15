@@ -24,6 +24,19 @@ class Profile(DetailView):
     model = Person
     context_object_name = 'person'
 
+    def get_context_data(self, **kwargs):
+        context = super(Profile, self).get_context_data(**kwargs)
+
+        roles = sorted(context['person'].person_roles, key=lambda role: role.edition.date_start, reverse=True)
+        sorted_roles = []
+        while len(roles) > 0:
+            sorted_roles += filter(lambda role: role.edition == roles[0].edition, roles)
+            roles = filter(lambda role: role.edition != roles[0].edition, roles)
+
+        context['roles'] = sorted_roles
+
+        return context
+
 class Projects(ListView):
     template_name = 'people/projects.html'
     model = Project

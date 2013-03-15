@@ -21,7 +21,7 @@
 <br><br>
 <div class="clear"><h2>Activity</h2></div>
 
-{% for pr in person.person_roles.all %}
+{% for pr in roles %}
 
     {% ifchanged pr.edition.project %}
     <div class="clear"></div>
