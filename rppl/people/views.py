@@ -52,6 +52,9 @@ class SForm(forms.ModelForm):
 
     person = None
     links = None
+
+    max_links = 6
+
     class Meta:
         model = Person
         exclude = ('user',)
@@ -61,51 +64,31 @@ class SForm(forms.ModelForm):
         if kwargs != {}:
             person = kwargs['instance']
             self.person = Person.objects.get(first_name=person.first_name, last_name=person.last_name)
+
             links = Link.objects.all().filter(person=self.person)
             self.links = links
-            for i in range(6):
+
+            for i in xrange(self.max_links):
                 if len(links) > i:
-                    self.fields['link' + str(i + 1)] = forms.CharField(max_length=100, initial=links[i])
+                    self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, initial = links[i], required = False)
                 else:
-                    link = self.fields['link' + str(i + 1)] = forms.CharField(max_length=100, required=False)
+                    link = self.fields['link%s' % (i + 1)] = forms.CharField(max_length=100, required = False)
 
-    def clean_link1(self):
+    def clean(self):
         self.links.delete()
-        if  self.cleaned_data.get('link1', None):
-            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link1', None))
+        for i in xrange(self.max_links):
+            link = self.cleaned_data.get('link%d' % i, None)
+            if link:
+                Link.objects.get_or_create(person = self.person, url = link)
 
-    def clean_link2(self):
-        if  self.cleaned_data.get('link2', None):
-            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link2', None))
-
-    def clean_link3(self):
-        if  self.cleaned_data.get('link3', None):
-            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link3', None))
-
-    def clean_link4(self):
-        if  self.cleaned_data.get('link4', None):
-            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link4', None))
-
-    def clean_link5(self):
-        if  self.cleaned_data.get('link5', None):
-            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link5', None))
-
-    def clean_link6(self):
-        if  self.cleaned_data.get('link6', None):
-            Link.objects.get_or_create(person = self.person, url = self.cleaned_data.get('link6', None))
-
-
-    def clean_description(self):
         if len(self.cleaned_data['description'].split(' ')) > 200:
-            raise ValidationError("Prea multe cuvinte")
-
+            raise ValidationError("Too many words")
         else:
-            return self.cleaned_data['description']
+            return self.cleaned_data
 
 class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
     model = Person
-    link = forms.CharField(max_length=100)
     form_class = SForm
 
     form = SForm()
