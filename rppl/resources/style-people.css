@@ -110,12 +110,23 @@
 
 .activity_logo {
 	float: left;
+    margin: 4px 0px;
+    padding: 0px 7px;
+    text-align: center;
+    background: #EEEEEE;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .activity_list {
-	text-transform: capitalize;
-	float: left;
-	width: 500px;
+    float: left;
+    padding: 14px 0px 0px 0px;
+    width: 500px;
+    height: 100px;
+}
+
+.activity_list_item {
+	//float: left;
+	//width: 500px;
 }
 
 @-moz-keyframes showName {

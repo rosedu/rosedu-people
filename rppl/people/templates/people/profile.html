@@ -19,27 +19,31 @@
 </div>
 
 <br><br>
-<div class="clear"><h2>Activity</h2></div>
+<div class="clear"><h2>Activity</h2>
 
 {% for pr in roles %}
 
     {% ifchanged pr.edition.project %}
-    <div class="clear"></div>
-    
-    <div class="activity_logo">
-        <a href="{% url project-detail pr.edition.project.id %}">
-            <img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
-        </a>
     </div>
+    <div class="clear"></div>
+
+    <a href="{% url project-detail pr.edition.project.id %}">
+        <div class="activity_logo">
+            <p><h3>{{ pr.edition.project }}</h3></p>
+            <img src="{{ pr.edition.project.logo_url }}" style="width: 100px; height: 50px;" />
+        </div>
+    </a>
     
+    <div class="activity_list">
     {% endifchanged %}
     
-<div class="activity_list">
+<div class="activity_list_item">
     <ul>
-        <li>{{ pr.role }} at {{ pr.edition.project }} - {{ pr.edition }}</li>
+        <li>{{ pr.role|title }} at {{ pr.edition.project }} - {{ pr.edition|title }}</li>
     </ul>
 </div>
 {% endfor %}
+</div>
 
 <div class="clear"></div>
 <div class="clear"><h2>Affiliation</h2></div>
