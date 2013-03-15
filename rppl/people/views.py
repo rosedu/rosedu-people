@@ -68,11 +68,8 @@ class SForm(forms.ModelForm):
             links = Link.objects.all().filter(person=self.person)
             self.links = links
 
-            for i in xrange(self.max_links):
-                if len(links) > i:
-                    self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, initial = links[i], required = False)
-                else:
-                    self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, required = False)
+            for i in xrange(len(links)):
+                self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, initial = links[i], required = False, label="link")
 
 
             #Add forms for project roles
@@ -90,10 +87,10 @@ class SForm(forms.ModelForm):
                     edition_choices = [(e, e) for e in Edition.objects.filter(project=project)]
                     self.fields['%sedition%d' % (project, index)] = forms.ChoiceField(choices = edition_choices,
                                                                                       initial = role.edition,
-                                                                                      label = project)
+                                                                                      label = "project_" + str(project))
                     self.fields['%srole%d' % (project, index)] = forms.ChoiceField(choices = roles,
                                                                                    initial = role.role,
-                                                                                   label = project)
+                                                                                   label = "project_" + str(project))
                     index += 1
 
 

@@ -5,10 +5,34 @@
 {% block content %}
     <h2>{{ person.name }} - edit profile</h2>
     <form   method="POST" action="" >
-        <table>
-            {{ form.as_table }}
-        </table>
-        </br>
+        {% for field in form %}
+            {% if field.label == "link" %}
+                {% ifchanged %}
+                <h3> Links </h3>
+                <h4> Add Link </h4>
+                {% endifchanged %}
+
+                <div>
+                {{ field.errors }}
+                {{ field }}
+                </div>
+            {% elif field.label|slice:":7" == "project" %}
+                {% with field.label|cut:"project_" as project %}
+                    {% ifchanged %}
+                    <h3>{{project}}</h3>
+                    <h4>Add Role</h4>
+                    {% endifchanged %}
+                    {{ field.errors }}
+                    <div>{{field}}</div>
+                {% endwith %}
+            {% else %}
+                <div>
+                {{ field.errors }}
+                {{ field.label_tag }} : {{ field }}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <h4>Add Project</h4>
         {% csrf_token %}
         <input type="submit" value="Save"/>
     </form>
