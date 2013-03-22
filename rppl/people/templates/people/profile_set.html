@@ -1,39 +1,36 @@
 {% extends 'base.html' %}
 {% load people %}
 
-
 {% block content %}
     <h2>{{ person.name }} - edit profile</h2>
-    <form   method="POST" action="" >
-        {% for field in form %}
-            {% if field.label == "link" %}
-                {% ifchanged %}
-                <h3> Links </h3>
-                <h4> Add Link </h4>
-                {% endifchanged %}
-
+    <form method="POST" action="" >
+        <table>
+        {{ user_data.as_table }}
+        </table>
+        <h3> Links </h3>
+        <a> Add new Link </a>
+        {% for field in links %}
+            <div>
+            {{ field.errors }}
+            {{ field }}
+            <a>[x]</a>
+            </div>
+        {% endfor %}
+        <h3> Projects </h3>
+        {% for p in project_forms %}
+            <h4> {{ p.project }} </h4>
+            <a> Add new Role </a>
+            {% for field in p %}
                 <div>
                 {{ field.errors }}
                 {{ field }}
+                <a>[x]</a>
                 </div>
-            {% elif field.label|slice:":7" == "project" %}
-                {% with field.label|cut:"project_" as project %}
-                    {% ifchanged %}
-                    <h3>{{project}}</h3>
-                    <h4>Add Role</h4>
-                    {% endifchanged %}
-                    {{ field.errors }}
-                    <div>{{field}}</div>
-                {% endwith %}
-            {% else %}
-                <div>
-                {{ field.errors }}
-                {{ field.label_tag }} : {{ field }}
-                </div>
-            {% endif %}
+            {% endfor %}
         {% endfor %}
-        <h4>Add Project</h4>
         {% csrf_token %}
+        <div>
         <input type="submit" value="Save"/>
+        </div>
     </form>
 {% endblock %}

@@ -1,4 +1,3 @@
-from django import forms
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 from django.core.exceptions import ValidationError
@@ -6,6 +5,7 @@ from django.core.exceptions import ValidationError
 from models import Person, Project, Edition, Role, Link, PersonRole
 from random import shuffle
 
+from forms import ProfileSetForm, LinkSetForm, ProjectRoleForm
 
 class Overview(TemplateView):
     template_name = 'people/overview.html'
@@ -46,77 +46,24 @@ class ProjectDetail(DetailView):
     model = Project
     context_object_name = 'project'
 
-
-
-class SForm(forms.ModelForm):
-
-    person = None
-    links = None
-
-    max_links = 6
-
-    class Meta:
-        model = Person
-        exclude = ('user',)
-
-    def __init__(self, *args, **kwargs):
-        super(SForm, self).__init__(*args, **kwargs)
-        if kwargs != {}:
-            person = kwargs['instance']
-            self.person = Person.objects.get(first_name=person.first_name, last_name=person.last_name)
-
-            links = Link.objects.all().filter(person=self.person)
-            self.links = links
-
-            for i in xrange(len(links)):
-                self.fields['link%d' % (i + 1)] = forms.CharField(max_length=100, initial = links[i], required = False, label="link")
-
-
-            #Add forms for project roles
-            roles = [(r, r) for r in Role.objects.all()]
-
-            person_roles = self.person.person_roles
-            for project in Project.objects.all():
-                index = 0
-
-                #Get project roles for the current project
-                project_roles = filter(lambda role: role.edition.project == project, person_roles)
-
-                #Add inputs for all roles
-                for role in project_roles:
-                    edition_choices = [(e, e) for e in Edition.objects.filter(project=project)]
-                    self.fields['%sedition%d' % (project, index)] = forms.ChoiceField(choices = edition_choices,
-                                                                                      initial = role.edition,
-                                                                                      label = "project_" + str(project))
-                    self.fields['%srole%d' % (project, index)] = forms.ChoiceField(choices = roles,
-                                                                                   initial = role.role,
-                                                                                   label = "project_" + str(project))
-                    index += 1
-
-
-    def clean(self):
-        self.links.delete()
-        for i in xrange(self.max_links):
-            link = self.cleaned_data.get('link%d' % i, None)
-            if link:
-                Link.objects.get_or_create(person = self.person, url = link)
-
-        if len(self.cleaned_data['description'].split(' ')) > 200:
-            raise ValidationError("Too many words")
-        else:
-            return self.cleaned_data
-
 class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
     model = Person
-    form_class = SForm
-
-    form = SForm()
-
-    if form.is_valid():
-        form.save()
-
-
     context_object_name = 'person'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfileSetup, self).get_context_data(**kwargs)
+
+        person = context['person']
+        context['user_data'] = ProfileSetForm(instance=person)
+        context['links'] = LinkSetForm(instance=person)
+
+        projects = Project.objects.all()
+        project_forms = [ProjectRoleForm(instance=person, project=p) for p in projects]
+
+        context['project_forms'] = project_forms
+
+        return context
+
 
 
