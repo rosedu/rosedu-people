@@ -8,24 +8,22 @@
         {{ user_data.as_table }}
         </table>
         <h3> Links </h3>
-        <a> Add new Link </a>
+        <a id="add-link">add new link</a>
+        <div id="link-form">
         {% for field in links %}
-            <div>
-            {{ field.errors }}
+        <div class="removable-field link-field">
             {{ field }}
-            <a>[x]</a>
-            </div>
+        </div>
         {% endfor %}
+        </div>
         <h3> Projects </h3>
         {% for p in project_forms %}
             <h4> {{ p.project }} </h4>
             <a> Add new Role </a>
             {% for field in p %}
-                <div>
-                {{ field.errors }}
+            <div class="removable-field">
                 {{ field }}
-                <a>[x]</a>
-                </div>
+            </div>
             {% endfor %}
         {% endfor %}
         {% csrf_token %}
@@ -33,4 +31,5 @@
         <input type="submit" value="Save"/>
         </div>
     </form>
+    <script type="text/javascript" src="{{site.basepath}}resources/js/profile-set.js"></script>
 {% endblock %}
