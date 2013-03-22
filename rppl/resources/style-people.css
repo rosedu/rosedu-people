@@ -104,6 +104,14 @@
     background:url('/resources/images/button-gplus.png') top left no-repeat;
     background-size:30px 30px;
 }
+
+.icon-delete {
+    background:url('/resources/images/button-delete.png') top left no-repeat;
+    background-size:16px 16px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
 .clear {
     clear: both;
 }

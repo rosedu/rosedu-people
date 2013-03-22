@@ -27,8 +27,8 @@ var removeContainer = function(element) {
 
 var addDeleteButton = function(field) {
     var delButton = document.createElement('a');
+    delButton.classList.add('icon-delete');
     delButton.addEventListener('click', function() { removeContainer(delButton) }, false);
-    delButton.textContent = '[x]';
     field.appendChild(delButton)
 };
 
