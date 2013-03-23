@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 from django.core.exceptions import ValidationError
 
+from django.shortcuts import render_to_response
 from django.utils.simplejson import dumps
 
 from models import Person, Project, Edition, Role, Link, PersonRole
@@ -53,6 +54,18 @@ class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
     model = Person
     context_object_name = 'person'
+    success_url = '/'
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileSetup, self).__init__(*args, **kwargs)
+
+    def post(self, request, **kwargs):
+        person = self.get_object()
+
+        user_data_form = ProfileSetForm(request.POST, instance=person)
+        link_form = LinkSetForm(person, request.POST)
+
+        return super(ProfileSetup, self).post(request, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ProfileSetup, self).get_context_data(**kwargs)
@@ -72,7 +85,7 @@ class ProfileSetup(UpdateView):
         context['project_id'] = dumps(project_id)
 
         context['user_data'] = ProfileSetForm(instance=person)
-        context['links'] = LinkSetForm(instance=person)
+        context['links'] = LinkSetForm(person)
 
         projects = Project.objects.all()
         project_forms = [ProjectRoleForm(instance=person, project=p) for p in projects]

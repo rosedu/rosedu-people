@@ -34,11 +34,12 @@ class LinkSetForm(forms.Form):
 
     max_links = 6
 
-    def __init__(self, *args, **kwargs):
-        super(LinkSetForm, self).__init__()
-        self.person = kwargs.get('instance', None)
+    def __init__(self, instance, *args, **kwargs):
+        super(LinkSetForm, self).__init__(*args, **kwargs)
+        self.person = instance
 
-        assert(self.person)
+        if len(args) > 0:
+            self.get_extra(args[0])
 
         links = Link.objects.filter(person=self.person)
 
@@ -48,11 +49,19 @@ class LinkSetForm(forms.Form):
                     initial = links[i],
                     required = False)
 
+    def get_extra(self, post):
+        field_names = post.keys()
+        for f in field_names:
+            if f.startswith('link'):
+                self.fields[f] = forms.CharField(max_length=100, required = False)
+
+
     def clean(self):
-        for i in xrange(self.max_links):
-            link = self.cleaned_data.get('link%d' % i, None)
-            if link:
-                Link.objects.get_or_create(person=self.person, url=link)
+        Link.objects.filter(person=self.person).delete()
+        for link in sorted(self.cleaned_data.keys()):
+            value = self.cleaned_data[link]
+            if value:
+                Link.objects.get_or_create(person=self.person, url=value)
 
         return self.cleaned_data
 
