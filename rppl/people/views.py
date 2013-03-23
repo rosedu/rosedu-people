@@ -2,10 +2,13 @@ from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 from django.core.exceptions import ValidationError
 
+from django.utils.simplejson import dumps
+
 from models import Person, Project, Edition, Role, Link, PersonRole
 from random import shuffle
 
 from forms import ProfileSetForm, LinkSetForm, ProjectRoleForm
+
 
 class Overview(TemplateView):
     template_name = 'people/overview.html'
@@ -55,6 +58,19 @@ class ProfileSetup(UpdateView):
         context = super(ProfileSetup, self).get_context_data(**kwargs)
 
         person = context['person']
+
+        context['roles'] = dumps(map(str, Role.objects.all()))
+
+        project_editions = {}
+        project_id = {}
+        for project in Project.objects.all():
+            editions = Edition.objects.filter(project=project)
+            project_editions[str(project)] = map(str, editions)
+            project_id[str(project)] = project.id
+
+        context['project_editions'] = dumps(project_editions)
+        context['project_id'] = dumps(project_id)
+
         context['user_data'] = ProfileSetForm(instance=person)
         context['links'] = LinkSetForm(instance=person)
 

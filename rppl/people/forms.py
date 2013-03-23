@@ -80,7 +80,7 @@ class ProjectRoleForm(forms.Form):
                     editions, roles,
                     initial = '|'.join([str(role.edition), str(role.role)]))
 
-            self.fields['%s_role%d' % (self.project, i)] = field
+            self.fields['%d_role%d' % (self.project.id, i)] = field
 
 
 class ProfileSetForm(forms.ModelForm):

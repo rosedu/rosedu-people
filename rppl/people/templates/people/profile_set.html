@@ -2,14 +2,21 @@
 {% load people %}
 
 {% block content %}
+    <script>
+        {% autoescape off %}
+        var roles = {{ roles }};
+        var projectEditions = {{ project_editions }};
+        var projectId = {{ project_id }}
+        {% endautoescape %}
+    </script>
     <h2>{{ person.name }} - edit profile</h2>
     <form method="POST" action="" >
         <table>
         {{ user_data.as_table }}
         </table>
         <h3> Links </h3>
-        <a id="add-link">add new link</a>
-        <div id="link-form">
+        <a class="add-link">add new link</a>
+        <div class="link-form">
         {% for field in links %}
         <div class="removable-field link-field">
             {{ field }}
@@ -19,12 +26,14 @@
         <h3> Projects </h3>
         {% for p in project_forms %}
             <h4> {{ p.project }} </h4>
-            <a> Add new Role </a>
-            {% for field in p %}
-            <div class="removable-field">
-                {{ field }}
-            </div>
+            <div>
+                <a class="add-role" data-name="{{p.project}}"> Add new Role </a>
+                {% for field in p %}
+                <div class="removable-field">
+                    {{ field }}
+                </div>
             {% endfor %}
+            </div>
         {% endfor %}
         {% csrf_token %}
         <div>
