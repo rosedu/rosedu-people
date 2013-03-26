@@ -57,11 +57,15 @@ class LinkSetForm(forms.Form):
                 self.fields[f] = forms.CharField(max_length=100, required=False)
 
     def clean(self):
+        # Delete empty entries.
+        for key, value in self.cleaned_data.items():
+            if not value:
+                del self.cleaned_data[key]
         return self.cleaned_data
 
     def save(self):
-        # Delete filters not present in cleared data
-        # Use the fact that the QuerySet is lazy
+        # Delete filters not present in cleared data.
+        # Use the fact that the QuerySet is lazy.
         removed_links = Link.objects.filter(person=self.person)
         links = self.cleaned_data.values()
         for l in links:
