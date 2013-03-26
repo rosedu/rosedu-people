@@ -34,12 +34,13 @@ class LinkSetForm(forms.Form):
 
     max_links = 6
 
-    def __init__(self, instance, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.person = kwargs.pop('instance')
         super(LinkSetForm, self).__init__(*args, **kwargs)
-        self.person = instance
 
         if len(args) > 0:
             self.get_extra(args[0])
+            return
 
         links = Link.objects.filter(person=self.person)
 
@@ -55,28 +56,25 @@ class LinkSetForm(forms.Form):
             if f.startswith('link'):
                 self.fields[f] = forms.CharField(max_length=100, required = False)
 
-
     def clean(self):
-        Link.objects.filter(person=self.person).delete()
-        for link in sorted(self.cleaned_data.keys()):
-            value = self.cleaned_data[link]
-            if value:
-                Link.objects.get_or_create(person=self.person, url=value)
-
         return self.cleaned_data
+
+    def save(self):
+        links = self.cleaned_data.values()
 
 class ProjectRoleForm(forms.Form):
     person = None
     project = None
 
     def __init__(self, *args, **kwargs):
-        super(ProjectRoleForm, self).__init__()
+        self.person = kwargs.pop('instance')
+        self.project = kwargs.pop('project')
 
-        self.person = kwargs.get('instance', None)
-        self.project = kwargs.get('project', None)
+        super(ProjectRoleForm, self).__init__(*args, **kwargs)
 
-        assert(self.person)
-        assert(self.project)
+        if len(args) > 0:
+            self.get_extra(args[0])
+            return
 
         roles = Role.objects.all()
         editions = Edition.objects.filter(project=self.project)
@@ -90,6 +88,20 @@ class ProjectRoleForm(forms.Form):
                     initial = '|'.join([str(role.edition), str(role.role)]))
 
             self.fields['%d_role%d' % (self.project.id, i)] = field
+
+    def get_extra(self, post):
+        field_names = post.keys()
+
+        roles = Role.objects.all()
+        editions = Edition.objects.filter(project=self.project)
+
+        for f in field_names:
+            if f.startswith('%d_role' % self.project.id):
+                # Truncate the name so the field is correctly named
+                self.fields[f[:-2]] = ProjectRoleField(editions, roles)
+
+    def save(self):
+        pass
 
 
 class ProfileSetForm(forms.ModelForm):

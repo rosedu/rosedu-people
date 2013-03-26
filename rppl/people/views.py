@@ -1,8 +1,11 @@
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
 from django.core.exceptions import ValidationError
+from django.template import RequestContext
 
-from django.shortcuts import render_to_response
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+
 from django.utils.simplejson import dumps
 
 from models import Person, Project, Edition, Role, Link, PersonRole
@@ -61,11 +64,33 @@ class ProfileSetup(UpdateView):
 
     def post(self, request, **kwargs):
         person = self.get_object()
+        self.object = person
 
+        # Get forms from POST data.
         user_data_form = ProfileSetForm(request.POST, instance=person)
-        link_form = LinkSetForm(person, request.POST)
 
-        return super(ProfileSetup, self).post(request, **kwargs)
+        projects = Project.objects.all()
+        project_forms = [ProjectRoleForm(request.POST, instance=person, project=p) for p in projects]
+
+        link_set_form = LinkSetForm(request.POST, instance=person)
+
+        # Check if at least one is invalid.
+        valid_results = [f.is_valid() for f in project_forms + [user_data_form, link_set_form]]
+        if False in valid_results:
+            context = self.get_context_data()
+            context['user_data'] = user_data_form
+            context['links'] = link_set_form
+            context['project_forms'] = project_forms
+            return self.render_to_response(context)
+        else:
+            user_data_form.save()
+            link_set_form.save()
+            for pf in project_forms:
+                pf.save()
+
+        # Redirect to user profile.
+        return HttpResponseRedirect(reverse('profile', args=(person.pk, )))
+
 
     def get_context_data(self, **kwargs):
         context = super(ProfileSetup, self).get_context_data(**kwargs)
@@ -85,7 +110,7 @@ class ProfileSetup(UpdateView):
         context['project_id'] = dumps(project_id)
 
         context['user_data'] = ProfileSetForm(instance=person)
-        context['links'] = LinkSetForm(person)
+        context['links'] = LinkSetForm(instance=person)
 
         projects = Project.objects.all()
         project_forms = [ProjectRoleForm(instance=person, project=p) for p in projects]
