@@ -54,13 +54,24 @@ class LinkSetForm(forms.Form):
         field_names = post.keys()
         for f in field_names:
             if f.startswith('link'):
-                self.fields[f] = forms.CharField(max_length=100, required = False)
+                self.fields[f] = forms.CharField(max_length=100, required=False)
 
     def clean(self):
         return self.cleaned_data
 
     def save(self):
+        # Delete filters not present in cleared data
+        # Use the fact that the QuerySet is lazy
+        removed_links = Link.objects.filter(person=self.person)
         links = self.cleaned_data.values()
+        for l in links:
+            removed_links = removed_links.exclude(url=l)
+
+        # Delete links that are not present in cleaned data.
+        removed_links.delete()
+
+        for l in links:
+            Link.objects.get_or_create(url=l, person=self.person)
 
 class ProjectRoleForm(forms.Form):
     person = None
