@@ -38,7 +38,7 @@ class LinkSetForm(forms.Form):
         self.person = kwargs.pop('instance')
         super(LinkSetForm, self).__init__(*args, **kwargs)
 
-        if len(args) > 0:
+        if len(args) > 0 and args[0] is not None:
             self.get_extra(args[0])
             return
 
@@ -51,6 +51,8 @@ class LinkSetForm(forms.Form):
                     required = False)
 
     def get_extra(self, post):
+        if post is None:
+            return
         field_names = post.keys()
         for f in field_names:
             if f.startswith('link'):
@@ -87,7 +89,7 @@ class ProjectRoleForm(forms.Form):
 
         super(ProjectRoleForm, self).__init__(*args, **kwargs)
 
-        if len(args) > 0:
+        if len(args) > 0 and args[0] is not None:
             self.get_extra(args[0])
             return
 
@@ -105,6 +107,8 @@ class ProjectRoleForm(forms.Form):
             self.fields['%d_role%d' % (self.project.id, i)] = field
 
     def get_extra(self, post):
+        if post is None:
+            return
         field_names = post.keys()
 
         roles = Role.objects.all()
@@ -131,7 +135,10 @@ class ProjectRoleForm(forms.Form):
         for e, r in entries:
             removed_entries = removed_entries.exclude(edition=editions[e], role=roles[r])
 
+        print "remove", removed_entries
         removed_entries.delete()
+
+        print "add", entries
 
         for e, r in entries:
             PersonRole.objects.get_or_create(person=self.person, edition=editions[e], role=roles[r])
