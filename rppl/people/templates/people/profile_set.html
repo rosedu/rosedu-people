@@ -9,7 +9,7 @@
         var projectId = {{ project_id }}
         {% endautoescape %}
     </script>
-    <h2>{{ person.name }} - edit profile</h2>
+    <h2><a href={% url profile person.pk %}>{{ person.name }}</a> - edit profile</h2>
     <form method="POST" action="" >
         <table>
         {{ user_data.as_table }}
