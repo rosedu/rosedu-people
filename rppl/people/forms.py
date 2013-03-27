@@ -15,6 +15,7 @@ class ProjectRoleWidget(forms.MultiWidget):
             return value.split('|')
         return ['', '']
 
+
 class ProjectRoleField(forms.MultiValueField):
     def __init__(self, editions, roles, *args, **kwargs):
         self.widget = ProjectRoleWidget(editions, roles)
@@ -29,10 +30,10 @@ class ProjectRoleField(forms.MultiValueField):
             return '|'.join(data_list)
         return None
 
+
 class LinkSetForm(forms.Form):
     person = None
-
-    max_links = 6
+    MAX_LINKS = 6
 
     def __init__(self, *args, **kwargs):
         self.person = kwargs.pop('instance')
@@ -53,10 +54,9 @@ class LinkSetForm(forms.Form):
     def get_extra(self, post):
         if post is None:
             return
-        field_names = post.keys()
+        field_names = [f for f in post.keys() if f.startswith('link')]
         for f in field_names:
-            if f.startswith('link'):
-                self.fields[f] = forms.CharField(max_length=100, required=False)
+            self.fields[f] = forms.CharField(max_length=100, required=False)
 
     def clean(self):
         # Delete empty entries.
@@ -78,6 +78,7 @@ class LinkSetForm(forms.Form):
 
         for l in links:
             Link.objects.get_or_create(url=l, person=self.person)
+
 
 class ProjectRoleForm(forms.Form):
     person = None
@@ -109,15 +110,14 @@ class ProjectRoleForm(forms.Form):
     def get_extra(self, post):
         if post is None:
             return
-        field_names = post.keys()
+        field_names = [f for f in post.keys() if f.startswith('%d_role' % self.project.id)]
 
         roles = Role.objects.all()
         editions = Edition.objects.filter(project=self.project)
 
         for f in field_names:
-            if f.startswith('%d_role' % self.project.id):
-                # Truncate the name so the field is correctly named
-                self.fields[f[:-2]] = ProjectRoleField(editions, roles)
+            # Truncate the name so the field is correctly named
+            self.fields[f[:-2]] = ProjectRoleField(editions, roles)
 
     def save(self):
         entries = [e.split('|') for e in self.cleaned_data.values()]
@@ -134,12 +134,7 @@ class ProjectRoleForm(forms.Form):
         removed_entries = PersonRole.objects.filter(person=self.person, edition__project=self.project)
         for e, r in entries:
             removed_entries = removed_entries.exclude(edition=editions[e], role=roles[r])
-
-        print "remove", removed_entries
         removed_entries.delete()
-
-        print "add", entries
-
         for e, r in entries:
             PersonRole.objects.get_or_create(person=self.person, edition=editions[e], role=roles[r])
 
@@ -154,5 +149,4 @@ class ProfileSetForm(forms.ModelForm):
             raise ValidationError("Too many words")
         else:
             return self.cleaned_data
-
 
