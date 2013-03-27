@@ -59,9 +59,6 @@ class ProfileSetup(UpdateView):
     context_object_name = 'person'
     success_url = '/'
 
-    def __init__(self, *args, **kwargs):
-        super(ProfileSetup, self).__init__(*args, **kwargs)
-
     def post(self, request, **kwargs):
         person = self.get_object()
         self.object = person

@@ -7,4 +7,8 @@ admin.site.register(Organization)
 admin.site.register(Project)
 admin.site.register(Edition)
 admin.site.register(Role)
-admin.site.register(PersonRole)
+
+class PRAdmin(admin.ModelAdmin):
+    list_display = ('person', 'edition', 'role')
+
+admin.site.register(PersonRole, PRAdmin)

@@ -1,3 +1,24 @@
+button, input[type="button"], a.btn {
+    border: 1px solid #aaaaaa;
+    padding: 4px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+input[type="text"], textarea {
+    line-height: 14px;
+    padding: 2px;
+    margin: 4px;
+}
+
+input[type="text"] {
+    height: 20px;
+}
+
+a.add-link, a.add-role {
+    cursor: pointer;
+}
+
 .person {
     display: block;
     float: left;
