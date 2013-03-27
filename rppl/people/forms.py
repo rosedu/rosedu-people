@@ -127,7 +127,7 @@ class ProjectRoleForm(forms.Form):
         for r in Role.objects.all():
             roles[r.name] = r
 
-        removed_entries = PersonRole.objects.filter(person=self.person)
+        removed_entries = PersonRole.objects.filter(person=self.person, edition__project=self.project)
         for e, r in entries:
             removed_entries = removed_entries.exclude(edition=editions[e], role=roles[r])
 
