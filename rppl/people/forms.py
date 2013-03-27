@@ -116,7 +116,25 @@ class ProjectRoleForm(forms.Form):
                 self.fields[f[:-2]] = ProjectRoleField(editions, roles)
 
     def save(self):
-        pass
+        entries = [e.split('|') for e in self.cleaned_data.values()]
+
+        editions = {}
+        roles = {}
+
+        for e in Edition.objects.filter(project=self.project):
+            editions[e.name] = e
+
+        for r in Role.objects.all():
+            roles[r.name] = r
+
+        removed_entries = PersonRole.objects.filter(person=self.person)
+        for e, r in entries:
+            removed_entries = removed_entries.exclude(edition=editions[e], role=roles[r])
+
+        removed_entries.delete()
+
+        for e, r in entries:
+            PersonRole.objects.get_or_create(person=self.person, edition=editions[e], role=roles[r])
 
 
 class ProfileSetForm(forms.ModelForm):
