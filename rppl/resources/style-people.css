@@ -137,8 +137,12 @@ a.add-link, a.add-role {
     clear: both;
 }
 
+.activity-container {
+    margin-bottom: 15px;
+}
+
 .activity_logo {
-	float: left;
+    float: left;
     margin: 4px 0px;
     padding: 0px 7px;
     text-align: center;
@@ -150,12 +154,17 @@ a.add-link, a.add-role {
     float: left;
     padding: 14px 0px 0px 0px;
     width: 500px;
-    height: 100px;
 }
 
-.activity_list_item {
-	//float: left;
-	//width: 500px;
+.activity_list li {
+    width: 250px;
+    margin-bottom: 3px;
+}
+
+.activity_list ul {
+    list-style-type: none;
+    float: left;
+    font-size: 12px;
 }
 
 @-moz-keyframes showName {
