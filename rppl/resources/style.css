@@ -66,7 +66,7 @@ a#logo-header {
 	background:url('images/logo-header.png') no-repeat;
 	display:inline-block;
 	float:left;
-	height:85px;
+	height:100px;
 	width:400px;
 }
 
@@ -139,7 +139,7 @@ div#auth-form input[type=submit] {
 
 div#header-menu {
 	float:right;
-	font-size:20px;
+	font-size:25px;
 	text-align:right;
 	padding: 5px 0px;
 }
