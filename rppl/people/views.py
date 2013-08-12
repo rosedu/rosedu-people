@@ -81,19 +81,9 @@ class ProfileSetup(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(ProfileSetup, self).get_context_data(**kwargs)
 
-        # Get person
+        data = self.request.POST if self.request.method == 'POST' else None
+
         person = context['person']
-
-        # Get token from url
-        token = self.kwargs['token']
-
-        # Check token to be valid for an user edit
-        if token != "1":
-            context['valid_token'] = False
-            return context
-
-        context['valid_token'] = True
-
         project_editions = {}
         project_id = {}
         for project in Project.objects.all():
@@ -105,8 +95,6 @@ class ProfileSetup(UpdateView):
         context['project_editions'] = dumps(project_editions)
         context['project_id'] = dumps(project_id)
 
-        # Add forms to view
-        data = self.request.POST if self.request.method == 'POST' else None
         context['user_data'] = ProfileSetForm(data, instance=person)
         context['links'] = LinkSetForm(data, instance=person)
         context['project_forms'] = [ProjectRoleForm(data, instance=person, project=p) for p in Project.objects.all()]

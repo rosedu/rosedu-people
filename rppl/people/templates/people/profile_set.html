@@ -2,7 +2,6 @@
 {% load people %}
 
 {% block content %}
-{% if valid_token %}
     <script>
         {% autoescape off %}
         var roles = {{ roles }};
@@ -42,10 +41,4 @@
         </div>
     </form>
     <script type="text/javascript" src="{{site.basepath}}resources/js/profile-set.js"></script>
-{% else %}
-<h1>Bad Token in URL!</h1>
-<div>
-    Contact people@rosedu.org to retrieve your token.
-</div>
-{% endif %}
 {% endblock %}
