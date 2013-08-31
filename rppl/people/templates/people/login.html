@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class = "center">
+<div class="center">
+    <h3> Login to ROSEdu People </h3>
+    <form method="post" action>
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" id="id_username"/></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="id_password"/></td>
+            </tr>
+        </table>
 
-<form method="post" action>
-  {% csrf_token %}
-  <table>
-    <tr>
-      <td>{{ form.username.label_tag }}</td>
-      <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-      <td>{{ form.password.label_tag }}</td>
-      <td>{{ form.password }}</td>
-    </tr>
-  </table>
-
-  <div class="button">submit</button>
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+        <button type="submit" class="btn">Login</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
 </div>
 {% endblock %}
