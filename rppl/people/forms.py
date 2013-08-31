@@ -1,5 +1,5 @@
 from django import forms
-from models import Person, Project, Edition, Role, Link, PersonRole
+from models import Person, Edition, Role, Link, PersonRole
 from django.core.exceptions import ValidationError
 
 class ProjectRoleWidget(forms.MultiWidget):
@@ -143,7 +143,7 @@ class ProfileSetForm(forms.ModelForm):
     class Meta:
         model = Person
         fields = ('first_name', 'last_name', 'email',
-                  'password', 'description')
+                  'description')
 
     def clean(self):
         if len(self.cleaned_data['description'].split(' ')) > 200:
