@@ -1,14 +1,17 @@
 from random import shuffle
 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.utils.simplejson import dumps
 from django.utils.decorators import method_decorator
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import (TemplateView, DetailView, ListView,
+                                  FormView)
 from django.views.generic.edit import UpdateView
 
 from decorators import same_user_from_request_required
-from forms import ProfileSetForm, LinkSetForm, ProjectRoleForm
+from forms import (ProfileSetForm, LinkSetForm, ProjectRoleForm,
+                   ProfileCreateForm)
 from models import Person, Project, Edition, Role, PersonRole
 
 
@@ -54,6 +57,21 @@ class ProjectDetail(DetailView):
     model = Project
     context_object_name = 'project'
 
+class ProfileCreate(FormView):
+    template_name = 'people/profile_create.html'
+    form_class = ProfileCreateForm
+    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        form = ProfileCreateForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data['password2']
+            user = form.save()
+            username = user.username
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('profile', user.pk)
+        return render(request, self.template_name, { 'form' : form })
 
 class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
