@@ -142,7 +142,8 @@ class ProjectRoleForm(forms.Form):
 class ProfileSetForm(forms.ModelForm):
     class Meta:
         model = Person
-        exclude = ('user', 'organisations')
+        fields = ('first_name', 'last_name', 'email',
+                  'password', 'description')
 
     def clean(self):
         if len(self.cleaned_data['description'].split(' ')) > 200:

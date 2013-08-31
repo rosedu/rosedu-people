@@ -4,14 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from datetime import datetime
 
-class Person(models.Model):
-    class Meta:
-        unique_together = ('first_name', 'last_name')
-
-    user = models.ForeignKey(User, null=True, blank=True, help_text='User owning this profile')
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+class Person(User):
     description = models.TextField(max_length=2000, blank=True)
     organisations = models.ManyToManyField('Organization',  blank=True, null=True, related_name="persons")
 
