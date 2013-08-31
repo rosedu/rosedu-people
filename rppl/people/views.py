@@ -90,7 +90,12 @@ class ProfileSetup(UpdateView):
         context = self.get_context_data(**kwargs)
 
         # Get forms from POST data.
-        all_forms = [context['user_data'], context['links']] + context['project_forms']
+
+        person = context['person']
+        all_forms = [context['user_data'], context['links']]
+        # Ugly hack to allow only staff to edit projects
+        if person.is_staff:
+            all_forms += context['project_forms']
 
         # Check if at least one is invalid.
         valid_results = [f.is_valid() for f in all_forms]

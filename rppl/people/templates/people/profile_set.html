@@ -9,7 +9,8 @@
         var projectId = {{ project_id }}
         {% endautoescape %}
     </script>
-    <h2><a href={% url profile person.pk %}>{{ person.name }}</a> - edit profile</h2>
+    <div class="center">
+    <h2>Edit Profile</h2>
     <form method="POST" action="" >
         <table>
         {{ user_data.as_table }}
@@ -24,6 +25,7 @@
         </div>
         {% endfor %}
         </div>
+        {% if person.is_staff %}
         <h3> Projects </h3>
         {% for p in project_forms %}
             <h4> {{ p.project }} </h4>
@@ -36,10 +38,12 @@
             {% endfor %}
             </div>
         {% endfor %}
+        {% endif %}
         {% csrf_token %}
         <div>
         <button class="btn" type="submit">Save</button>
         </div>
     </form>
+</div>
     <script type="text/javascript" src="{{site.basepath}}resources/js/profile-set.js"></script>
 {% endblock %}
