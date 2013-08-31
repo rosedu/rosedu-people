@@ -35,27 +35,21 @@
 		<a href="{{site.basepath}}ro" id="logo-header"></a>
 
 		<div id="header-right">
-		<div id="flags-container">
-                    <a href="{{site.baseptah}}ro" id="ro-flag" class="flag ro-flag-full">
-				<h2>H</h2>
-			</a>
-                        <a href="{{site.basepath}}" id="en-flag" class="flag en-flag-grayed-out">
-				<h2>H</h2>
-			</a>
-		</div>
-
-        <form action="http://www.google.com/search" class="navigation-search" method="get" name="form1">
-            <a href="#" onclick="javascript:form1.submit()" id="search-icon"></a>
-            <input id="search" class="search-query" name="q" placeholder="Caută..." type="text">
-            <input name="sitesearch" type="hidden" value="rosedu.org">
-        </form>
-
-		<!-- <a href="javascript:void(0);" id="auth-button">Autentificare</a> -->
-
 		<div id="header-menu">
+      <div>
+      {% if user.is_authenticated %}
+      <a href="{{site.basepath}}profile/{{user.id}}">/home/{{user}}</a>
+      {% endif %}
+      </div>
 		  meniu[] = { <a href="{{site.basepath}}">people</a>,
           <a href="{{site.basepath}}project">projects</a>,
-          <a href="{{site.basepath}}login">login</a> };
+          {% if user.is_authenticated %}
+          <a href="{{site.basepath}}logout">logout</a>
+          {% else %}
+          <a href="{{site.basepath}}login">login</a>,
+          <a href="{{site.basepath}}login">create_account</a>
+          {% endif %}
+          };
 		</div><!-- #header-menu -->
 
 		<div class="clear">
