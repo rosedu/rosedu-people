@@ -1,13 +1,15 @@
-from django.shortcuts import redirect
 from random import shuffle
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.utils.simplejson import dumps
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import UpdateView
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.utils.simplejson import dumps
 
-from models import Person, Project, Edition, Role, Link, PersonRole
+from decorators import same_user_from_request_required
 from forms import ProfileSetForm, LinkSetForm, ProjectRoleForm
+from models import Person, Project, Edition, Role, PersonRole
 
 
 class Overview(TemplateView):
@@ -58,6 +60,12 @@ class ProfileSetup(UpdateView):
     model = Person
     context_object_name = 'person'
     success_url = '/'
+
+    @method_decorator(login_required)
+    @method_decorator(same_user_from_request_required)
+    def dispatch(self, *args, **kwargs):
+        """Decorated for authorization and authentication"""
+        return super(ProfileSetup, self).dispatch(*args, **kwargs)
 
     def post(self, request, **kwargs):
         self.object = self.get_object()
