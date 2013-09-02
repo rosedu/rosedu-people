@@ -315,7 +315,6 @@ ul .date {
 }
 
 .project-image {
-    height: 150px;
     width: 300px;
     margin: 15px;
     background-size: 100%;
@@ -343,7 +342,6 @@ ul .date {
 
 .edition-photo {
     width: 100%;
-    height: 100%;
 }
 
 .edition-people {
