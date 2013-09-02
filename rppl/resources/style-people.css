@@ -5,14 +5,15 @@ button, input[type="button"], a.btn {
     cursor: pointer;
 }
 
-input[type="text"], textarea {
+textarea {
     line-height: 14px;
     padding: 2px;
     margin: 4px;
 }
 
-input[type="text"] {
+input {
     height: 20px;
+    margin: 2px;
 }
 
 a.add-link, a.add-role {
@@ -348,4 +349,13 @@ ul .date {
     font-weight: normal;
     font-size: 14px;
     margin-top: 7px;
+}
+
+.center {
+  width: 300px;
+  margin: auto;
+}
+
+.edit {
+  font-size: 15px;
 }

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="center">
+    <h3> Join ROSEdu People </h3>
+    <form method="post" action>
+        {% csrf_token %}
+        <img class="gravatar-preview avatar align-left"src=""/>
+        <p>
+            Please go to <a href="http://gravatar.com"> gravatar.com </a> to get your avatar on ROSEDu People!
+        </p>
+        <table>
+            {% for field in form %}
+            <tr><td>{{field.label_tag}}</td><td>{{field}}</td></tr>
+            {% endfor %}
+        </table>
+
+        <button type="submit" class="btn">Join!</button>
+    </form>
+    {% if form.errors %}
+    {{form.errors}}
+    {% endif %}
+</div>
+<script type="text/javascript" src="{{site.basepath}}resources/js/md5.js"></script>
+<script type="text/javascript" src="{{site.basepath}}resources/js/gravatar-preview.js"></script>
+{% endblock %}

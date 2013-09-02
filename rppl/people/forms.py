@@ -1,6 +1,7 @@
 from django import forms
-from models import Person, Project, Edition, Role, Link, PersonRole
+from models import Person, Edition, Role, Link, PersonRole
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm
 
 class ProjectRoleWidget(forms.MultiWidget):
     def __init__(self, editions, roles, *args, **kwargs):
@@ -142,11 +143,26 @@ class ProjectRoleForm(forms.Form):
 class ProfileSetForm(forms.ModelForm):
     class Meta:
         model = Person
-        exclude = ('user', 'organisations')
+        fields = ('first_name', 'last_name', 'email',
+                  'description')
 
     def clean(self):
         if len(self.cleaned_data['description'].split(' ')) > 200:
             raise ValidationError("Too many words")
         else:
             return self.cleaned_data
+
+class ProfileCreateForm(UserCreationForm):
+    class Meta:
+        model = Person
+        fields = ('first_name', 'last_name', 'email')
+
+    def save(self):
+        password = self.cleaned_data.pop('password1')
+        self.cleaned_data.pop('password2')
+
+        person = Person(**self.cleaned_data)
+        person.set_password(password)
+        person.save()
+        return person
 

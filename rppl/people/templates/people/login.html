@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="center">
+    <h3> Login to ROSEdu People </h3>
+    <form method="post" action>
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" id="id_username" name="username"/></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="id_password" name="password"/></td>
+            </tr>
+        </table>
+
+        <button type="submit" class="btn">Login</button>
+        <input type="hidden" name="next" value="/">
+    </form>
+    {% if form.errors %}
+    {{form.errors}}
+    {% endif %}
+</div>
+{% endblock %}

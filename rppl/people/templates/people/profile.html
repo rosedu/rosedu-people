@@ -7,9 +7,11 @@
     <img class="avatar" src="{% gravatar person %}" />
 </div>
 
+{% if user.id == person.id %}
+<a class="edit" href="{% url profile-setup person.id %}">Edit Profile</a>
+{% endif %}
 <h1>{{ person.name }}</h1>
 <div class="email">{{ person.email }}</div>
-<a class="edit" href="{% url profile-setup person.id %}">Edit</a>
 <div class="description">{{ person.description }}</div>
 
 <div class="links">
@@ -19,7 +21,9 @@
 </div>
 
 <br><br>
+{% if roles %}
 <div class="clear"><h2>Activity</h2></div>
+{% endif %}
 
 <div>
 <div>
@@ -49,11 +53,5 @@
 </div>
 
 <div class="clear"></div>
-<div class="clear"><h2>Affiliation</h2></div>
 
-<p><strong>Contact:</strong>
-{% if person.email %}<code>{{person.email}}</code>{% endif %}
-</p>
-
-<a href="{% url overview %}">&laquo; back to persons</a>
 {% endblock %}

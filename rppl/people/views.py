@@ -1,13 +1,18 @@
-from django.shortcuts import redirect
 from random import shuffle
-from django.views.generic import TemplateView, DetailView, ListView
-from django.views.generic.edit import UpdateView
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.utils.simplejson import dumps
 
-from models import Person, Project, Edition, Role, Link, PersonRole
-from forms import ProfileSetForm, LinkSetForm, ProjectRoleForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
+from django.utils.simplejson import dumps
+from django.utils.decorators import method_decorator
+from django.views.generic import (TemplateView, DetailView, ListView,
+                                  FormView)
+from django.views.generic.edit import UpdateView
+
+from decorators import same_user_from_request_required
+from forms import (ProfileSetForm, LinkSetForm, ProjectRoleForm,
+                   ProfileCreateForm)
+from models import Person, Project, Edition, Role, PersonRole
 
 
 class Overview(TemplateView):
@@ -52,6 +57,21 @@ class ProjectDetail(DetailView):
     model = Project
     context_object_name = 'project'
 
+class ProfileCreate(FormView):
+    template_name = 'people/profile_create.html'
+    form_class = ProfileCreateForm
+    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        form = ProfileCreateForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data['password2']
+            user = form.save()
+            username = user.username
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('profile', user.pk)
+        return render(request, self.template_name, { 'form' : form })
 
 class ProfileSetup(UpdateView):
     template_name = 'people/profile_set.html'
@@ -59,12 +79,23 @@ class ProfileSetup(UpdateView):
     context_object_name = 'person'
     success_url = '/'
 
+    @method_decorator(login_required)
+    @method_decorator(same_user_from_request_required)
+    def dispatch(self, *args, **kwargs):
+        """Decorated for authorization and authentication"""
+        return super(ProfileSetup, self).dispatch(*args, **kwargs)
+
     def post(self, request, **kwargs):
         self.object = self.get_object()
         context = self.get_context_data(**kwargs)
 
         # Get forms from POST data.
-        all_forms = [context['user_data'], context['links']] + context['project_forms']
+
+        person = context['person']
+        all_forms = [context['user_data'], context['links']]
+        # Ugly hack to allow only staff to edit projects
+        if person.is_staff:
+            all_forms += context['project_forms']
 
         # Check if at least one is invalid.
         valid_results = [f.is_valid() for f in all_forms]
