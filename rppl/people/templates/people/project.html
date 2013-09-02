@@ -20,7 +20,7 @@
     <div class="edition">
         <div> {{ e }} <div class='project-date'>{{ e.date_start }} - {{ e.date_end }} </div></div>
         <div class="edition-photo-container">
-            <img class="edition-photo" src="http://www.photo-dictionary.com/photofiles/list/1570/8366dummy.jpg" />
+            <img class="edition-photo" src="{{ e.logo_url }}" />
         </div>
         <div class="edition-people">
             {% for pr in e.person_roles.all %}
@@ -35,10 +35,6 @@
         {% endfor %}
     </div>
     {% endif %}
-</div>
-
-<div class="clear">
-    <a href="{% url project-list %}">&laquo; back to projects</a>
 </div>
 
 {% endblock %}

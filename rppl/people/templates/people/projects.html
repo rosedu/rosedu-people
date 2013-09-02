@@ -2,16 +2,16 @@
 {% load people %}
 
 {% block content %}
-<h2>Activities</h2>
-{% for a in object_list %}
-<div class="activity">
-    <h3>{{ a }}</h3>
-    <div class="content">{{ a.description }}</div>
-    <a href="{% url project-detail a.id %}">Details</a>
+<h2>Projects</h2>
+{% for p in object_list %}
+<div class="activity clear">
+    <h3>{{ p }}</h3>
+    <a href="{% url project-detail p.id %}">
+    <img src="{{ p.logo_url }}" class="project-image"></img>
+    </a>
+    <div class="content">{{ p.description }}</div>
+    <a href="{% url project-detail p.id %}">Details</a>
 </div>
 {% endfor %}
 
-<p class="clear">
-    <a href="{% url overview %}">Go to: Overview</a>
-</p>
 {% endblock %}

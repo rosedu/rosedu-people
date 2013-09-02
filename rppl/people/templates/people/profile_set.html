@@ -2,48 +2,50 @@
 {% load people %}
 
 {% block content %}
-    <script>
-        {% autoescape off %}
-        var roles = {{ roles }};
-        var projectEditions = {{ project_editions }};
-        var projectId = {{ project_id }}
-        {% endautoescape %}
-    </script>
-    <div class="center">
+<script>
+{% autoescape off %}
+var roles = {{ roles }};
+var projectEditions = {{ project_editions }};
+var projectId = {{ project_id }}
+{% endautoescape %}
+</script>
+<div class="center">
     <h2>Edit Profile</h2>
     <form method="POST" action="" >
         <table>
-        {{ user_data.as_table }}
+            {{ user_data.as_table }}
         </table>
         <a href="/password_change">Change password</a>
-        <h3> Links </h3>
-        <a class="add-link">add new link</a>
+        <h3 class="spaced-heading"> Links
+            <a class="add-link round-button" title="Add link">+</a>
+        </h3>
         <div class="link-form">
-        {% for field in links %}
-        <div class="removable-field link-field">
-            {{ field }}
-        </div>
-        {% endfor %}
+            {% for field in links %}
+            <div class="removable-field link-field">
+                {{ field }}
+            </div>
+            {% endfor %}
         </div>
         {% if person.is_staff %}
-        <h3> Projects </h3>
+        <h3 class="spaced-heading"> Projects </h3>
         {% for p in project_forms %}
-            <h4> {{ p.project }} </h4>
-            <div>
-                <a class="add-role" data-name="{{p.project}}"> Add new Role </a>
-                {% for field in p %}
-                <div class="removable-field">
-                    {{ field }}
-                </div>
-            {% endfor %}
+        <h4 class="spaced-heading"> {{ p.project }}
+            <a class="add-role round-button" data-name="{{p.project}}" title="Add Role">+</a>
+        </h4>
+        <div id="id_project{{p.project.id}}_container">
+            {% for field in p %}
+            <div class="removable-field">
+                {{ field }}
             </div>
+            {% endfor %}
+        </div>
         {% endfor %}
         {% endif %}
         {% csrf_token %}
         <div>
-        <button class="btn" type="submit">Save</button>
+            <button class="btn" type="submit">Save</button>
         </div>
     </form>
 </div>
-    <script type="text/javascript" src="{{site.basepath}}resources/js/profile-set.js"></script>
+<script type="text/javascript" src="{{site.basepath}}resources/js/profile-set.js"></script>
 {% endblock %}
