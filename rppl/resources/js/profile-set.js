@@ -63,7 +63,8 @@ document.querySelector('.add-link').addEventListener('click',
                     }
 
                     addDeleteButton(roleDiv);
-                    link.parentNode.appendChild(roleDiv);
+                    container_name = '#id_project' + id + '_container';
+                    document.querySelector(container_name).appendChild(roleDiv);
                 }, false);
         });
 
@@ -73,7 +74,9 @@ var removeContainer = function(element) {
 
 var addDeleteButton = function(field) {
     var delButton = document.createElement('a');
+    delButton.appendChild(document.createTextNode('x'))
     delButton.classList.add('icon-delete');
+    delButton.title = "Remove"
     delButton.addEventListener('click', function() { removeContainer(delButton) }, false);
     field.appendChild(delButton)
 };

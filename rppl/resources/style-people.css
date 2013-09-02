@@ -128,11 +128,12 @@ a.add-link, a.add-role {
 }
 
 .icon-delete {
-    background:url('/resources/images/button-delete.png') top left no-repeat;
-    background-size:16px 16px;
-    display: inline-block;
+    position: absolute;
+    margin: 1px;
+    padding: 3px;
     width: 16px;
-    height: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 .clear {
     clear: both;
@@ -358,4 +359,28 @@ ul .date {
 
 .edit {
   font-size: 15px;
+}
+
+.spaced-heading {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.link-field input{
+  min-width: 244px;
+  background: #f8f8f8;
+}
+
+select {
+  padding:3px;
+  margin: 1px;
+  width: 120px;
+  background: #f8f8f8;
+  border:none;
+  outline:none;
+  display: inline-block;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  cursor:pointer;
 }
