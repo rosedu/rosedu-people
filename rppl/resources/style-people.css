@@ -391,3 +391,23 @@ select {
 .content {
   margin-top: 25px;
 }
+
+ul ul.errorlist li {
+  list-style-type: none;
+  visibility: visible;
+  padding: 4px;
+  border: 2px;
+  border-radius: 10%;
+  border-style: solid;
+  border-color: #ccc;
+  background-color: rgba(256, 0, 0, .3);
+}
+
+.errorlist li {
+  visibility: hidden;
+  padding-left: 0;
+}
+
+ul.errorlist {
+  margin-left: 0;
+}
