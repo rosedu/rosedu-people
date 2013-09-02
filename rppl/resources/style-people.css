@@ -150,6 +150,8 @@ a.add-link, a.add-role {
     text-align: center;
     background: #EEEEEE;
     border-radius: 5px 5px 5px 5px;
+    width: 200px;
+    height: 120px;
 }
 
 .activity_list {
@@ -314,8 +316,11 @@ ul .date {
 
 .project-image {
     height: 150px;
-    max-width: 300px;
+    width: 300px;
     margin: 15px;
+    background-size: 100%;
+    background-color: #ccc;
+    float: left;
 }
 
 .avatar-tiny {
@@ -383,4 +388,8 @@ select {
   -moz-appearance:none;
   appearance:none;
   cursor:pointer;
+}
+
+.content {
+  margin-top: 25px;
 }
