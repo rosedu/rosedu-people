@@ -128,11 +128,12 @@ a.add-link, a.add-role {
 }
 
 .icon-delete {
-    background:url('/resources/images/button-delete.png') top left no-repeat;
-    background-size:16px 16px;
-    display: inline-block;
+    position: absolute;
+    margin: 1px;
+    padding: 3px;
     width: 16px;
-    height: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 .clear {
     clear: both;
@@ -149,6 +150,8 @@ a.add-link, a.add-role {
     text-align: center;
     background: #EEEEEE;
     border-radius: 5px 5px 5px 5px;
+    width: 200px;
+    height: 120px;
 }
 
 .activity_list {
@@ -312,9 +315,11 @@ ul .date {
 }
 
 .project-image {
-    height: 150px;
-    max-width: 300px;
+    width: 300px;
     margin: 15px;
+    background-size: 100%;
+    background-color: #ccc;
+    float: left;
 }
 
 .avatar-tiny {
@@ -337,7 +342,6 @@ ul .date {
 
 .edition-photo {
     width: 100%;
-    height: 100%;
 }
 
 .edition-people {
@@ -358,4 +362,52 @@ ul .date {
 
 .edit {
   font-size: 15px;
+}
+
+.spaced-heading {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.link-field input{
+  min-width: 244px;
+  background: #f8f8f8;
+}
+
+select {
+  padding:3px;
+  margin: 1px;
+  width: 120px;
+  background: #f8f8f8;
+  border:none;
+  outline:none;
+  display: inline-block;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  cursor:pointer;
+}
+
+.content {
+  margin-top: 25px;
+}
+
+ul ul.errorlist li {
+  list-style-type: none;
+  visibility: visible;
+  padding: 4px;
+  border: 2px;
+  border-radius: 10%;
+  border-style: solid;
+  border-color: #ccc;
+  background-color: rgba(256, 0, 0, .3);
+}
+
+.errorlist li {
+  visibility: hidden;
+  padding-left: 0;
+}
+
+ul.errorlist {
+  margin-left: 0;
 }
