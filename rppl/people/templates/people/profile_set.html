@@ -15,6 +15,9 @@ var projectId = {{ project_id }}
         <table>
             {{ user_data.as_table }}
         </table>
+        {% if user_data.errors %}
+        {{user_data.errors}}
+        {% endif %}
         <a href="/password_change">Change password</a>
         <h3 class="spaced-heading"> Links
             <a class="add-link round-button" title="Add link">+</a>
