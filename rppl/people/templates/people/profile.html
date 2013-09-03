@@ -7,34 +7,34 @@
     <img class="avatar" src="{% gravatar person %}" />
 </div>
 
-{% if user.id == person.id %}
-<a class="edit" href="{% url profile-setup person.id %}">Edit Profile</a>
-{% endif %}
-<h1>{{ person.name }}</h1>
-<div class="email">{{ person.email }}</div>
-<div class="description">{{ person.description }}</div>
-
-<div class="links">
+<div id="profile-info-container">
+    {% if user.id == person.id %}
+    <a class="edit" href="{% url profile-setup person.id %}">Edit Profile</a>
+    {% endif %}
+    <h1>{{ person.name }}</h1>
+    <div class="description">{{ person.description }}</div>
+    <div class="clear"></div>
     {% for ln in person.link_set.all %}
-    <div class="align-left">{% icon ln.url %}</div>
+    <div class="align-left icon">{% icon ln.url %}</div>
     {% endfor %}
+
 </div>
 
-<br><br>
 {% if roles %}
-<div class="clear"><h2>Activity</h2></div>
+<div class="clear"></div>
+<h2>Activity</h2>
 {% endif %}
 
 <div>
-<div>
-<ul>
-{% for pr in roles %}
-    {% ifchanged pr.edition.project %}
-    </ul>
+    <div>
+        <ul>
+            {% for pr in roles %}
+            {% ifchanged pr.edition.project %}
+        </ul>
     </div>
-    </div>
+</div>
 
-    <div class="align-left activity-container">
+<div class="align-left activity-container">
 
     <a href="{% url project-detail pr.edition.project.id %}">
         <div class="activity_logo">
@@ -44,12 +44,12 @@
     </a>
 
     <div class="activity_list">
-    <ul>
-    {% endifchanged %}
-    <li>{{ pr.role|title }} at {{ pr.edition.project }} - {{ pr.edition|title }}</li>
-{% endfor %}
-</ul>
-</div>
+        <ul>
+            {% endifchanged %}
+            <li>{{ pr.role|title }} at {{ pr.edition.project }} - {{ pr.edition|title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 <div class="clear"></div>
