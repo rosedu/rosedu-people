@@ -147,8 +147,8 @@ class ProfileSetForm(forms.ModelForm):
                   'description')
 
     def clean(self):
-        if len(self.cleaned_data['description'].split(' ')) > 200:
-            raise ValidationError("Too many words")
+        if len(self.cleaned_data['description']) > 256:
+            raise ValidationError("Description too long. Use 256 characters")
         else:
             return self.cleaned_data
 
