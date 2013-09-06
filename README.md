@@ -8,7 +8,11 @@ Display community activity.
     cd rppl
     mkdir data
     ./manage.py syncdb
-    ./manage.py loaddata ../initial.json
+    ./manage.py migrate
+	./manage.py loaddata ../initial.json
     ./manage.py runserver localhost:8000
 
+## How to use South
 
+	./manage.py schemamigration people --auto
+	./manage.py migrate people
