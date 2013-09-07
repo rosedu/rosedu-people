@@ -9,10 +9,12 @@ from django.views.generic import (TemplateView, DetailView, ListView,
                                   FormView)
 from django.views.generic.edit import UpdateView
 
+
 from decorators import same_user_from_request_required
 from forms import (ProfileSetForm, LinkSetForm, ProjectRoleForm,
                    ProfileCreateForm)
 from models import Person, Project, Edition, Role, PersonRole
+from braces.views import LoginRequiredMixin
 
 
 class Overview(TemplateView):
@@ -30,7 +32,9 @@ class Overview(TemplateView):
         }
 
 
-class Profile(DetailView):
+class Profile(LoginRequiredMixin,
+              DetailView):
+
     template_name = 'people/profile.html'
     model = Person
     context_object_name = 'person'
@@ -47,17 +51,25 @@ class Profile(DetailView):
         return context
 
 
-class Projects(ListView):
+class Projects(LoginRequiredMixin,
+               ListView):
+
+    permission_required = "elsgg.view_wholesale"
     template_name = 'people/projects.html'
     model = Project
 
 
-class ProjectDetail(DetailView):
+class ProjectDetail(LoginRequiredMixin,
+                    DetailView):
+
     template_name = 'people/project.html'
     model = Project
     context_object_name = 'project'
 
-class ProfileCreate(FormView):
+
+class ProfileCreate(LoginRequiredMixin,
+                    FormView):
+
     template_name = 'people/profile_create.html'
     form_class = ProfileCreateForm
     success_url = '/'
@@ -71,9 +83,12 @@ class ProfileCreate(FormView):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('profile', user.pk)
-        return render(request, self.template_name, { 'form' : form })
+        return render(request, self.template_name, {'form': form})
 
-class ProfileSetup(UpdateView):
+
+class ProfileSetup(LoginRequiredMixin,
+                   UpdateView):
+
     template_name = 'people/profile_set.html'
     model = Person
     context_object_name = 'person'
@@ -107,7 +122,6 @@ class ProfileSetup(UpdateView):
 
         # Redirect to user profile.
         return redirect('profile', self.object.pk)
-
 
     def get_context_data(self, **kwargs):
         context = super(ProfileSetup, self).get_context_data(**kwargs)
