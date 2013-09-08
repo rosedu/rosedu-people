@@ -20,7 +20,7 @@
     <div class="edition">
         <div> {{ e }} <div class='project-date'>{{ e.date_start }} - {{ e.date_end }} </div></div>
         <div class="edition-photo-container">
-            <img class="edition-photo" src="{{ e.logo_url }}" />
+            <img class="edition-photo" src="{{ e.picture_url }}" />
         </div>
         <div class="edition-people">
             {% for pr in e.person_roles.all %}
