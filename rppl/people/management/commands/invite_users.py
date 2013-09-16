@@ -76,5 +76,5 @@ class Command(BaseCommand):
                           'people@rosedu.org',
                           [email])
 
-		person.save()
+                person.save()
                 print 'Invited %s %s' % (first_name, last_name)
