@@ -90,6 +90,9 @@ class Edition(models.Model):
     def person_roles(self):
         return PersonRole.objects.filter(edition=self).order_by('role')
 
+    def picture_url(self):
+        return "/resources/upload/" + os.path.basename(self.picture.url) if self.picture else ''
+
     def __unicode__(self):
         return self.name
 
