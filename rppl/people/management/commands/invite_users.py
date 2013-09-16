@@ -20,6 +20,8 @@ bugurile critice suntem gata să-i dăm drumul pentru întreaga comunitate!
 Pentru idei/feedback vă rugăm puneți un issue pe Github[2] sau trimiteți
 un mail la people@rosedu.org
 
+Pentru a adăuga proiecte sau ediții folosiți meniul de admin[3]
+
 --Parola este cunoscută doar de tine si este generată automat
   Nu răspunde la acest email, e automat :)
 
@@ -28,6 +30,7 @@ Dev Team
 
 [1] http://people.rosedu.org
 [2] https://github.com/rosedu/rosedu-people/issues?milestone=3&state=open
+[3] http://people.rosedu.org/admin
 """
 
 
