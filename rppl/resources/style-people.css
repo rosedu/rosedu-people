@@ -323,7 +323,6 @@ ul .date {
     width: 300px;
     margin: 15px;
     background-size: 100%;
-    background-color: #ccc;
     float: left;
 }
 
@@ -415,4 +414,14 @@ ul ul.errorlist li {
 
 ul.errorlist {
   margin-left: 0;
+}
+
+.disclaimer {
+  width: 500px;
+  margin: auto;
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: rgba(256, 256, 0, .5);
+  border-radius: 20px;
+  text-align: center;
 }

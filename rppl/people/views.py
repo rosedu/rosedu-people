@@ -1,7 +1,6 @@
 from random import shuffle
 
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils.simplejson import dumps
 from django.utils.decorators import method_decorator
@@ -17,7 +16,8 @@ from models import Person, Project, Edition, Role, PersonRole
 from braces.views import LoginRequiredMixin
 
 
-class Overview(TemplateView):
+class Overview(LoginRequiredMixin,
+               TemplateView):
     NO_ACTIVITIES = 10
     GRID_LINE = 12
     template_name = 'people/overview.html'
@@ -94,7 +94,6 @@ class ProfileSetup(LoginRequiredMixin,
     context_object_name = 'person'
     success_url = '/'
 
-    @method_decorator(login_required)
     @method_decorator(same_user_from_request_required)
     def dispatch(self, *args, **kwargs):
         """Decorated for authorization and authentication"""
