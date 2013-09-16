@@ -132,7 +132,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.contrib.messages.context_processors.messages',
 
-    'context_processors.site',
+    'rppl.context_processors.site',
 )
 
 INSTALLED_APPS = (
