@@ -9,28 +9,30 @@ from people.models import Person
 EMAIL_TEXT = \
 """Salut %s,
 
-Acesta este contul tău pentru ROSEdu People[1]
+Acesta este contul tau pentru ROSEdu People[1]
 Username: %s
 Password: %s
 
-Momentan accesul este restricționat numai pentru câțiva utilizatori.
-De îndată ce aducem conținut pentru proiecte pe site și rezolvăm
-bugurile critice suntem gata să-i dăm drumul pentru întreaga comunitate!
+Pentru a schimba parola, poti intra aici[2]
 
-Pentru idei/feedback vă rugăm puneți un issue pe Github[2] sau trimiteți
-un mail la people@rosedu.org
+Momentan accesul este restrictionat numai pentru cativa utilizatori.
+De indata ce aducem continut pentru proiecte pe site si rezolvam bugurile critice
+suntem gata sa-i dam drumul pentru intreaga comunitate!
 
-Pentru a adăuga proiecte sau ediții folosiți meniul de admin[3]
+Pentru idei/feedback poti pune un issue pe Github[3] sau trimite un mail la people@rosedu.org
 
---Parola este cunoscută doar de tine si este generată automat
-  Nu răspunde la acest email, e automat :)
+Pentru a adauga proiecte sau editii folositi meniul de admin[4]
+
+--Parola este cunoscuta doar de tine si este generata automat
+  Nu raspunde la acest email, e automat :)
 
 ROSEdu People
 Dev Team
 
 [1] http://people.rosedu.org
-[2] https://github.com/rosedu/rosedu-people/issues?milestone=3&state=open
-[3] http://people.rosedu.org/admin
+[2] http://people.rosedu.org/password_change/
+[3] https://github.com/rosedu/rosedu-people/issues?milestone=3&state=open
+[4] http://people.rosedu.org/admin
 """
 
 
@@ -53,7 +55,7 @@ class Command(BaseCommand):
                 if line == '':
                     continue
 
-                (last_name, first_name, username, email) = line.split(' ')
+                (last_name, first_name, email, username) = line.split(' ')
 
                 password_chars = string.ascii_lowercase + string.digits
                 password = ''.join(random.choice(password_chars)
@@ -73,6 +75,6 @@ class Command(BaseCommand):
                           mail_text,
                           'people@rosedu.org',
                           [email])
-                person.save()
 
+		person.save()
                 print 'Invited %s %s' % (first_name, last_name)
