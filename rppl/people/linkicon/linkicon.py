@@ -1,10 +1,12 @@
-import json
 import re
 
 class LinkIcon:
     links = {
                 ".*facebook\.com/.*": "facebook",
-                ".*plus\.google\.com/.*": "googleplus"
+                ".*plus\.google\.com/.*": "googleplus",
+                ".*twitter\.com/.*": "twitter",
+                ".*github\.com/.*": "github",
+                ".*linkedin\.com/.*": "linkedin"
             }
 
     @classmethod

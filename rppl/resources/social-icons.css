@@ -1,0 +1,32 @@
+.icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-size:32px 32px;
+}
+
+.icon-not_supported {
+    background:url('/resources/images/social-icons/website-32x32.png') top left no-repeat;
+}
+
+.icon-facebook {
+    background:url('/resources/images/social-icons/facebook-32x32.png') top left no-repeat;
+}
+
+.icon-googleplus {
+    background:url('/resources/images/social-icons/google+-32x32.png') top left no-repeat;
+}
+
+.icon-twitter {
+    background:url('/resources/images/social-icons/twitter-32x32.png') top left no-repeat;
+}
+
+.icon-linkedin {
+    background:url('/resources/images/social-icons/linkedin-32x32.png') top left no-repeat;
+}
+
+.icon-github {
+    background:url('/resources/images/social-icons/github-32x32.png') top left no-repeat;
+}
+
+
