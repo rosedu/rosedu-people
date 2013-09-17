@@ -115,22 +115,6 @@ a.add-link, a.add-role {
   width: 75%;
 }
 
-.icon {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-}
-
-.icon-facebook {
-    background:url('/resources/images/button-facebook.png') top left no-repeat;
-    background-size:30px 30px;
-}
-
-.icon-googleplus {
-    background:url('/resources/images/button-gplus.png') top left no-repeat;
-    background-size:30px 30px;
-}
-
 .icon-delete {
     position: absolute;
     margin: 1px;
