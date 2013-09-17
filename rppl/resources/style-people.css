@@ -315,6 +315,10 @@ ul .date {
     margin: 1px;
 }
 
+.profile-project-logo {
+    width: 70%;
+}
+
 .edition {
     list-style: none;
     font-weight: bold;
