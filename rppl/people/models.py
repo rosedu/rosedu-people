@@ -8,14 +8,6 @@ class Person(User):
     description = models.TextField(max_length=2000, blank=True)
     organisations = models.ManyToManyField('Organization',  blank=True, null=True, related_name="persons")
 
-
-    @property
-    def projects(self):
-        """
-        A list of projects this person participated to
-        """
-        return Project.objects.filter(editions__in=self.person_roles.values('edition')).distinct()
-
     @property
     def person_roles(self):
         return PersonRole.objects.filter(person=self).order_by('edition')
@@ -73,18 +65,6 @@ class Edition(models.Model):
     date_start = models.DateField(default=datetime.now)
     date_end = models.DateField(default=datetime.now)
     persons = models.ManyToManyField(Person, through='PersonRole', blank=True)
-
-    def add_person(self, person, role, timestamp=None):
-        """
-        Add a person role to this edition
-        """
-        if not isinstance(role, Role):
-            role = Role.objects.get_or_create(name=role)[0]
-
-        if timestamp:
-            PersonRole.objects.create(person=person, edition=self, role=role, timestamp=timestamp)
-        else:
-            PersonRole.objects.create(person=person, edition=self, role=role)
 
     @property
     def person_roles(self):
