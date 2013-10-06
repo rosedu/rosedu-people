@@ -8,14 +8,6 @@ class Person(User):
     description = models.TextField(max_length=2000, blank=True)
     organisations = models.ManyToManyField('Organization',  blank=True, null=True, related_name="persons")
 
-
-    @property
-    def projects(self):
-        """
-        A list of projects this person participated to
-        """
-        return Project.objects.filter(editions__in=self.person_roles.values('edition')).distinct()
-
     @property
     def person_roles(self):
         return PersonRole.objects.filter(person=self).order_by('edition')
