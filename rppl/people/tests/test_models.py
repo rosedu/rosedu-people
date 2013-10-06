@@ -1,5 +1,5 @@
 from django.test import TestCase
-from models import Person, Project, Edition, Role, PersonRole
+from people.models import Person, Project, Edition, Role, PersonRole
 
 
 class ModelsTest(TestCase):
