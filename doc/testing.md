@@ -24,3 +24,25 @@ rppl
 
 Each of the files contains tests for the models views and forms found in the
 application.
+
+If you need to create an instance of some model use factory instdead of
+Model.objects.create().
+You can find factories in:
+
+```
+rppl
+|-- people
+|   |-- factories
+|   | |-- {model_name}_factory.py
+```
+
+## Tests for Bugs
+
+The flow for solving a bug is:
+- create a [regression test](http://en.wikipedia.org/wiki/Regression_testing)
+  to reproduce the bug - if it's possible (90% is possible)
+- fix the bug and see that the regression test is failing
+- fix the test
+
+Add the bug's issue number in the test's docstring.
+
