@@ -74,18 +74,6 @@ class Edition(models.Model):
     date_end = models.DateField(default=datetime.now)
     persons = models.ManyToManyField(Person, through='PersonRole', blank=True)
 
-    def add_person(self, person, role, timestamp=None):
-        """
-        Add a person role to this edition
-        """
-        if not isinstance(role, Role):
-            role = Role.objects.get_or_create(name=role)[0]
-
-        if timestamp:
-            PersonRole.objects.create(person=person, edition=self, role=role, timestamp=timestamp)
-        else:
-            PersonRole.objects.create(person=person, edition=self, role=role)
-
     @property
     def person_roles(self):
         return PersonRole.objects.filter(edition=self).order_by('role')
