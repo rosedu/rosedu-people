@@ -33,7 +33,7 @@ You can find factories in:
 rppl
 |-- people
 |   |-- factories
-|   | |-- {model_name}_factory.py
+|   |   |-- {model_name}_factory.py
 ```
 
 ## Tests for Bugs
@@ -41,8 +41,7 @@ rppl
 The flow for solving a bug is:
 - create a [regression test](http://en.wikipedia.org/wiki/Regression_testing)
   to reproduce the bug - if it's possible (90% is possible)
-- fix the bug and see that the regression test is failing
-- fix the test
+- fix the bug and see that the regression test passes
 
 Add the bug's issue number in the test's docstring.
 
