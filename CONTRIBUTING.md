@@ -52,7 +52,21 @@ In order to have the code linked with the issue it solves the following flow is 
 TODO - creating branches
 
 ##### You don't have access to this repo.
-TODO - using forks
+- Fork this project and add the upstream remote. Detailed instructions are found [here](https://help.github.com/articles/fork-a-repo)
+
+#### Common steps
+- Create a branch named {{issue_number}}-small-description-of-issue
+
+```
+$ git checkout -b 42-end-to-world-hunger
+```
+
+- Start working on the issue.
+- Use commits that make only one change. Include the issue number in the commit.
+
+```
+$ git commit -m "Give food to random strangers #42"
+```
 
 TODO - issue number in commit, pull requests using hub.
 
