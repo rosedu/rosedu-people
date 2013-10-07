@@ -4,7 +4,7 @@ An issue must be specified so everyone who reads it and knows how People looks l
 
 We want the issues to be specified this way in order to make any developer, new or with experience, understand the __problem__ and implement it as good as he can.
 
-A good starting template is this one:
+A good starting template is this one. You can copy/paste it from [here](https://raw.github.com/rosedu/rosedu-people/master/doc/issue_template.md)
 
 #### Need
 
@@ -28,6 +28,9 @@ _You can add documents, blogposts, links to code._
 
 - [Mihai B on world peace](http://mihaibivol.worldpeace.org)
 - [Current implementation of WorldPeace class](http://somelinktoafile)
+
+#### Solution
+_If you know the basic steps of implementing it, share with others_
 
 ## Working on an issue
 
