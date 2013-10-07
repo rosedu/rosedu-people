@@ -6,7 +6,7 @@ If you know the steps of __reproducing__ the bug please share them.
 
 ## Creating an issue
 
-An issue must be specified so everyone who reads it and knows how People looks like knows __what__ must be done and __why__.
+An issue must be specified so __everyone__ who reads it and knows how People looks like, knows __what__ must be done and __why__.
 
 We want the issues to be specified this way in order to make any developer, new or with experience, understand the __problem__ and implement it as good as he can.
 
