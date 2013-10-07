@@ -56,22 +56,19 @@ TODO - creating branches
 
 #### Common steps
 - Create a branch named {{issue_number}}-small-description-of-issue
-
 ```
 $ git checkout -b 42-end-to-world-hunger
 ```
 
 - Start working on the issue.
 - Use commits that make only one change. Include the issue number in the commit.
-
 ```
 $ git commit -m "Give food to random strangers #42"
 ```
 
 - Push to a remote branch named as the local one. Please use the __explicit__ push command.
-
 ```
-$ git push origin 42-end-world-hunger
+$ git push origin 42-end-to-world-hunger
 ```
 
 - You think you are done. Run the tests suite
@@ -81,7 +78,6 @@ $ git push origin 42-end-world-hunger
 
 - If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](TODO) to do that.
 You will see that the issue will be transformed in a pull-request.
-
 ```
 TODO hub command example
 ```
