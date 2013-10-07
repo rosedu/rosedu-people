@@ -1,10 +1,12 @@
+These guidelines are here to help people collaborate, learn and contribute to a great Open Source Software project!
+
 ## Creating an issue
 
 An issue must be specified so everyone who reads it and knows how People looks like knows __what__ must be done and __why__.
 
 We want the issues to be specified this way in order to make any developer, new or with experience, understand the __problem__ and implement it as good as he can.
 
-A good starting template is this one. You can copy/paste it from [here](https://raw.github.com/rosedu/rosedu-people/master/doc/issue_template.md)
+A good starting template is this one. You can copy/paste it from [here](https://raw.github.com/rosedu/rosedu-people/master/doc/issue_template.md).
 
 #### Need
 
@@ -30,7 +32,7 @@ _You can add documents, blogposts, links to code._
 - [Current implementation of WorldPeace class](http://somelinktoafile)
 
 #### Solution
-_If you know the basic steps of implementing it, share with others_
+_If you know the basic steps of implementing it, share with others!_
 
 ## Working on an issue
 
@@ -40,6 +42,7 @@ To help __others__ understand how you approached the problem please update the i
 If you encounter problems, please share them in the comments.
 
 #### Git, hub and magic
+In order to have the code linked with the issue it solves the following flow is preffered.
 
 ##### You have access to this repo.
 TODO - creating branches
@@ -47,7 +50,7 @@ TODO - creating branches
 ##### You don't have access to this repo.
 TODO - using forks
 
-TODO - common steps, pull requests using hub.
+TODO - issue number in commit, pull requests using hub.
 
 TODO - run the test suite!
 TODO - code review
