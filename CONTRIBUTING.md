@@ -48,13 +48,10 @@ If you encounter problems, please share them in the comments.
 #### Git, hub and magic
 In order to have the code linked with the issue it solves the following flow is preffered.
 
-##### You have access to this repo.
-TODO - creating branches
-
 ##### You don't have access to this repo.
 - Fork this project and add the upstream remote. Detailed instructions are found [here](https://help.github.com/articles/fork-a-repo)
 
-#### Common steps
+#### Basic steps
 - Create a branch named {{issue_number}}-small-description-of-issue
 ```
 $ git checkout -b 42-end-to-world-hunger
@@ -76,15 +73,21 @@ $ git push origin 42-end-to-world-hunger
 ./manage.py test
 ```
 
-- If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](TODO) to do that.
-You will see that the issue will be transformed in a pull-request.
+- If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](https://github.com/github/hub) to do that.
+You will see that the issue will be transformed in a pull-request containing the issue description shown above.
 ```
-$ hub pull-request -i 42 -b rosedu:rosedu-people -h yourname:42-end-to-wolrd-hunger
+$ hub pull-request -i 42 -b rosedu:rosedu-people -h $GITHUB_USER:42-end-to-wolrd-hunger #If you have access to the repo $GITHUB_USER is rosedu
 ```
-If you use the ROSEdu repo instead of yourname you have to add rosedu.
-
-If you go to the link you will see that the issue you worked on has changed in to a pull-request
 
 - Ask for a code review using @reviewer_name tags in comments
-- If the pull request can't be merged please merge the master branch into your branch
+- If the pull request can't be merged please merge the master branch into your branch.
+```bash
+# if working on a fork
+$ git fetch upstream
+$ git merge master
+# if working on the rosedu repo
+$ git fetch origin
+$ git merge master
+```
+- Congratulations! You have made a contribution to this project!
 
