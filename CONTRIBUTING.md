@@ -1,5 +1,9 @@
 These guidelines are here to help people collaborate, learn and contribute to a great Open Source Software project!
 
+## Submitting a bug
+If you submit a bug please add a screenshot or description of the __effect__. Github knows to upload pictures from clipboard :).
+If you know the steps of __reproducing__ the bug please share them.
+
 ## Creating an issue
 
 An issue must be specified so everyone who reads it and knows how People looks like knows __what__ must be done and __why__.
