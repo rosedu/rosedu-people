@@ -79,6 +79,12 @@ $ git push origin 42-end-to-world-hunger
 - If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](TODO) to do that.
 You will see that the issue will be transformed in a pull-request.
 ```
-TODO hub command example
+$ hub pull-request -i 42 -b rosedu:rosedu-people -h yourname:42-end-to-wolrd-hunger
 ```
+If you use the ROSEdu repo instead of yourname you have to add rosedu.
+
+If you go to the link you will see that the issue you worked on has changed in to a pull-request
+
+- Ask for a code review using @reviewer_name tags in comments
+- If the pull request can't be merged please merge the master branch into your branch
 
