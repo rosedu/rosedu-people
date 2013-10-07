@@ -68,7 +68,21 @@ $ git checkout -b 42-end-to-world-hunger
 $ git commit -m "Give food to random strangers #42"
 ```
 
-TODO - issue number in commit, pull requests using hub.
+- Push to a remote branch named as the local one. Please use the __explicit__ push command.
 
-TODO - run the test suite!
-TODO - code review
+```
+$ git push origin 42-end-world-hunger
+```
+
+- You think you are done. Run the tests suite
+```
+./manage.py test
+```
+
+- If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](TODO) to do that.
+You will see that the issue will be transformed in a pull-request.
+
+```
+TODO hub command example
+```
+
