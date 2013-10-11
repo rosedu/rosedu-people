@@ -12,7 +12,7 @@ We want the issues to be specified this way in order to make any developer, new 
 
 A good starting template is this one. You can copy/paste it from [here](https://raw.github.com/rosedu/rosedu-people/master/doc/issue_template.md).
 
-An example of the workflow is #73
+An example of the workflow is [this one](https://github.com/rosedu/rosedu-people/pull/73)
 #### Need
 
 ``` gherkin
