@@ -84,10 +84,10 @@ $ hub pull-request -i 42 -b rosedu:rosedu-people -h $GITHUB_USER:42-end-to-wolrd
 ```bash
 # if working on a fork
 $ git fetch upstream
-$ git merge master
+$ git merge upstream/master
 # if working on the rosedu repo
 $ git fetch origin
-$ git merge master
+$ git merge origin/master
 ```
 - Congratulations! You have made a contribution to this project!
 
