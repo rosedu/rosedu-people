@@ -140,7 +140,7 @@ a.add-link, a.add-role {
     background: #EEEEEE;
     border-radius: 5px 5px 5px 5px;
     width: 200px;
-    height: 120px;
+    min-height: 120px;
 }
 
 .activity_list {
