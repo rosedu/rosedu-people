@@ -20,8 +20,8 @@ var highlightName = function () {
 		[].forEach.call(hidden, function(el) {
 			el.classList.remove('search-hidden');
 		});
-	} else
-		[].forEach.call(persons, function(p){
+	} else {
+        [].forEach.call(persons, function(p){
 			p.classList.remove('search-highlight');
 			p.classList.remove('search-hidden');
 
@@ -34,6 +34,11 @@ var highlightName = function () {
 				}
 			}
 		});
+
+        [].forEach.call(document.querySelectorAll('.person.blank'), function(b) {
+            b.classList.add('search-hidden');
+        });
+    }
 };
 
 [].forEach.call( document.querySelectorAll('.person'),
