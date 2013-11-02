@@ -77,7 +77,7 @@ $ git push origin 42-end-to-world-hunger
 - If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](https://github.com/github/hub) to do that.
 You will see that the issue will be transformed in a pull-request containing the issue description shown above.
 ```
-$ hub pull-request -i 42 -b rosedu:rosedu-people -h $GITHUB_USER:42-end-to-wolrd-hunger #If you have access to the repo $GITHUB_USER is rosedu
+$ hub pull-request -i 42 -b rosedu:master-h $GITHUB_USER:42-end-to-wolrd-hunger #If you have access to the repo $GITHUB_USER is rosedu
 ```
 
 - Ask for a code review using @reviewer_name tags in comments
