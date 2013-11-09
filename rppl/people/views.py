@@ -44,8 +44,8 @@ class Profile(LoginRequiredMixin,
         roles = sorted(context['person'].person_roles, key=lambda role: role.edition.date_start, reverse=True)
         sorted_roles = []
         while len(roles) > 0:
-            sorted_roles += filter(lambda role: role.edition.project == roles[0].edition.project, roles)
-            roles = filter(lambda role: role.edition.project != roles[0].edition.project, roles)
+            sorted_roles += [role for role in roles if role.edition.project == roles[0].edition.project]
+            roles = [role for role in roles if role.edition.project != roles[0].edition.project]
 
         context['roles'] = sorted_roles
         return context
