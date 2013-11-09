@@ -41,7 +41,7 @@ class Profile(LoginRequiredMixin,
 
     def get_context_data(self, **kwargs):
         context = super(Profile, self).get_context_data(**kwargs)
-        roles = sorted(context['person'].person_roles, key=lambda role: role.edition.date_start, reverse=True) 
+        roles = sorted(context['person'].person_roles, key=lambda role: role.edition.date_start, reverse=True)
         sorted_roles = []
         while len(roles) > 0:
             sorted_roles += filter(lambda role: role.edition.project == roles[0].edition.project, roles)
