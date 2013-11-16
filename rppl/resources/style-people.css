@@ -102,6 +102,11 @@ a.add-link, a.add-role {
     margin-right: 10px;
 }
 
+.container {
+    padding-top: 30px;
+    display: table-cell;
+}
+
 .description {
     font-style: italic;
     padding-top: 10px;
