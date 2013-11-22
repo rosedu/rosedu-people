@@ -1,18 +1,125 @@
-{% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load people %}
 
 {% block content %}
-<h2>Projects</h2>
-</br>
+<ul class="grid" >
 {% for p in object_list %}
-<div class="activity clear">
-    <h3>{{ p }}</h3>
-    <a href="{% url project-detail p.id %}">
-    <img src="{{ p.logo_url }}" class="project-image"></img>
-    </a>
-    <div class="content">{{ p.description }}</div>
-    <a href="{% url project-detail p.id %}">Details</a>
-</div>
+<li>
+<ul class="entry">
+    <li><div class="info hidden">
+        <img src="{{ p.logo_url }}" style="width: 200px;"/>
+
+
+        <h3 style="display: inline-block; float: right; width: 50%; text-align: center; position: absolute; top: 10px;">{{ p }}</h3>
+        <div>{{ p.description }}
+        </div>
+    </div></li>
+    <li><div class="info hidden">
+        <img src="{{ p.logo_url }}" style="width: 200px;"/>
+        <h3 style="display: inline-block; float: right; width: 50%; text-align: center; position: absolute; top: 10px;"> {{ p }}</h3>
+        <div>
+       {{ p.description }}
+        </div>
+    </div></li>
+</ul>
+</li>
 {% endfor %}
+</ul>
 
 {% endblock %}
+
+<style>
+li {
+    list-style: none;
+}
+
+.grid {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.entry li {
+    list-style: none;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    background-color: #fefefe;
+    background-image: url({{ p.logo_url }} );
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:center; 
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    padding: 2px;
+    margin: 2px;
+}
+
+ul.entry {
+    margin: 0;
+}
+
+.info {
+    position: absolute;
+    background-color: #f8f8f8;
+    z-index: 10;
+    -webkit-transition: width .0s, height .3s;
+    border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+}
+
+ul.grid li ul li .info {
+    top: 0;
+    left: 0;
+}
+
+ul.grid li ul li:last-child .info {
+    right: 0;
+    left: inherit;
+}
+
+ul.grid li:last-child ul li .info {
+    bottom: 0;
+    top: inherit;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: visible;
+}
+
+
+</style>
+
+
+
+
+<script>
+$(".entry li").click(function() {
+    var info = $(this).children(".info");
+    var width_i = $(this).width();
+    var width = 2 * width_i + 3;
+    var height_i = $(this).height();
+    var height = 2 * height_i + 10;
+    
+    if ($(info).hasClass("visible")) {
+        $(info).removeClass("visible").width(width_i).height(height_i).addClass("hidden");
+        return;
+    }
+    
+    $(".info").removeClass("visible").width(width_i).height(height_i).addClass("hidden");
+    
+    if ($(info).hasClass("hidden")) {
+        $(info).removeClass("hidden").addClass("visible").width(width).height(height);
+    }
+});
+                     
+
+</script>
