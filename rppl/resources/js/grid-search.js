@@ -54,7 +54,7 @@ var highlightName = function () {
             }
         });
 
-alphabet.sort();
+alphabet.sort(function (a,b){return a.localeCompare(b);});
 
 alphabet.forEach(function(e) {
 	var li = document.createElement('li');
