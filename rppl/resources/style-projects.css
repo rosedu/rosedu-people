@@ -14,6 +14,11 @@ ul.grid li img
 
 }
 
+ul.grid li h3
+{
+    text-align: center;
+}
+
 ul.grid li a 
 {
     width: 300px; 
