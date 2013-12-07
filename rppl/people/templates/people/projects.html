@@ -1,4 +1,4 @@
- {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load people %}
 
 {% block content %}
@@ -7,17 +7,15 @@
 
 <ul class="grid">
     {% for p in object_list %}
-    <li>
-    <a href="{% url project-detail p.id %}">
-        <img src="{{ p.logo_url }}" />
-    </a>
-    
-        <div class="hidden">
+    <li class="description-top">
+        <a href="{% url project-detail p.id %}">
+            <img src="{{ p.logo_url }}" />
+        </a>
+        <div class="hidden description-bottom">
             <h3 >{{p}}</h3>
-            <p> {{ p.description }}</p> 
+            <p> {{ p.description }}</p>
         </div>
     </li>
-   
 {% endfor %}
 </ul>
 </br> </br></br></br>
