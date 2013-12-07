@@ -2,16 +2,21 @@
 {% load people %}
 
 {% block content %}
-<h2>Projects</h2>
-{% for p in object_list %}
-<div class="activity clear">
-    <h3>{{ p }}</h3>
-    <a href="{% url project-detail p.id %}">
-    <img src="{{ p.logo_url }}" class="project-image"></img>
-    </a>
-    <div class="content">{{ p.description }}</div>
-    <a href="{% url project-detail p.id %}">Details</a>
-</div>
-{% endfor %}
+<link rel= "stylesheet" type="text/css" href="{{site.basepath}}resources/style-projects.css">
+<script type="text/javascript" src="{{site.basepath}}resources/js/projects-grid.js"></script>
 
+<ul class="grid">
+    {% for p in object_list %}
+    <li class="description-top">
+        <a href="{% url project-detail p.id %}">
+            <img src="{{ p.logo_url }}" />
+        </a>
+        <div class="hidden description-bottom">
+            <h3 >{{p}}</h3>
+            <p> {{ p.description }}</p>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+</br> </br></br></br>
 {% endblock %}

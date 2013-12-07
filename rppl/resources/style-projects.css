@@ -1,0 +1,62 @@
+ul.grid li
+{
+    list-style: none;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+ul.grid li img
+{
+    display: block;
+    height: 100px;
+    margin: auto;
+}
+
+ul.grid li h3
+{
+    text-align: center;
+}
+
+ul.grid li a
+{
+    width: 300px;
+    display: inline-block;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.description-top
+{
+     background-color: #e1e1e1;
+     border-radius: 5px 5px 0 0;
+     padding: 10px 0 10px 0;
+     border: solid 1px #c1c1c1;
+     margin: 5px 0 0 0;
+}
+
+.description-top:hover
+{
+    background-color: #efefef;
+}
+
+.description-bottom
+{
+    background-color: #efefef;
+    margin-bottom: 10px;
+    border-radius: 0 0 5px 5px;
+    border: solid 1px #cecece;
+    margin-left: -1px;
+    border-top: 0px;
+    position: absolute;
+    width: 300px;
+    min-height: 143px;
+}
+
+.visible
+{
+    display: visible;
+}
+
