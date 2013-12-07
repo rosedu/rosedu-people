@@ -10,8 +10,6 @@ ul.grid li img
     display: block;
     height: 100px;
     margin: auto;
-
-
 }
 
 ul.grid li h3
@@ -27,8 +25,7 @@ ul.grid li a
 
 .hidden
 {
-    display: none;
-    
+    display: none;    
 }
 
 .visible
