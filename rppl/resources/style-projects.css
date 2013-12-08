@@ -60,3 +60,7 @@ ul.grid li a
     display: visible;
 }
 
+.spacer
+{
+    height: 100px;
+}
