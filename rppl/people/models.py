@@ -91,9 +91,3 @@ class PersonRole(models.Model):
     role = models.ForeignKey(Role)
     timestamp = models.DateTimeField(default=datetime.now)
 
-def some_func(some_arg):
-    for i in range(100):
-        for j in range(100):
-            for k in range(100):
-                i = j + k
-    return 42
