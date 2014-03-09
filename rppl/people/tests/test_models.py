@@ -21,6 +21,5 @@ class TestOrganization(TestCase):
 	organization = OrganizationFactory(url=url)
  
 	self.assertEqual(str(organization),url,
-                         "Oops! Something went wrong!")
-
+                         "Conversion to unicode is broken.")
 
