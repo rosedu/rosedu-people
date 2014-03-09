@@ -1,8 +1,8 @@
 from django.test import TestCase
 
 from people.factories.organization_factory import OrganizationFactory
-from people.models import Organization
 from people.factories.role_factory import RoleFactory
+from people.models import Organization
 
 class TestOrganization(TestCase):
 
