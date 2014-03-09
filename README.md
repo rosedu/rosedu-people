@@ -12,10 +12,11 @@ Display community activity.
 	./manage.py loaddata ../initial.json
     ./manage.py runserver localhost:8000
     
-    Go to your favorite browser and go to http://localhost:8000
+Go to your favorite browser and go to [http://localhost:8000](http://localhost:8000)
     
-    To enter the platform use the people/people login
-    To enter admin console go to http://localhost:8000/admin
+To enter the platform use the people/people login
+
+To enter admin console go to [http://localhost:8000/admin](http://localhost:8000/admin)
 
 ## How to use South
 
