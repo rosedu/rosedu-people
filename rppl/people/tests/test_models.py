@@ -15,3 +15,11 @@ class TestOrganization(TestCase):
                          Organization.objects.count(),
                          "A new organization was not created.")
 
+    def test_get_unicode(self):
+	""" Testing if the url works"""
+	url = "www.rosedu.org"
+	organization = OrganizationFactory(url=url)
+ 
+	self.assertEqual(str(organization),url,
+                         "Conversion to unicode is broken.")
+
