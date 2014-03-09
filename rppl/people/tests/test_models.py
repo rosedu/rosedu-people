@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from people.factories.organization_factory import OrganizationFactory
 from people.models import Organization
+from people.factories.role_factory import RoleFactory
 
 class TestOrganization(TestCase):
 
@@ -16,10 +17,21 @@ class TestOrganization(TestCase):
                          "A new organization was not created.")
 
     def test_get_unicode(self):
-	""" Testing if the url works"""
-	url = "www.rosedu.org"
-	organization = OrganizationFactory(url=url)
+        """ Testing if the url works"""
+        url = "www.rosedu.org"
+        organization = OrganizationFactory(url=url)
  
-	self.assertEqual(str(organization),url,
-                         "Conversion to unicode is broken.")
+	self.assertEqual(str(organization), url,
+                         "Organization conversion to unicode is broken.")
+                         
+                         
+class TestRole(TestCase):
+
+    def test_get_unicode(self):
+        """ Testing if the role  conversion to unicode works"""
+        name = "admin"
+        role = RoleFactory(name=name)
+
+        self.assertEqual(str(role), name,
+                        "Role conversion to unicode is broken.")
 
