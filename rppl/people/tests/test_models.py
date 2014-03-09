@@ -7,7 +7,7 @@ from people.factories.role_factory import RoleFactory
 class TestOrganization(TestCase):
 
     def test_create_organization(self):
-        """ This is an example of how to use Factories. """
+        """This is an example of how to use Factories. """
         organization_count = Organization.objects.count()
 
         organization = OrganizationFactory()
@@ -17,7 +17,7 @@ class TestOrganization(TestCase):
                          "A new organization was not created.")
 
     def test_get_unicode(self):
-        """ Testing if the url works"""
+        """Testing if the url works"""
         url = "www.rosedu.org"
         organization = OrganizationFactory(url=url)
  
@@ -28,7 +28,7 @@ class TestOrganization(TestCase):
 class TestRole(TestCase):
 
     def test_get_unicode(self):
-        """ Testing if the role  conversion to unicode works"""
+        """Testing if the role conversion to unicode works"""
         name = "admin"
         role = RoleFactory(name=name)
 
