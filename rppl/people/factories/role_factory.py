@@ -6,8 +6,5 @@ class RoleFactory(factory.django.DjangoModelFactory):
 
     FACTORY_FOR = Role
 
-    name = factory.Sequence(lambda n : "admin" + str(n) )
-
-
-
+    name = factory.Sequence(lambda n: "admin" + str(n))
 
