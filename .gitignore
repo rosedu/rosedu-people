@@ -1,3 +1,4 @@
 *.pyc
 rppl/data/
 .idea
+*~
