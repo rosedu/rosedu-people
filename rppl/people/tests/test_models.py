@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from people.factories.person_factory import PersonFactory
 from people.factories.organization_factory import OrganizationFactory
+from people.factories.person_factory import PersonFactory
 from people.factories.role_factory import RoleFactory
 from people.models import Organization
 
@@ -47,6 +47,5 @@ class TestPerson(TestCase):
 
         self.assertEqual(str(person), first_name + ' ' + last_name,
                          "Person to unicode doesn't return name.")
-
 
 
