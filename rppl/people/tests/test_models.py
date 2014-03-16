@@ -1,8 +1,11 @@
 from django.test import TestCase
 
 from people.factories.organization_factory import OrganizationFactory
-from people.factories.role_factory import RoleFactory
 from people.models import Organization
+
+from people.factories.project_factory import ProjectFactory
+import os.path
+
 
 class TestOrganization(TestCase):
 
@@ -24,14 +27,21 @@ class TestOrganization(TestCase):
 	self.assertEqual(str(organization), url,
                          "Organization conversion to unicode is broken.")
                          
-                         
-class TestRole(TestCase):
 
-    def test_get_unicode(self):
-        """Testing if the role conversion to unicode works"""
-        name = "admin"
-        role = RoleFactory(name=name)
-
-        self.assertEqual(str(role), name,
-                        "Role conversion to unicode is broken.")
-
+class TestProject(TestCase):
+	
+	def test_get_logo(self):
+		"""Testing if project's url exists"""
+		
+		project = ProjectFactory()
+		logo = project.logo
+		
+		expected_url = "/resources/upload/" + os.path.basename(logo.url)
+		
+		self.assertEqual(project.logo_url(), expected_url)
+		
+		project.logo = None
+		
+		self.assertEqual(project.logo_url(), 'a',
+						"Logo url should be empty if there is no logo.")
+		
