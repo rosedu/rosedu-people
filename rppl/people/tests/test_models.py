@@ -1,11 +1,11 @@
+from os import path
+
 from django.test import TestCase
 
 from people.factories.organization_factory import OrganizationFactory
 from people.factories.person_factory import PersonFactory
-from people.models import Organization
-
 from people.factories.project_factory import ProjectFactory
-import os.path
+from people.models import Organization
 
 
 class TestOrganization(TestCase):
@@ -37,7 +37,7 @@ class TestProject(TestCase):
 		project = ProjectFactory()
 		logo = project.logo
 		
-		expected_url = "/resources/upload/" + os.path.basename(logo.url)
+		expected_url = "/resources/upload/" + path.basename(logo.url)
 		
 		self.assertEqual(project.logo_url(), expected_url)
 		
