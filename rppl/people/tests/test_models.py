@@ -31,6 +31,6 @@ class TestProjectStr(TestCase):
 		name = "project"
 		project = ProjectFactory(name=name)
 		self.assertEqual(str(project), name,
-							"Project name conversion to unicode is broken.")
+						"Project name conversion to unicode is broken.")
 		
 
