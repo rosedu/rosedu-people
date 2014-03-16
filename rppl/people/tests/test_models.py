@@ -48,4 +48,3 @@ class TestPerson(TestCase):
         self.assertEqual(str(person), first_name + ' ' + last_name,
                          "Person to unicode doesn't return name.")
 
-
