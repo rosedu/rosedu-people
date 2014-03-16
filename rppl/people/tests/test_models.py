@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from people.factories.organization_factory import OrganizationFactory
 from people.factories.edition_factory import EditionFactory
+from people.factories.organization_factory import OrganizationFactory
 from people.factories.person_factory import PersonFactory
 from people.models import Organization
 
@@ -33,7 +33,7 @@ class TestEdition(TestCase):
 		name = "edition"	
 		edition = EditionFactory(name=name)
 		self.assertEqual(str(edition), name,
-						"Edition name verversion to unicode works.")
+					"Edition name verversion to unicode works.")
 		
 
 class TestPerson(TestCase):
