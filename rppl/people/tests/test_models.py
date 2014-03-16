@@ -1,6 +1,8 @@
 from django.test import TestCase
 
 from people.factories.organization_factory import OrganizationFactory
+from people.factories.person_factory import PersonFactory
+from people.factories.role_factory import RoleFactory
 from people.models import Organization
 
 from people.factories.project_factory import ProjectFactory
@@ -45,3 +47,15 @@ class TestProject(TestCase):
 		self.assertEqual(project.logo_url(), 'a',
 						"Logo url should be empty if there is no logo.")
 		
+
+class TestPerson(TestCase):
+
+    def test_get_unicode(self):
+        """Assert that calling str for a person returns his name"""
+        first_name = "John"
+        last_name = "Cocker"
+        person = PersonFactory(first_name=first_name,
+			       last_name=last_name)
+
+        self.assertEqual(str(person), first_name + ' ' + last_name,
+                         "Person to unicode doesn't return name.")
