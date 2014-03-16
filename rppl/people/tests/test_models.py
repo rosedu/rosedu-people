@@ -1,8 +1,8 @@
 from django.test import TestCase
 
+from people.factories.edition_factory import EditionFactory
 from people.factories.organization_factory import OrganizationFactory
 from people.factories.person_factory import PersonFactory
-from people.factories.role_factory import RoleFactory
 from people.models import Organization
 
 class TestOrganization(TestCase):
@@ -26,15 +26,15 @@ class TestOrganization(TestCase):
                          "Organization conversion to unicode is broken.")
                          
                          
-class TestRole(TestCase):
+class TestEdition(TestCase):
 
-    def test_get_unicode(self):
-        """Testing if the role conversion to unicode works"""
-        name = "admin"
-        role = RoleFactory(name=name)
-
-        self.assertEqual(str(role), name,
-                        "Role conversion to unicode is broken.")
+	def test_get_unicode(self):
+		"""Testing if the Edition name conversion to unicode works"""
+		name = "edition"	
+		edition = EditionFactory(name=name)
+		self.assertEqual(str(edition), name,
+				"Edition name verversion to unicode works.")
+		
 
 class TestPerson(TestCase):
 
