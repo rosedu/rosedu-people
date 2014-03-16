@@ -2,7 +2,6 @@ from django.test import TestCase
 
 from people.factories.organization_factory import OrganizationFactory
 from people.factories.person_factory import PersonFactory
-from people.factories.role_factory import RoleFactory
 from people.models import Organization
 
 from people.factories.project_factory import ProjectFactory
@@ -44,8 +43,8 @@ class TestProject(TestCase):
 		
 		project.logo = None
 		
-		self.assertEqual(project.logo_url(), 'a',
-						"Logo url should be empty if there is no logo.")
+		self.assertEqual(project.logo_url(), '',
+                         "Logo url should be empty if there is no logo.")
 		
 
 class TestPerson(TestCase):
