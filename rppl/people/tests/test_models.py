@@ -33,7 +33,7 @@ class TestEdition(TestCase):
 		name = "edition"	
 		edition = EditionFactory(name=name)
 		self.assertEqual(str(edition), name,
-					"Edition name verversion to unicode works.")
+				"Edition name verversion to unicode works.")
 		
 
 class TestPerson(TestCase):
