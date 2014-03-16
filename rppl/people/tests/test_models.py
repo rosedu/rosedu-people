@@ -31,7 +31,7 @@ class TestEdition(TestCase):
 	def test_get_unicode(self):
 		"""Testing if the Edition name conversion to unicode works"""
 		name = "edition"	
-		edition = EditionFactory(name = name)
+		edition = EditionFactory(name=name)
 		self.assertEqual(str(edition), name,
 						"Edition name verversion to unicode works.")
 		
