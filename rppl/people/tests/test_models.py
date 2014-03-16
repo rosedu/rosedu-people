@@ -25,25 +25,22 @@ class TestOrganization(TestCase):
         url = "www.rosedu.org"
         organization = OrganizationFactory(url=url)
  
-	self.assertEqual(str(organization), url,
+        self.assertEqual(str(organization), url,
                          "Organization conversion to unicode is broken.")
                          
 
 class TestProject(TestCase):
 	
-	def test_get_logo(self):
-		"""Testing if project's url exists"""
+    def test_get_logo(self):
+        """Testing if project's url exists"""	
+        project = ProjectFactory()
+        logo = project.logo
 		
-		project = ProjectFactory()
-		logo = project.logo
-		
-		expected_url = "/resources/upload/" + path.basename(logo.url)
-		
-		self.assertEqual(project.logo_url(), expected_url)
-		
-		project.logo = None
-		
-		self.assertEqual(project.logo_url(), '',
+        expected_url = "/resources/upload/" + path.basename(logo.url)
+        self.assertEqual(project.logo_url(), expected_url)
+        
+        project.logo = None
+        self.assertEqual(project.logo_url(), '',
                          "Logo url should be empty if there is no logo.")
 		
 
