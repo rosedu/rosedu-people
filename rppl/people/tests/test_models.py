@@ -1,12 +1,9 @@
 from django.test import TestCase
 
+from people.factories.edition_factory import EditionFactory
 from people.factories.organization_factory import OrganizationFactory
-<<<<<<< HEAD
 from people.factories.project_factory import ProjectFactory
-=======
 from people.factories.person_factory import PersonFactory
-from people.factories.role_factory import RoleFactory
->>>>>>> ab2ddc97972cd435a302998e89c71b5f4ace7553
 from people.models import Organization
 
 class TestOrganization(TestCase):
@@ -28,16 +25,22 @@ class TestOrganization(TestCase):
  
 	self.assertEqual(str(organization), url,
                          "Organization conversion to unicode is broken.")
-                         
 
-class TestProjectStr(TestCase):
+class TestProject(TestCase):
 	def test_get_unicode(self):
 		"""Testing if the project name is set correctly"""
 		name = "project"
 		project = ProjectFactory(name=name)
 		self.assertEqual(str(project), name,
 				"Project name conversion to unicode is broken.")
-		
+class TestEdition(TestCase):
+
+	def test_get_unicode(self):
+		"""Testing if the Edition name conversion to unicode works"""
+		name = "edition"	
+		edition = EditionFactory(name=name)
+		self.assertEqual(str(edition), name,
+				"Edition name verversion to unicode works.")
 
 class TestPerson(TestCase):
 
