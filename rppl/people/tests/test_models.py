@@ -43,9 +43,13 @@ class TestPerson(TestCase):
 
 class TestProject(TestCase):
 
-	def test_get_editions(self):
-		project = ProjectFactory() 
-		edition1 = EditionFactory(project=project)
-		self.assertEqual(len(project.editions), 1, "Different number of editions")
-		self.assertEqual(project.editions[0].name, edition1.name, "Different editions")
+    def test_get_editions(self):
+        project = ProjectFactory() 
+        edition1 = EditionFactory(project=project)
+
+        self.assertEqual(len(project.editions), 1,
+                         "Different number of editions")
+
+        self.assertEqual(project.editions[0].name, edition1.name,
+                         "Different editions")
 			
