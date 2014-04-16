@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'south',
     'rppl.people',
     'rppl.people.linkicon',
+    'django_nose',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -171,3 +172,5 @@ LOGGING = {
         },
     }
 }
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
