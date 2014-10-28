@@ -48,8 +48,8 @@ If you encounter problems, please share them in the comments.
 
 We follow some conventions for writing code. They are:
 
-    - [PEP8](http://legacy.python.org/dev/peps/pep-0008/)
-    - [Google Python Style Guide](https://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
+ - [PEP8](http://legacy.python.org/dev/peps/pep-0008/)
+ - [Google Python Style Guide](https://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
 
 Spend some time reading them before jumping into coding, they will help you write better code.
 
