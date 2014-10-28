@@ -27,7 +27,7 @@ _a list of high end benefits that will be delivered when the issue is completed.
 _examples:_
 - World Peace and harmony
 - An ending to World Hunger
- 
+
 
 #### Prerequisites
 _If you already know parts of the code or documents that could help a developer get to the deliverables share them here._
@@ -45,6 +45,13 @@ You already have an issue that follows the format mentioned above and you want t
 
 To help __others__ understand how you approached the problem please update the issue with a small description of the solution.
 If you encounter problems, please share them in the comments.
+
+We follow some conventions for writing code. They are:
+
+ - [PEP8](http://legacy.python.org/dev/peps/pep-0008/)
+ - [Google Python Style Guide](https://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
+
+Spend some time reading them before jumping into coding, they will help you write better code.
 
 #### Git, hub and magic
 In order to have the code linked with the issue it solves the following flow is preffered.
@@ -74,21 +81,28 @@ $ git push origin 42-end-to-world-hunger
 ./manage.py test
 ```
 
-- If nothing fails, create a pull request on the issue you are trying to solve. Please use [hub](https://github.com/github/hub) to do that.
-You will see that the issue will be transformed in a pull-request containing the issue description shown above.
-```
-$ hub pull-request -i 42 -b rosedu:master-h $GITHUB_USER:42-end-to-wolrd-hunger #If you have access to the repo $GITHUB_USER is rosedu
-```
+- If nothing fails, create a pull request on the issue you are trying to solve.
 
 - Ask for a code review using @reviewer_name tags in comments
-- If the pull request can't be merged please merge the master branch into your branch.
-```bash
-# if working on a fork
-$ git fetch upstream
-$ git merge upstream/master
-# if working on the rosedu repo
-$ git fetch origin
-$ git merge origin/master
-```
+
+- If the pull request can't be merged please rebase the master branch into your branch. You should this before you open the pull request and running the tests, just in case. How to:
+
+ - If working on a fork
+  
+  ```bash
+  $ git fetch upstream
+  $ git merge upstream/master
+  $ git checkout 42-end-to-world-hunger
+  $ git rebase master
+  ```
+ - If working on the rosedu repo
+  
+  ```bash
+  $ git fetch origin
+  $ git merge origin/master
+  ```
+
+- More info on [rebase](http://git-scm.com/docs/git-rebase) in case you have conflicts etc.
+
 - Congratulations! You have made a contribution to this project!
 
