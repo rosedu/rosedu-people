@@ -47,6 +47,7 @@ To help __others__ understand how you approached the problem please update the i
 If you encounter problems, please share them in the comments.
 
 We follow some conventions for writing code. They are:
+
     - [PEP8](http://legacy.python.org/dev/peps/pep-0008/)
     - [Google Python Style Guide](https://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
 
@@ -81,21 +82,26 @@ $ git push origin 42-end-to-world-hunger
 ```
 
 - If nothing fails, create a pull request on the issue you are trying to solve.
-```
 
 - Ask for a code review using @reviewer_name tags in comments
-- If the pull request can't be merged please rebase the master branch into your branch.
-```bash
-# if working on a fork
-$ git fetch upstream
-$ git merge upstream/master
-$ git checkout 42-end-to-world-hunger
-$ git rebase master
 
-# if working on the rosedu repo
-$ git fetch origin
-$ git merge origin/master
-```
+- If the pull request can't be merged please rebase the master branch into your branch. You should this before you open the pull request and running the tests, just in case. How to:
+
+ - If working on a fork
+  
+  ```bash
+  $ git fetch upstream
+  $ git merge upstream/master
+  $ git checkout 42-end-to-world-hunger
+  $ git rebase master
+  ```
+ - If working on the rosedu repo
+  
+  ```bash
+  $ git fetch origin
+  $ git merge origin/master
+  ```
+
 - More info on [rebase](http://git-scm.com/docs/git-rebase) in case you have conflicts etc.
 
 - Congratulations! You have made a contribution to this project!
