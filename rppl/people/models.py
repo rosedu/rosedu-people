@@ -90,3 +90,4 @@ class PersonRole(models.Model):
     edition = models.ForeignKey(Edition)
     role = models.ForeignKey(Role)
     timestamp = models.DateTimeField(default=datetime.now)
+
