@@ -8,4 +8,4 @@ factory-boy==2.2.1
 mock==1.0.1
 six==1.4.1
 wsgiref==0.1.2
-django-nose==1.2
+Django-nose==1.2
