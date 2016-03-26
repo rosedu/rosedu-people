@@ -1,6 +1,6 @@
 # Public Profiles and Activities
 
-
+bla bla
 
 Build status: ![Build status](https://travis-ci.org/rosedu/rosedu-people.svg)
 
