@@ -1,5 +1,5 @@
 # Public Profiles and Activities
-
+Hello!
 
 
 Build status: ![Build status](https://travis-ci.org/rosedu/rosedu-people.svg)
