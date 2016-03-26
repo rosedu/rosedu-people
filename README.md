@@ -28,3 +28,4 @@ Build status: ![Build status](https://travis-ci.org/rosedu/rosedu-people.svg)
 	./manage.py schemamigration people --auto
 	./manage.py migrate people
 ```
+MY change
