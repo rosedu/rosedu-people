@@ -1,5 +1,6 @@
 # Public Profiles and Activities
 
+MUNTEAN DAN 
 
 
 Build status: ![Build status](https://travis-ci.org/rosedu/rosedu-people.svg)
